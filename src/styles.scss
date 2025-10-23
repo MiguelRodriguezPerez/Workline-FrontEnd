@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@use './app/generalStyles/mixins' as resp-screen;
+@use './app/generalStyles/variables' as variables;
+
+
+body {
+    font-family: variables.$primary-font;
+    font-size: variables.$regular-font-size;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    background-color: variables.$white-background;
+}
+
+body > *{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+
+@include resp-screen.change-layout(phone) {
+    body > *{
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+}

@@ -1,0 +1,18 @@
+/* Base colors*/
+
+$black-nav: #333333;
+$white-background: #F5F5F5;
+$green-workline: #008000;
+$blue-workline: #1BA2BA;
+
+/* Fonts */
+$primary-font: 'Tajawal';
+$regular-font-size: 20px;
+$tablet-font-size: 16px;
+$phone-font-size: 12px;
+
+/* Screen breakpoints */
+$screen-breakpoints: (
+    tablet: 1400px,
+    phone: 700px
+)
