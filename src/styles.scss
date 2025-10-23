@@ -10,11 +10,25 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0px;
     
     background-color: variables.$white-background;
 }
 
-body > *{
+ul,li {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* El primer hijo es router-outlet, el segundo la página en cuestión
+Susceptible de fallar en un futuro */
+
+app-root > :nth-child(2) {
     margin-left: 10vw;
     margin-right: 10vw;
 }
