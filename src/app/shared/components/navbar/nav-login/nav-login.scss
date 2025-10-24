@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 15px;
+  
+  :last-child {
+    margin-right: 30px;
+  }
+}

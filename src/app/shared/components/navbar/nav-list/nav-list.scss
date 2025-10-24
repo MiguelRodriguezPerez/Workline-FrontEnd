@@ -2,18 +2,20 @@
 
 :host {
   display: block;
+  margin: auto 30%;
 }
 
-.wk-nav-container {
-  margin: 0% 30%;
-}
-
-.wk-nav-list {
+ul.wk-nav-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-between;
 
-  li >  a {
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  li > a {
     color: wkColors.$white-font;
   }
 }
