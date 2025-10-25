@@ -10,8 +10,6 @@
 @use 'app/generalStyles/generalRules.scss';
 
 
-
-
 body {
     font-family: variables.$primary-font;
     font-size: variables.$regular-font-size;
@@ -39,5 +37,4 @@ app-root > :nth-child(2) {
         margin-right: 5vw;
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

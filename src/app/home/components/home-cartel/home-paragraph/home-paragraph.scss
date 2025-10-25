@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: start;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 25px;
+    margin-right: 20%;
+  }
+}
+
+
+
+
+
+

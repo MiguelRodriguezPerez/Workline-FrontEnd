@@ -2,10 +2,15 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
-  gap: 15px;
+  gap: 20px;
   
-  :last-child {
+  span {
     margin-right: 30px;
+    font-size: 1.35rem;
+  }
+
+  .mat-icon {
+    font-size: 30px;
+    margin-top: -5px;
   }
 }

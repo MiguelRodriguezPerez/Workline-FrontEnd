@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  margin-top: 30px;
+}
+
+section.home-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}

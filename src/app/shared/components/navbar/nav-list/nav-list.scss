@@ -2,12 +2,13 @@
 
 :host {
   display: block;
-  margin: auto 30%;
+  margin: 0px 30%;
 }
 
 ul.wk-nav-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin: 0px !important;
 
   li {
     display: flex;
@@ -17,5 +18,6 @@ ul.wk-nav-list {
 
   li > a {
     color: wkColors.$white-font;
+    text-decoration: none;
   }
 }

@@ -1,7 +1,7 @@
 
 @use '@angular/material' as mat;
 
-ul,li {
+ul,li, p {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
@@ -9,6 +9,11 @@ ul,li {
 
 a {
     text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+  margin: 0px;
 }
 
 /* Angular icons stuff */

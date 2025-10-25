@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin-top: 35px;
+}
+
+main.cartel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  /* Evita que la altura de la imagen condicione la de su hermano*/
+  align-items: start;
+}
