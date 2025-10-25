@@ -2,13 +2,15 @@
 
 :host {
   display: block;
-  margin: 0px 30%;
 }
 
 ul.wk-nav-list {
+  height: 100%;
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 0px !important;
+  align-items: center;
+  margin: 0px 30%;
 
   li {
     display: flex;

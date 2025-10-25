@@ -11,18 +11,26 @@
   border-radius: 8px;
   padding: 15px 20px;
   cursor: pointer;
+}
 
-  div.home-option-text {
-    padding-left: 35px;
+.home-option-green {
+  @extend .home-option;
+  background-color: green;
+}
 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+div.home-option-text {
+  padding-left: 35px;
+  padding-right: 20%;
+  line-height: 25px;
 
-    color: #fff; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  color: #fff; 
+  
+  h3 {
+    margin: 5px 0px;
   }
 }
 
-.home-option:nth-child(2) {
-  background-color: green;
-}

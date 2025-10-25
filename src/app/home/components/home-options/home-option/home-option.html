@@ -1,4 +1,4 @@
-<div class="home-option">
+<div class="home-option" [ngClass]="color() === 'green' ? '' : 'home-option-green'">
     <img [src]="imageSrc()" alt="jobAction.png" />
     <div class="home-option-text">
         <h3>{{ title() }}</h3>
