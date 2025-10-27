@@ -1,0 +1,12 @@
+:host {
+  display: block;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+
+  :first-child {
+    margin-left: 15px;
+  }
+}

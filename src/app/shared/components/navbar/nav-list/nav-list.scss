@@ -1,0 +1,25 @@
+@use '../../../../generalStyles/variables' as wkColors;
+
+:host {
+  display: block;
+}
+
+ul.wk-nav-list {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  margin: 0px 30%;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  li > a {
+    color: wkColors.$white-font;
+    text-decoration: none;
+  }
+}

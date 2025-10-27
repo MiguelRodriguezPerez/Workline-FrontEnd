@@ -1,0 +1,27 @@
+@use '../../../../generalStyles/fonts' as fonts;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: start;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 28px;
+    margin-left: -3px;
+  }
+
+  p {
+    font-size: 1.6rem;
+    line-height: fonts.$paragraph-line-height;
+    margin-right: 20%;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+
+

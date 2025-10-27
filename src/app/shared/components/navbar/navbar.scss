@@ -1,0 +1,17 @@
+@use '../../../../app/generalStyles/variables' as wkColors;
+
+:host {
+  display: block;
+  margin-left: -10vw !important;
+  margin-right: -10vw !important;
+}
+
+.wk-nav {
+  display: grid;
+  grid-template-columns: 10% 1fr 15%;
+  margin: 0px;
+
+  color: wkColors.$white-font;
+  background-color: wkColors.$black-nav;
+  padding: 15px 0px;
+}

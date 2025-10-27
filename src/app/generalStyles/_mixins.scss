@@ -1,0 +1,31 @@
+@use "sass:map";
+@use './variables' as variables;
+
+
+
+/* Este mixin sirve para no tener que definir media-screen and ... en cada archivo.
+En su lugar te permite llamarlo directamente en cualquier scss y definir las reglas 
+que te de la gana */
+
+
+/* Define el nombre del mixin. El argumento $screen-size es uno de los keys contenidos en $screen-breakpoints
+contenido en _variables.scss*/
+@mixin change-layout ($screen-size) {
+
+    /* Devuelve el valor exacto según la clave introducida. Si por ejemplo, la clave es phone
+    devolverá 700px. Piensa en los mapas de java*/
+    $breakpoint: map.get(variables.$screen-breakpoints, $screen-size);
+
+    /* Si el valor de la clave introducida anteriormente existe, definirás el media query con el valor
+    seleccionado. @content es para definir las reglas que te de la gana.
+    
+    Si no existe, recibirás un warning */
+    @if $breakpoint {
+        @media screen and (max-width: $breakpoint) {
+            @content
+        }
+    } 
+    @else {
+        @warn "El breakpoint `#{$size}` no está definido.";
+    }
+}

@@ -7,12 +7,13 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "prefix": "",
           "style": "scss"
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -21,13 +22,15 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/generalStyles/commonClasses.scss"
             ]
           },
           "configurations": {

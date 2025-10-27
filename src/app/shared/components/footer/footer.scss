@@ -1,0 +1,30 @@
+@use '../../../generalStyles/variables' as wkVar;
+
+:host {
+  display: block;
+
+  margin-left: -10vw;
+  margin-right: -10vw;
+
+  margin-top: auto;
+}
+
+footer.wk-footer {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+
+  background-color: wkVar.$black-nav;
+  padding: 20px 10vw;
+}
+
+ul.wk-footer-list {
+  padding: 0% 4%;
+  margin-top: 7px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  color: wkVar.$white-font;
+}
