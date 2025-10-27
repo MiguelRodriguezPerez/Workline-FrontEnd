@@ -7,13 +7,13 @@
 
 @use './app/generalStyles/mixins' as resp-screen;
 @use './app/generalStyles/variables' as variables;
+@use './app/generalStyles/fonts' as fonts;
 @use 'app/generalStyles/generalRules.scss';
 
 
 body {
-    font-family: variables.$primary-font;
-    font-size: variables.$regular-font-size;
-    
+    font-family: fonts.$font;
+    font-size: fonts.$regular-font-size;
     background-color: variables.$white-background;
 }
 
