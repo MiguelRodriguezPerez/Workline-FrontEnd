@@ -1,4 +1,4 @@
-@use '../../../../generalStyles/generalRules' as generalRules;
+@use '../../../../generalStyles/fonts' as fonts;
 
 :host {
   display: block;
@@ -9,7 +9,7 @@
   grid-template-columns: auto 1fr;
   background-color: #1ba2ba;
   border-radius: 8px;
-  padding: 15px 20px;
+  padding: 20px 20px 15px;
   margin-right: 5%;
   cursor: pointer;
 }
@@ -22,7 +22,7 @@
 div.home-option-text {
   padding-left: 35px;
   padding-right: 30px;
-  line-height: 25px;
+  line-height: fonts.$paragraph-line-height;
 
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ div.home-option-text {
   color: #fff; 
   
   h3 {
-    margin: 5px 0px;
+    margin: 0px;
     font-size: 31px;
   }
 }

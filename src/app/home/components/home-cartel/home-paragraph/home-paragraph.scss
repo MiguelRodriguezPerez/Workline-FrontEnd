@@ -1,3 +1,5 @@
+@use '../../../../generalStyles/fonts' as fonts;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -5,15 +7,16 @@
   align-self: start;
 
   h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    margin-left: -2px;
+    font-size: 3rem;
+    margin-bottom: 28px;
+    margin-left: -3px;
   }
 
   p {
     font-size: 1.6rem;
-    line-height: 28px;
+    line-height: fonts.$paragraph-line-height;
     margin-right: 20%;
+    margin-bottom: 10px;
   }
 }
 
