@@ -11,6 +11,10 @@
 @use 'app/generalStyles/generalRules.scss';
 
 
+// rem → relativo al <html>
+
+// em → relativo al padre (body en tu caso)
+
 body {
     font-family: fonts.$font;
     font-size: fonts.$regular-font-size;

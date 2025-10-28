@@ -10,7 +10,7 @@ export class NavbarPhoneSideMenu {
   
   isOpen = signal<boolean>(false);
 
-  onClickIcon () {
+  onClickEvent () {
     document.getElementById('dropdown-nav-menu')!.style.width = this.isOpen() ? '0%' : '100%';
     this.isOpen.set(!this.isOpen());
   }
