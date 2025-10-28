@@ -1,3 +1,5 @@
+@use '../../../generalStyles/mixins' as myMixins;
+
 :host {
   display: block;
   margin-top: 60px;
@@ -11,4 +13,8 @@ main.cartel-container {
 
   /* Evita que la altura de la imagen condicione la de su hermano*/
   align-items: start;
+
+  @include myMixins.change-layout(tablet) {
+    grid-template-columns: 1fr;
+  }
 }
