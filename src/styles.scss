@@ -11,6 +11,10 @@
 @use 'app/generalStyles/generalRules.scss';
 
 
+// rem → relativo al <html>
+
+// em → relativo al padre (body en tu caso)
+
 body {
     font-family: fonts.$font;
     font-size: fonts.$regular-font-size;
@@ -30,11 +34,4 @@ app-root > :nth-child(2) {
     min-height: 100vh;
 }
 
-
-@include resp-screen.change-layout(phone) {
-    body > *{
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
-}
 

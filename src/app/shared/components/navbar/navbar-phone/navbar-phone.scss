@@ -1,0 +1,21 @@
+@use '../../../../generalStyles/variables' as colors;
+
+:host {
+  display: block;
+}
+
+header.navbar-phone {
+  margin-right: -10vw;
+  margin-left: -10vw;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  padding: 15px 0px;
+
+  background-color: colors.$black-nav;
+  color: colors.$white-font;
+  
+  > :first-child {
+    margin-right: auto;
+  }
+}

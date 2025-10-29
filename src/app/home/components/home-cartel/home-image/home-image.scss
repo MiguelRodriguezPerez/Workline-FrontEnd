@@ -1,5 +1,19 @@
+@use '../../../../generalStyles/mixins' as myMixins;
+
+
 :host {
-  display: block;
+  display: flex;
+  flex-direction: row;
   align-self: center;
   justify-self: center;
+
+  @include myMixins.change-layout(tablet) {
+  margin-bottom: 20px;
+  
+    img {
+      width: 95%;
+    }
+  }
 }
+
+
