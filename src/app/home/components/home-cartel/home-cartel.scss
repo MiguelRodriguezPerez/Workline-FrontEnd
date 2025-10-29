@@ -3,11 +3,9 @@
 :host {
   display: block;
   margin-top: 60px;
-  margin-bottom: 40px;
 
   @include myMixins.change-layout(tablet) {
     margin-top: 20px;
-    margin-bottom: 20px;
   }
 }
 

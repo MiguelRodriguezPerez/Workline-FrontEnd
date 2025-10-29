@@ -2,13 +2,13 @@
 
 :host {
   display: block;
-  margin-top: 30px;
+  margin: 40px 0px;
 }
 
 section.home-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 30px;
 
   @include myMixins.change-layout(tablet) {
     grid-template-columns: 1fr;

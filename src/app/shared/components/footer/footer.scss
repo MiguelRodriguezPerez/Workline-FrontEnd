@@ -1,4 +1,5 @@
 @use '../../../generalStyles/variables' as wkVar;
+@use '../../../generalStyles/mixins' as mixins;
 
 :host {
   display: block;
@@ -16,6 +17,11 @@ footer.wk-footer {
 
   background-color: wkVar.$black-nav;
   padding: 20px 10vw;
+
+  @include mixins.change-layout(phone) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 ul.wk-footer-list {
