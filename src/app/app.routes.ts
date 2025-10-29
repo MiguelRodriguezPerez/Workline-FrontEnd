@@ -5,5 +5,9 @@ export const routes: Routes = [
     {
         path: '',
         component: HomePage
+    },
+    {
+        path: 'jobs',
+        loadChildren: () => import('./job/job.routes').then((m) => m.jobRoutes)
     }
 ];
