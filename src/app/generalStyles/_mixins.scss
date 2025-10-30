@@ -26,6 +26,6 @@ contenido en _variables.scss*/
         }
     } 
     @else {
-        @warn "El breakpoint `#{$size}` no está definido.";
+        @warn "El breakpoint `#{$screen-size}` no está definido.";
     }
 }

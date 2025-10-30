@@ -1,0 +1,33 @@
+<form class="job-search-form nube" id="formulario-base">
+    <div>
+        <p class="job-search-remove-filters">Reiniciar formulario</p>
+        <!-- <img src="/images/jobs/cerrar2.png" alt="cerrar.png" /> -->
+    </div>
+
+    <label>Puesto</label>
+    <input type="text" class="form-input" name="puesto" />
+
+    <label>Tipo Contrato</label>
+    <mat-select>
+        @for (tipoContrato of tiposContratoValues; track tipoContrato) {
+            <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
+        }
+    </mat-select>
+    <label>Ciudad</label>
+    <input type="text" class="form-input" name="ciudad" />
+
+    <label>Salario mínimo</label>
+    <input type="text" class="form-input" name="salarioAnualMinimo" />
+    <p class="mensaje-error"></p>
+
+    <label>Modalidad</label>
+    <select class="form-input" name="modalidad">
+        <option value="">Selecciona una opción</option>
+        <!-- Opciones de modalidades -->
+        <option value="presencial">Presencial</option>
+        <option value="híbrido">Híbrido</option>
+        <option value="remoto">Remoto</option>
+    </select>
+
+    <input type="submit" class="green-button" value="Buscar" />
+</form>

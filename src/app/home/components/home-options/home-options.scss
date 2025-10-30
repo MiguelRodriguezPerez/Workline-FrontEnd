@@ -10,7 +10,7 @@ section.home-options {
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 
-  @include myMixins.change-layout(tablet) {
+  @include myMixins.change-layout('tablet') {
     grid-template-columns: 1fr;
   }
 }
