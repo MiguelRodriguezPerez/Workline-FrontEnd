@@ -1,3 +1,38 @@
 :host {
   display: block;
 }
+
+form#job-search-form {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px 20px;
+
+  div:first-child {
+    margin-bottom: 5px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    span {
+      font-size: 0.75em;
+    }
+  }
+  
+  label {
+    font-size: 0.83em;
+    margin-bottom: 4px;
+  }
+
+  input[type=submit] {
+    width: fit-content;
+    padding: 5px 30px;
+    margin: 0px auto;
+  }
+
+  .dropdown-form {
+    padding: 0px;
+  }
+}
+

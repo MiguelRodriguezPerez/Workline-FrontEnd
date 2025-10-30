@@ -9,6 +9,7 @@
 @use './app/generalStyles/variables' as variables;
 @use './app/generalStyles/fonts' as fonts;
 @use 'app/generalStyles/generalRules.scss';
+@use 'app/generalStyles/forms.scss';
 
 html {
   @include mat.theme((
@@ -17,7 +18,7 @@ html {
       tertiary: mat.$blue-palette,
     ),
     typography: fonts.$font,
-    density: 0,
+    density: -10,
   ));
 }
 

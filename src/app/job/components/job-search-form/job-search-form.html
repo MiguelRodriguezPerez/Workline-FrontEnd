@@ -1,33 +1,31 @@
-<form class="job-search-form nube" id="formulario-base">
+<form class="job-search-form cloud" id="job-search-form">
     <div>
-        <p class="job-search-remove-filters">Reiniciar formulario</p>
+        <span class="job-search-remove-filters">Reiniciar formulario</span>
         <!-- <img src="/images/jobs/cerrar2.png" alt="cerrar.png" /> -->
     </div>
 
     <label>Puesto</label>
-    <input type="text" class="form-input" name="puesto" />
+    <input type="text" class="wk-form-input" name="puesto" />
 
     <label>Tipo Contrato</label>
-    <mat-select>
+    <mat-select class="dropdown-form">
         @for (tipoContrato of tiposContratoValues; track tipoContrato) {
-            <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
+            <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase }}</mat-option>
         }
     </mat-select>
     <label>Ciudad</label>
-    <input type="text" class="form-input" name="ciudad" />
+    <input type="text" class="wk-form-input" name="ciudad" />
 
     <label>Salario mínimo</label>
-    <input type="text" class="form-input" name="salarioAnualMinimo" />
+    <input type="text" class="wk-form-input" name="salarioAnualMinimo" />
     <p class="mensaje-error"></p>
 
     <label>Modalidad</label>
-    <select class="form-input" name="modalidad">
-        <option value="">Selecciona una opción</option>
-        <!-- Opciones de modalidades -->
-        <option value="presencial">Presencial</option>
-        <option value="híbrido">Híbrido</option>
-        <option value="remoto">Remoto</option>
-    </select>
+    <mat-select>
+        @for (modalidad of tiposModalidadesValues; track modalidad) {
+            <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
+        }
+    </mat-select>
 
-    <input type="submit" class="green-button" value="Buscar" />
+    <input type="submit" class="green-button" value="Buscar ofertas" />
 </form>
