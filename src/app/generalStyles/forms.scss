@@ -1,13 +1,11 @@
-mat-label {
-  font-size: 0.8em;
-  margin-bottom: 4px;
+div.mat-mdc-select-panel {
+  padding: 0px !important;
 }
 
-.mat-select-panel {
-  background-color: red;
-}
-
-.mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: transparent;
+mat-select.mat-mdc-select {
+  margin-bottom: 15px;
+  border-bottom: solid 1px black;
+  padding-left: 2px;
+  font-size: 0.7em;
 }
 

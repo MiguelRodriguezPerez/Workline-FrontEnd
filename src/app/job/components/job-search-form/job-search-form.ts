@@ -19,4 +19,6 @@ import { TitleCasePipe } from '@angular/common';
 export class JobSearchForm { 
   tiposContratoValues = Object.values(TipoContrato);
   tiposModalidadesValues = Object.values(ModalidadTrabajo);
+
+  
 }

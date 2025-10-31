@@ -8,11 +8,13 @@
     <input type="text" class="wk-form-input" name="puesto" />
 
     <label>Tipo Contrato</label>
-    <mat-select class="dropdown-form">
+    <mat-select 
+        [(value)] = "tiposContratoValues[0]">
         @for (tipoContrato of tiposContratoValues; track tipoContrato) {
             <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase }}</mat-option>
         }
     </mat-select>
+
     <label>Ciudad</label>
     <input type="text" class="wk-form-input" name="ciudad" />
 
@@ -21,7 +23,8 @@
     <p class="mensaje-error"></p>
 
     <label>Modalidad</label>
-    <mat-select>
+    <mat-select
+        [(value)] = "tiposModalidadesValues[0]">
         @for (modalidad of tiposModalidadesValues; track modalidad) {
             <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
         }
