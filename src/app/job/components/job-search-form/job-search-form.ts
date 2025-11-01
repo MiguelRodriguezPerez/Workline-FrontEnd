@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { TipoContrato } from '../../objects/enums/TipoContrato';
-import { ModalidadTrabajo } from '../../objects/enums/ModalidadTrabajo';
 import { TitleCasePipe } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { FalsyValuePipe } from '../../../shared/pipes/falsy-value.pipe';
+import { ModalidadTrabajo } from '../../objects/enums/ModalidadTrabajo';
+import { TipoContrato } from '../../objects/enums/TipoContrato';
+import { BusquedaOfertaFormGroup } from '../../objects/interfaces/BusquedaOferta';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 
 @Component({
@@ -24,17 +24,18 @@ export class JobSearchForm {
   tiposModalidadesValues = Object.values(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;
 
-  private fb = inject(FormBuilder);
+  private fb = inject(NonNullableFormBuilder);
 
-  searchForm = this.fb.group({
-      puesto: [''],
-      tipoContrato:[ this.tiposContratoValues[0] ],
-      ciudad: [''],
-      salarioAnualMinimo: [null],
-      modalidad: [ this.tiposModalidadesValues[0] ],
+  searchForm: FormGroup<BusquedaOfertaFormGroup> = this.fb.group({
+    puesto: [''],
+    tipoContrato: [this.tiposContratoValues[0]],
+    ciudad: [''],
+    salarioAnualMinimo: [0],
+    modalidad: [this.tiposModalidadesValues[0]],
   });
 
   submitEvent() {
     console.log(this.busquedaOfertaMapper.mapBusquedaOferta(this.searchForm));
   }
+  
 }

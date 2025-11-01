@@ -10,4 +10,6 @@ import { JobSearchForm } from "../../components/job-search-form/job-search-form"
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })
-export class JobSearchPage { }
+export class JobSearchPage { 
+  
+}

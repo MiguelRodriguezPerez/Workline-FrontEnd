@@ -10,13 +10,13 @@
 
     <label>Tipo Contrato</label>
     <mat-select formControlName="tipoContrato">
-        @for (tipoContrato of tiposContratoValues; track tipoContrato) {
+        @for (tipoContrato of tiposContratoValues; track tipoContrato.toString()) {
             <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase }}</mat-option>
         }
     </mat-select>
 
     <label>Ciudad</label>
-    <input type="text" class="wk-form-input" name="ciudad" formControlName="ciudad" />
+    <input type="text" class="wk-form-input" name="ciudad"  formControlName="ciudad"/>
 
     <label>Salario mínimo</label>
     <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo"/>
@@ -25,7 +25,7 @@
     <label>Modalidad</label>
     <mat-select formControlName="modalidad"
         [(value)] = "tiposModalidadesValues[0]">
-        @for (modalidad of tiposModalidadesValues; track modalidad) {
+        @for (modalidad of tiposModalidadesValues; track modalidad.toString()) {
             <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
         }
     </mat-select>
