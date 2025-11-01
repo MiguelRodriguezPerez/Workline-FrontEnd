@@ -2,6 +2,6 @@
 
 export enum TipoContrato {
     Indefinido = 'INDEFINIDO',
-    Fijo = 'FIJO',
+    Discontinuo = 'DISCONTINUO',
     Temporal = 'TEMPORAL'
 }
