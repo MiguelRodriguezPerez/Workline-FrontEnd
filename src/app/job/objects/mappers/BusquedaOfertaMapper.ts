@@ -1,6 +1,8 @@
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { BusquedaOferta, BusquedaOfertaFormGroup } from '../interfaces/BusquedaOferta';
 import { ModalidadTrabajo } from '../enums/ModalidadTrabajo';
+import { PaginaJobResponse } from '../interfaces/PaginaJobResponse';
+import { Oferta } from '../interfaces/Oferta';
 export class BusquedaOfertaMapper {
 
     /* Recibes un objeto con varios FormControl */
@@ -22,5 +24,9 @@ export class BusquedaOfertaMapper {
         };
 
         return resultado;
+    }
+
+    static mapPaginaJobResponseToOfertaArr( response: PaginaJobResponse ): Oferta[] {
+        return response.content;
     }
 }

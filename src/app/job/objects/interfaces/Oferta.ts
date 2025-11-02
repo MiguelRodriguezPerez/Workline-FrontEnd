@@ -9,6 +9,7 @@ export interface Oferta {
     descripcion: string,
     ciudad: string,
     salarioAnual: number,
+    fechaPublicacion: Date,
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
     contrata: Contrata
