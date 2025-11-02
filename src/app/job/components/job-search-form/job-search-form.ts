@@ -26,13 +26,16 @@ export class JobSearchForm {
 
   private fb = inject(NonNullableFormBuilder);
 
+  // TODO: Encontrar solución más óptima con tipos para el FormGroup
   searchForm: FormGroup<BusquedaOfertaFormGroup> = this.fb.group({
     puesto: [''],
-    tipoContrato: [this.tiposContratoValues[0]],
+    tipoContrato: [null as TipoContrato | null],
     ciudad: [''],
-    salarioAnualMinimo: [0],
-    modalidad: [this.tiposModalidadesValues[0]],
+    salarioAnualMinimo: [null as number | null],
+    modalidad: [null as ModalidadTrabajo | null],
   });
+
+  selected: null | ModalidadTrabajo = null;
 
   submitEvent() {
     console.log(this.busquedaOfertaMapper.mapBusquedaOferta(this.searchForm));

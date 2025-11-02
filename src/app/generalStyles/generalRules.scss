@@ -1,4 +1,4 @@
-
+@use './fonts' as fonts;
 @use '@angular/material' as mat;
 
 ul,li, p {
@@ -47,6 +47,10 @@ body {
 }
 /* You can add global styles to this file, and also import other style files */
 
+
+input {
+  font-family: fonts.$font;
+}
 
 /* Impide que en los input type number muestre las flechas*/
 input::-webkit-outer-spin-button,

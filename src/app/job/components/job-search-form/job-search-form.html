@@ -9,7 +9,10 @@
     <input type="text" class="wk-form-input" name="puesto" formControlName="puesto" />
 
     <label>Tipo Contrato</label>
-    <mat-select formControlName="tipoContrato">
+    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
+     null este seleccionado -->
+    <mat-select formControlName="tipoContrato" placeholder="Elige una opción">
+        <mat-option [value]="null">Elige una opción</mat-option>
         @for (tipoContrato of tiposContratoValues; track tipoContrato.toString()) {
             <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase }}</mat-option>
         }
@@ -23,8 +26,10 @@
     <p class="mensaje-error"></p>
 
     <label>Modalidad</label>
-    <mat-select formControlName="modalidad"
-        [(value)] = "tiposModalidadesValues[0]">
+    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
+     null este seleccionado -->
+    <mat-select formControlName="modalidad" placeholder="Elige una opción">
+        <mat-option [value]="null">Elige una opción</mat-option>
         @for (modalidad of tiposModalidadesValues; track modalidad.toString()) {
             <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
         }
