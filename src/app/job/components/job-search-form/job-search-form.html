@@ -28,7 +28,7 @@
     <label>Modalidad</label>
     <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
      null este seleccionado -->
-    <mat-select formControlName="modalidad" placeholder="Elige una opción">
+    <mat-select formControlName="modalidadTrabajo" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
         @for (modalidad of tiposModalidadesValues; track modalidad.toString()) {
             <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>

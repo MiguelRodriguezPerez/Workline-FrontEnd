@@ -12,4 +12,5 @@ import { JobSearchForm } from "../../components/job-search-form/job-search-form"
 })
 export class JobSearchPage { 
   
+  
 }

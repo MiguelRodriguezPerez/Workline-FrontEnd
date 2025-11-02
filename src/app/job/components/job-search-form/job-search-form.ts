@@ -32,7 +32,7 @@ export class JobSearchForm {
     tipoContrato: [null as TipoContrato | null],
     ciudad: [''],
     salarioAnualMinimo: [null as number | null],
-    modalidad: [null as ModalidadTrabajo | null],
+    modalidadTrabajo: [null as ModalidadTrabajo | null],
   });
 
   selected: null | ModalidadTrabajo = null;

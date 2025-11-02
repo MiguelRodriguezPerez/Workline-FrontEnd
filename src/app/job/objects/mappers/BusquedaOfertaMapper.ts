@@ -10,14 +10,14 @@ export class BusquedaOfertaMapper {
 
         El apaño que se me ocurrió es permitir que el valor pueda ser null y en el mapper a la entidad
         BusquedaOferta asignarle 0 a salarioAnualMinimo */
-        
+
         /* formGroup.getRawValue() devuelve los valores de sus formControl */
-        const { puesto, ciudad, tipoContrato, modalidad, salarioAnualMinimo } = formGroup.getRawValue();
+        const { puesto, ciudad, tipoContrato, modalidadTrabajo: modalidad, salarioAnualMinimo } = formGroup.getRawValue();
         const resultado: BusquedaOferta = {
             puesto,
             ciudad,
             tipoContrato,
-            modalidad,
+            modalidadTrabajo: modalidad,
             salarioAnualMinimo: salarioAnualMinimo ?? 0,
         };
 

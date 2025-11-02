@@ -7,7 +7,7 @@ export interface BusquedaOferta {
     tipoContrato: TipoContrato | null,
     ciudad: string,
     salarioAnualMinimo: number,
-    modalidad: ModalidadTrabajo | null
+    modalidadTrabajo: ModalidadTrabajo | null
 }
 
 /* En el formulario de búsqueda no encontre la manera de hacer que el input de salarioMinimoAnual
@@ -20,5 +20,5 @@ export interface BusquedaOfertaFormGroup {
     tipoContrato: FormControl<TipoContrato | null>,
     ciudad: FormControl<string>,
     salarioAnualMinimo: FormControl<number | null>,
-    modalidad: FormControl<ModalidadTrabajo | null>
+    modalidadTrabajo: FormControl<ModalidadTrabajo | null>
 }
