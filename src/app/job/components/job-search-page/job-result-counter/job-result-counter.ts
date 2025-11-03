@@ -8,6 +8,7 @@ import { Component, input } from '@angular/core';
 })
 export class JobResultCounter { 
 
+  isLoading = input.required<boolean>();
   numOfertasResultado = input.required<number>();
   
 }

@@ -5,30 +5,30 @@
         <!-- <img src="/images/jobs/cerrar2.png" alt="cerrar.png" /> -->
     </div>
 
-    <label>Puesto</label>
+    <label for="puesto">Puesto</label>
     <input type="text" class="wk-form-input" name="puesto" formControlName="puesto" />
 
-    <label>Tipo Contrato</label>
+    <label for="tipoContrato">Tipo Contrato</label>
     <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
      null este seleccionado -->
-    <mat-select formControlName="tipoContrato" placeholder="Elige una opción">
+    <mat-select formControlName="tipoContrato" name="tipoContrato" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
         @for (tipoContrato of tiposContratoValues; track tipoContrato) {
             <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
         }
     </mat-select>
 
-    <label>Ciudad</label>
+    <label for="ciudad">Ciudad</label>
     <input type="text" class="wk-form-input" name="ciudad"  formControlName="ciudad"/>
 
-    <label>Salario mínimo</label>
+    <label for="salarioAnualMinimo">Salario mínimo</label>
     <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo"/>
     <p class="mensaje-error"></p>
 
-    <label>Modalidad</label>
+    <label for="modalidadTrabajo">Modalidad</label>
     <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
      null este seleccionado -->
-    <mat-select formControlName="modalidadTrabajo" placeholder="Elige una opción">
+    <mat-select formControlName="modalidadTrabajo" name="modalidadTrabajo" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
         @for (modalidad of tiposModalidadesValues; track modalidad) {
             <mat-option [value]="modalidad">{{ modalidad  }}</mat-option>

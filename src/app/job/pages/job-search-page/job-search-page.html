@@ -1,14 +1,13 @@
-<!-- No declares un contexto, usa al padre de proveedor -->
 <navbar-wrapper/>
 <main class="job-page-container">
     <div></div>
     <job-result-counter 
-        [numOfertasResultado]=" busquedaOfertasResource.value() ? 
-            busquedaOfertasResource.value()!.totalElements : 0 "/>
+        [isLoading]="busquedaOfertasResource.isLoading()"
+        [numOfertasResultado]=" busquedaOfertasResource.value()?.totalElements ?? 0"/>
     <job-search-form/>
-    <job-search-feed
+    <job-search-feed-wrapper
         [listaOfertas]="busquedaOfertasResource.value()?.content ?? []"
+        [isLoading]="busquedaOfertasResource.isLoading()"
     />
-
 </main>
 <wkFooter/>

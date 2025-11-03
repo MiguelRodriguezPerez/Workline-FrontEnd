@@ -1,0 +1,8 @@
+@if (isLoading()) {
+    <job-search-feed-loading/>
+}
+@else {
+    <job-search-feed
+        [listaOfertas]="listaOfertas()"
+    />
+}
