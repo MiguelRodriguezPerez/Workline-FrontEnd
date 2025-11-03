@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
@@ -8,6 +8,7 @@ import { JobSearchForm } from '../../components/job-search-page/job-search-form/
 import { BusquedaOferta } from '../../objects/interfaces/BusquedaOferta';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { OfertaService } from '../../services/oferta.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'job-search-page',
@@ -18,19 +19,22 @@ import { OfertaService } from '../../services/oferta.service';
 export class JobSearchPage { 
 
   ofertaService = inject(OfertaService);
+  busquedaPeticion = signal<BusquedaOferta>({
+      puesto: "",
+      tipoContrato: null,
+      ciudad: "",
+      salarioAnualMinimo: 0,
+      modalidadTrabajo: null
+  });
 
-  dummyParam: BusquedaOferta = {
-    puesto: "",
-    tipoContrato: null,
-    ciudad: "",
-    salarioAnualMinimo: 0,
-    modalidadTrabajo: null
-  };
+  recibirBusqueda (busquedaOferta: BusquedaOferta) {
+    this.busquedaPeticion.set(busquedaOferta);
+  }
 
   busquedaOfertasResource = rxResource<PaginaJobResponse, BusquedaOferta>({
-    params: () => this.dummyParam,
+    params: () => this.busquedaPeticion(),
     stream: ({ params }) => {
-      return this.ofertaService.searchOfertas(this.dummyParam);
+      return this.ofertaService.searchOfertas(this.busquedaPeticion()!);
     }
   })
 }

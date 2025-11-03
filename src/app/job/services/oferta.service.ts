@@ -8,6 +8,7 @@ import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { commonHeaders } from '../../shared/objects/commonHeaders';
 import { BusquedaOfertaMapper } from '../objects/mappers/BusquedaOfertaMapper';
 import { PaginaJobResponse } from '../objects/interfaces/PaginaJobResponse';
+import { Params, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class OfertaService {
   private apiUrl: string = environment.apiUrl;
   private baseJobEndpoint: string = '/ofertas/api';
   private http = inject(HttpClient);
+  private router = inject(Router);
   busquedaOfertaMapper = BusquedaOfertaMapper;
 
   constructor() { }
@@ -35,6 +37,21 @@ export class OfertaService {
           return throwError(() => new Error(error))
         })
       )
+  }
+
+  updateFormQueryParams (busquedaOferta: BusquedaOferta) {
+    const queryParams: Params = {};
+    Object.entries(busquedaOferta).forEach(([key,value]) => {
+      if (value) 
+        Object.assign(queryParams, { [key]: value });
+    })
+
+    console.log(queryParams);
+    
+
+    // this.router.navigate([], {
+
+    // })
   }
 
 

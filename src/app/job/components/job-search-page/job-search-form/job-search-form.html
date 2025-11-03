@@ -14,7 +14,7 @@
     <mat-select formControlName="tipoContrato" name="tipoContrato" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
         @for (tipoContrato of tiposContratoValues; track tipoContrato) {
-            <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
+            <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase}}</mat-option>
         }
     </mat-select>
 
@@ -31,7 +31,7 @@
     <mat-select formControlName="modalidadTrabajo" name="modalidadTrabajo" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
         @for (modalidad of tiposModalidadesValues; track modalidad) {
-            <mat-option [value]="modalidad">{{ modalidad  }}</mat-option>
+            <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
         }
     </mat-select>
 

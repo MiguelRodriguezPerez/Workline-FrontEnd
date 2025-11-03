@@ -2,10 +2,11 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { TipoContrato } from '../../../objects/enums/TipoContrato';
 import { ModalidadTrabajo } from '../../../objects/enums/ModalidadTrabajo';
-import { BusquedaOfertaMapper } from '../../../objects/mappers/BusquedaOfertaMapper';
+import { TipoContrato } from '../../../objects/enums/TipoContrato';
 import { BusquedaOfertaFormGroup } from '../../../objects/interfaces/BusquedaOferta';
+import { BusquedaOfertaMapper } from '../../../objects/mappers/BusquedaOfertaMapper';
+import { OfertaService } from '../../../services/oferta.service';
 
 
 @Component({
@@ -13,8 +14,8 @@ import { BusquedaOfertaFormGroup } from '../../../objects/interfaces/BusquedaOfe
   standalone: true, // asegúrate de tener esto
   imports: [
     MatSelectModule,
-    TitleCasePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TitleCasePipe
   ],
   templateUrl: './job-search-form.html',
   styleUrl: './job-search-form.scss',
@@ -23,6 +24,7 @@ export class JobSearchForm {
   tiposContratoValues = Object.values(TipoContrato);
   tiposModalidadesValues = Object.values(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;
+  ofertaService = inject(OfertaService);
 
   private fb = inject(NonNullableFormBuilder);
 
@@ -38,7 +40,9 @@ export class JobSearchForm {
   selected: null | ModalidadTrabajo = null;
 
   submitEvent() {
-    console.log(this.busquedaOfertaMapper.mapBusquedaOferta(this.searchForm));
+    this.ofertaService.updateFormQueryParams(
+      this.busquedaOfertaMapper.mapBusquedaOferta(this.searchForm)
+    )
   }
   
 }
