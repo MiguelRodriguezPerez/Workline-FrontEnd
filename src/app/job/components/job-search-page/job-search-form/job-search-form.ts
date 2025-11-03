@@ -2,11 +2,11 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { FalsyValuePipe } from '../../../shared/pipes/falsy-value.pipe';
-import { ModalidadTrabajo } from '../../objects/enums/ModalidadTrabajo';
-import { TipoContrato } from '../../objects/enums/TipoContrato';
-import { BusquedaOfertaFormGroup } from '../../objects/interfaces/BusquedaOferta';
-import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
+import { TipoContrato } from '../../../objects/enums/TipoContrato';
+import { ModalidadTrabajo } from '../../../objects/enums/ModalidadTrabajo';
+import { BusquedaOfertaMapper } from '../../../objects/mappers/BusquedaOfertaMapper';
+import { BusquedaOfertaFormGroup } from '../../../objects/interfaces/BusquedaOferta';
+
 
 @Component({
   selector: 'job-search-form',

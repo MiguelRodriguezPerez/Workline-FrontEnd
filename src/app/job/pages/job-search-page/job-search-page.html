@@ -2,11 +2,13 @@
 <navbar-wrapper/>
 <main class="job-page-container">
     <div></div>
-    <job-result-counter/>
+    <job-result-counter 
+        [numOfertasResultado]=" busquedaOfertasResource.value() ? 
+            busquedaOfertasResource.value()!.totalElements : 0 "/>
     <job-search-form/>
-    <div>
-        {{ busquedaOfertasResource.value() | json }}
-    </div>
-    <!-- <job-search-feed/> -->
+    <job-search-feed
+        [listaOfertas]="busquedaOfertasResource.value()?.content ?? []"
+    />
+
 </main>
 <wkFooter/>

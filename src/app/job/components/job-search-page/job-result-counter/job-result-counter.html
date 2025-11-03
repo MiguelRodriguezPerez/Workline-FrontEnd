@@ -1,1 +1,9 @@
-<h2 class="job-result-counter">NaN ofertas encontradas</h2>
+@if(numOfertasResultado() === 0) {
+    <h2 class="job-result-counter">No hay resultados</h2>
+}
+@else if(numOfertasResultado() === 1) {
+    <h2 class="job-result-counter">{{ numOfertasResultado() }} oferta encontrada</h2>
+}
+@else {
+    <h2 class="job-result-counter">{{ numOfertasResultado() }} ofertas encontradas</h2>
+}

@@ -1,0 +1,21 @@
+
+<div class="oferta-card cloud">
+    <header>
+        <h3>{{ oferta().puesto }}</h3>
+        <h4>{{ oferta().contrata.nombre }}</h4>
+    </header>
+    <section>
+        <span>{{ oferta().ciudad }}</span>
+    </section>
+    <footer>
+        <div>
+            <span>{{ oferta().salarioAnual }}</span>
+            <span>{{ oferta().modalidadTrabajo | titlecase }}</span>
+        </div>
+        <div>
+            <span>{{ oferta().horas }} horas</span>
+            <span>{{ oferta().fechaPublicacion }}</span>
+        </div>
+    </footer>
+</div>
+

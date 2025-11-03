@@ -13,8 +13,8 @@
      null este seleccionado -->
     <mat-select formControlName="tipoContrato" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
-        @for (tipoContrato of tiposContratoValues; track tipoContrato.toString()) {
-            <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase }}</mat-option>
+        @for (tipoContrato of tiposContratoValues; track tipoContrato) {
+            <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
         }
     </mat-select>
 
@@ -30,8 +30,8 @@
      null este seleccionado -->
     <mat-select formControlName="modalidadTrabajo" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
-        @for (modalidad of tiposModalidadesValues; track modalidad.toString()) {
-            <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
+        @for (modalidad of tiposModalidadesValues; track modalidad) {
+            <mat-option [value]="modalidad">{{ modalidad  }}</mat-option>
         }
     </mat-select>
 
