@@ -1,6 +1,6 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../objects/interfaces/Oferta';
-import { JsonPipe, TitleCasePipe } from '@angular/common';
+import { Oferta } from '../../../../objects/interfaces/Oferta';
 
 @Component({
   selector: 'job-search-card',

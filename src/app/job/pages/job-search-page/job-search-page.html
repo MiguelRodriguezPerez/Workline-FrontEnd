@@ -9,5 +9,12 @@
         [listaOfertas]="busquedaOfertasResource.value()?.content ?? []"
         [isLoading]="busquedaOfertasResource.isLoading()"
     />
+    @if (!busquedaOfertasResource.isLoading()) {
+        <job-search-pagination 
+            [numeroPaginas]="busquedaOfertasResource.value()!.totalElements"
+            [numeroOfertasPorPagina]="busquedaOfertasResource.value()!.content.length"
+            [eventoPaginacion]="changePageEvent"
+        />
+    } 
 </main>
 <wkFooter/>

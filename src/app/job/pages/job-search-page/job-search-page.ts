@@ -1,19 +1,22 @@
-import { Component, inject, linkedSignal, OnInit, Signal } from '@angular/core';
+import { Component, inject, linkedSignal, signal, Signal } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { PaginatorState } from 'primeng/paginator';
 import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
-import { JobSearchFeedWrapper } from "../../components/job-search-feed/job-search-feed-wrapper/job-search-feed-wrapper";
 import { JobResultCounter } from '../../components/job-search-page/job-result-counter/job-result-counter';
+import { JobSearchFeedWrapper } from '../../components/job-search-page/job-search-feed/job-search-feed-wrapper/job-search-feed-wrapper';
 import { JobSearchForm } from '../../components/job-search-page/job-search-form/job-search-form';
+import { JobSearchPagination } from "../../components/job-search-page/job-search-pagination/job-search-pagination";
 import { BusquedaOferta } from '../../objects/interfaces/BusquedaOferta';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 import { OfertaService } from '../../services/oferta.service';
 
+
 @Component({
   selector: 'job-search-page',
-  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchForm, JobSearchFeedWrapper],
+  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchForm, JobSearchFeedWrapper, JobSearchPagination],
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })
@@ -32,12 +35,17 @@ export class JobSearchPage {
        return this.busquedaOfertaMapper.mapQueryParamsToBusquedaOferta(data)
     }
   });
+  private currentPage = signal<number>(0);
 
   busquedaOfertasResource = rxResource<PaginaJobResponse, BusquedaOferta>({
     params: () => this.currentBusqueda(),
     stream: ({ params }) => {
       return this.ofertaService.searchOfertas(params);
     }
-  })
+  });
+
+  changePageEvent (arg: PaginatorState) {
+    console.log(arg);
+  }
 
 }

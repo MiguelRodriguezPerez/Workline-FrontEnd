@@ -1,7 +1,8 @@
 import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
-import { Oferta } from '../../../objects/interfaces/Oferta';
+
 import { JobSearchFeed } from "../job-search-feed";
 import { JobSearchFeedLoading } from "../job-search-feed-loading/job-search-feed-loading";
+import { Oferta } from '../../../../objects/interfaces/Oferta';
 
 @Component({
   selector: 'job-search-feed-wrapper',
@@ -9,14 +10,9 @@ import { JobSearchFeedLoading } from "../job-search-feed-loading/job-search-feed
   templateUrl: './job-search-feed-wrapper.html',
   styleUrl: './job-search-feed-wrapper.scss',
 })
-export class JobSearchFeedWrapper implements OnChanges{ 
+export class JobSearchFeedWrapper { 
 
   listaOfertas = input.required<Oferta[]>();
   isLoading = input.required<boolean>();
-
-  ngOnChanges(changes: SimpleChanges): void {
-      console.log(changes);
-      
-  }
 
 }

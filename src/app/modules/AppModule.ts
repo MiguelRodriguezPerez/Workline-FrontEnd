@@ -1,13 +1,14 @@
 // app.module.ts
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-// ... otros imports
+import { PaginatorModule } from "primeng/paginator";
 
 @NgModule({
   imports: [
-    // ...
-    MatIconModule
+    MatIconModule,
+    PaginatorModule
   ],
-  // ...
 })
-export class SharedIconsModule { }
+export class AppModule {
+
+}
