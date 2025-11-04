@@ -14,15 +14,14 @@ import { OfertaService } from '../../../services/oferta.service';
   standalone: true, // asegúrate de tener esto
   imports: [
     MatSelectModule,
-    ReactiveFormsModule,
-    TitleCasePipe
+    ReactiveFormsModule
   ],
   templateUrl: './job-search-form.html',
   styleUrl: './job-search-form.scss',
 })
-export class JobSearchForm { 
-  tiposContratoValues = Object.values(TipoContrato);
-  tiposModalidadesValues = Object.values(ModalidadTrabajo);
+export class JobSearchForm {
+  tiposContratoKeys = Object.keys(TipoContrato);
+  tiposModalidadesKeys = Object.keys(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;
   ofertaService = inject(OfertaService);
 
@@ -39,10 +38,15 @@ export class JobSearchForm {
 
   selected: null | ModalidadTrabajo = null;
 
-  submitEvent() {
-    this.ofertaService.updateFormQueryParams(
-      this.busquedaOfertaMapper.mapBusquedaOferta(this.searchForm)
+  submitForm() {
+    this.ofertaService.browseFormQueryParams(
+      this.busquedaOfertaMapper.mapBusquedaOfertaFromForm(this.searchForm)
     )
   }
-  
+
+  resetForm() {
+    this.searchForm.reset();
+    this.ofertaService.browseEmptyQueryParams();
+  }
+
 }

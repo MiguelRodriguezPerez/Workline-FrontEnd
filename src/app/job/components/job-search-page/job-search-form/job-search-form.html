@@ -1,7 +1,6 @@
-<form class="job-search-form cloud" id="job-search-form" 
-    [formGroup]="searchForm" (ngSubmit)="submitEvent()">
+<form class="job-search-form cloud" id="job-search-form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
     <div>
-        <span class="job-search-remove-filters">Reiniciar formulario</span>
+        <span class="job-search-remove-filters" (click)="resetForm()">Reiniciar formulario</span>
         <!-- <img src="/images/jobs/cerrar2.png" alt="cerrar.png" /> -->
     </div>
 
@@ -13,16 +12,16 @@
      null este seleccionado -->
     <mat-select formControlName="tipoContrato" name="tipoContrato" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
-        @for (tipoContrato of tiposContratoValues; track tipoContrato) {
-            <mat-option [value]="tipoContrato">{{ tipoContrato | titlecase}}</mat-option>
+        @for (tipoContrato of tiposContratoKeys; track tipoContrato) {
+        <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
         }
     </mat-select>
 
     <label for="ciudad">Ciudad</label>
-    <input type="text" class="wk-form-input" name="ciudad"  formControlName="ciudad"/>
+    <input type="text" class="wk-form-input" name="ciudad" formControlName="ciudad" />
 
     <label for="salarioAnualMinimo">Salario mínimo</label>
-    <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo"/>
+    <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo" />
     <p class="mensaje-error"></p>
 
     <label for="modalidadTrabajo">Modalidad</label>
@@ -30,12 +29,12 @@
      null este seleccionado -->
     <mat-select formControlName="modalidadTrabajo" name="modalidadTrabajo" placeholder="Elige una opción">
         <mat-option [value]="null">Elige una opción</mat-option>
-        @for (modalidad of tiposModalidadesValues; track modalidad) {
-            <mat-option [value]="modalidad">{{ modalidad | titlecase }}</mat-option>
+        @for (modalidad of tiposModalidadesKeys; track modalidad) {
+        <mat-option [value]="modalidad">{{ modalidad }}</mat-option>
         }
     </mat-select>
 
     <div>
-        <button type="submit" class="green-button"> Buscar ofertas</button>
+        <button (click)="submitForm()" class="green-button"> Buscar ofertas</button>
     </div>
 </form>

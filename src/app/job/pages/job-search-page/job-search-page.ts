@@ -1,5 +1,6 @@
-import { Component, inject, output, signal } from '@angular/core';
-import { rxResource } from '@angular/core/rxjs-interop';
+import { Component, inject, linkedSignal, OnInit, Signal } from '@angular/core';
+import { rxResource, toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
 import { JobSearchFeedWrapper } from "../../components/job-search-feed/job-search-feed-wrapper/job-search-feed-wrapper";
@@ -7,8 +8,8 @@ import { JobResultCounter } from '../../components/job-search-page/job-result-co
 import { JobSearchForm } from '../../components/job-search-page/job-search-form/job-search-form';
 import { BusquedaOferta } from '../../objects/interfaces/BusquedaOferta';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
+import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 import { OfertaService } from '../../services/oferta.service';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'job-search-page',
@@ -18,23 +19,25 @@ import { of } from 'rxjs';
 })
 export class JobSearchPage { 
 
-  ofertaService = inject(OfertaService);
-  busquedaPeticion = signal<BusquedaOferta>({
-      puesto: "",
-      tipoContrato: null,
-      ciudad: "",
-      salarioAnualMinimo: 0,
-      modalidadTrabajo: null
+  /* JobSearchPage escucha queryParams -> JobSearchForm manipula los params y navega a la url
+  con los params manipulados -> JobSearchPage escucha los cambios y realiza una nueva búsqueda */
+
+  private currentRoute = inject(ActivatedRoute);
+  private queryParamsSignal = toSignal(this.currentRoute.queryParams, { initialValue: {} });
+  private busquedaOfertaMapper = BusquedaOfertaMapper;
+  private ofertaService = inject(OfertaService);
+  private currentBusqueda: Signal<BusquedaOferta> = linkedSignal({
+    source: this.queryParamsSignal,
+    computation: (data): BusquedaOferta => {
+       return this.busquedaOfertaMapper.mapQueryParamsToBusquedaOferta(data)
+    }
   });
 
-  recibirBusqueda (busquedaOferta: BusquedaOferta) {
-    this.busquedaPeticion.set(busquedaOferta);
-  }
-
   busquedaOfertasResource = rxResource<PaginaJobResponse, BusquedaOferta>({
-    params: () => this.busquedaPeticion(),
+    params: () => this.currentBusqueda(),
     stream: ({ params }) => {
-      return this.ofertaService.searchOfertas(this.busquedaPeticion()!);
+      return this.ofertaService.searchOfertas(params);
     }
   })
+
 }
