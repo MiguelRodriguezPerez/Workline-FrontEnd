@@ -9,6 +9,7 @@
         [listaOfertas]="busquedaOfertasResource.value()?.content ?? []"
         [isLoading]="busquedaOfertasResource.isLoading()"
     />
+    <div></div>
     @if (!busquedaOfertasResource.isLoading()) {
         <job-search-pagination 
             [numeroPaginas]="busquedaOfertasResource.value()!.totalElements"
