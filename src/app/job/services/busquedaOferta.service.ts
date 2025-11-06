@@ -12,7 +12,7 @@ import { BusquedaOfertaMapper } from '../objects/mappers/BusquedaOfertaMapper';
 @Injectable({
   providedIn: 'root'
 })
-export class OfertaService {
+export class BusquedaOfertaService {
 
   private apiUrl: string = environment.apiUrl;
   private baseJobEndpoint: string = '/ofertas/api';
@@ -28,9 +28,11 @@ export class OfertaService {
   searchOfertas(requestArg: PaginaJobRequest): Observable<PaginaJobResponse> {
     if (!requestArg) return of();
 
-    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg, 
+    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg,
       { headers: commonHeaders })
       .pipe(
+        tap(response => console.log(response)
+        ),
         catchError(error => {
           console.log('Error fetching ofertas page');
           return throwError(() => new Error(error))
@@ -45,7 +47,7 @@ export class OfertaService {
         Object.assign(queryParams, { [key]: value });
     });
 
-    Object.assign(queryParams, {'numPag' : 0});
+    Object.assign(queryParams, { 'numPag': 0 });
 
     this.router.navigate([], {
       relativeTo: this.currentRoute,
@@ -56,26 +58,20 @@ export class OfertaService {
   browseEmptyQueryParams(): void {
     this.router.navigate([], {
       relativeTo: this.currentRoute,
-      queryParams: null
+      queryParams: {numPag: 0}
     })
   };
 
-  browsePage (currentQueryParams: Params ,numPagArg: number): void {
+  browsePage(currentQueryParams: Params, numPagArg: number): void {
     const updatedParams: Params = {
       ...currentQueryParams,
       numPag: numPagArg
     }
 
-    console.log(this.currentRoute.queryParams);
-    
-
-    this.router.navigate([],{
+    this.router.navigate([], {
       relativeTo: this.currentRoute,
       queryParams: updatedParams
     })
   }
-
-
-
 
 }

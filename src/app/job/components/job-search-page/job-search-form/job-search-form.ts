@@ -6,7 +6,7 @@ import { ModalidadTrabajo } from '../../../objects/enums/ModalidadTrabajo';
 import { TipoContrato } from '../../../objects/enums/TipoContrato';
 import { BusquedaOfertaFormGroup } from '../../../objects/interfaces/BusquedaOferta';
 import { BusquedaOfertaMapper } from '../../../objects/mappers/BusquedaOfertaMapper';
-import { OfertaService } from '../../../services/oferta.service';
+import { BusquedaOfertaService } from '../../../services/busquedaOferta.service';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class JobSearchForm {
   tiposContratoKeys = Object.keys(TipoContrato);
   tiposModalidadesKeys = Object.keys(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;
-  ofertaService = inject(OfertaService);
+  ofertaService = inject(BusquedaOfertaService);
 
   private fb = inject(NonNullableFormBuilder);
 

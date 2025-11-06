@@ -11,7 +11,7 @@ import { JobSearchPagination } from "../../components/job-search-page/job-search
 import { PaginaJobRequest } from '../../objects/interfaces/PaginaJobRequest';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
-import { OfertaService } from '../../services/oferta.service';
+import { BusquedaOfertaService } from '../../services/busquedaOferta.service';
 
 
 @Component({
@@ -20,19 +20,19 @@ import { OfertaService } from '../../services/oferta.service';
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })
-export class JobSearchPage { 
+export class JobSearchPage {
 
   /* JobSearchPage escucha queryParams -> JobSearchForm manipula los params y navega a la url
   con los params manipulados -> JobSearchPage escucha los cambios y realiza una nueva búsqueda */
 
   private currentRoute = inject(ActivatedRoute);
   private queryParamsSignal: Signal<Params> = toSignal(this.currentRoute.queryParams, { initialValue: {} });
-  private currentNumPag = computed<number>(() => {
+  currentNumPag = computed<number>(() => {
     const params = this.queryParamsSignal();
     return Number(params['numPag'] ?? 0);
   });
   private busquedaOfertaMapper = BusquedaOfertaMapper;
-  private ofertaService = inject(OfertaService);
+  private ofertaService = inject(BusquedaOfertaService);
   private currentBusqueda: Signal<PaginaJobRequest> = linkedSignal(() => {
     const resultado: PaginaJobRequest = {
       pagina: this.currentNumPag(),
@@ -43,12 +43,12 @@ export class JobSearchPage {
 
   busquedaOfertasResource = rxResource<PaginaJobResponse, PaginaJobRequest>({
     params: () => this.currentBusqueda(),
-    stream: ({params}) => {
+    stream: ({ params }) => {
       return this.ofertaService.searchOfertas(params);
     }
   });
 
-  changePageEvent (arg: PaginatorState): void {
+  changePageEvent(arg: PaginatorState): void {
     this.ofertaService.browsePage(this.queryParamsSignal(), arg.page ?? 0);
   }
 
