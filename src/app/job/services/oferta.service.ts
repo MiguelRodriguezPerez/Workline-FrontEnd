@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment.development';
 import { commonHeaders } from '../../shared/objects/commonHeaders';
 import { BusquedaOferta } from '../objects/interfaces/BusquedaOferta';
 import { PaginaJobResponse } from '../objects/interfaces/PaginaJobResponse';
-import { PaginaJobSearchRequest } from '../objects/interfaces/PaginaJobSearchRequest';
+import { PaginaJobRequest } from '../objects/interfaces/PaginaJobRequest';
 import { BusquedaOfertaMapper } from '../objects/mappers/BusquedaOfertaMapper';
 
 @Injectable({
@@ -21,19 +21,16 @@ export class OfertaService {
   private currentRoute = inject(ActivatedRoute);
   busquedaOfertaMapper = BusquedaOfertaMapper;
 
+  /* A lo largo de la aplicación el queryParam numPag hará referencia al número de la página */
+
   constructor() { }
 
-  searchOfertas (busquedaOferta: BusquedaOferta): Observable<PaginaJobResponse> {
+  searchOfertas(requestArg: PaginaJobRequest): Observable<PaginaJobResponse> {
+    if (!requestArg) return of();
 
-    console.log(busquedaOferta);
-    
-    if (!busquedaOferta) return of();
-
-    const arg: PaginaJobSearchRequest = { pagina: 0, busquedaOferta: busquedaOferta};
-
-    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, arg, { headers: commonHeaders })
+    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg, 
+      { headers: commonHeaders })
       .pipe(
-        tap(response => console.log(response)),
         catchError(error => {
           console.log('Error fetching ofertas page');
           return throwError(() => new Error(error))
@@ -41,12 +38,14 @@ export class OfertaService {
       )
   }
 
-  browseFormQueryParams (busquedaOferta: BusquedaOferta) {
+  browseFormQueryParams(busquedaOferta: BusquedaOferta) {
     const queryParams: Params = {};
-    Object.entries(busquedaOferta).forEach(([key,value]) => {
-      if (value) 
+    Object.entries(busquedaOferta).forEach(([key, value]) => {
+      if (value)
         Object.assign(queryParams, { [key]: value });
     });
+
+    Object.assign(queryParams, {'numPag' : 0});
 
     this.router.navigate([], {
       relativeTo: this.currentRoute,
@@ -54,12 +53,29 @@ export class OfertaService {
     })
   };
 
-  browseEmptyQueryParams (): void {
+  browseEmptyQueryParams(): void {
     this.router.navigate([], {
       relativeTo: this.currentRoute,
       queryParams: null
     })
+  };
+
+  browsePage (currentQueryParams: Params ,numPagArg: number): void {
+    const updatedParams: Params = {
+      ...currentQueryParams,
+      numPag: numPagArg
+    }
+
+    console.log(this.currentRoute.queryParams);
+    
+
+    this.router.navigate([],{
+      relativeTo: this.currentRoute,
+      queryParams: updatedParams
+    })
   }
+
+
 
 
 }

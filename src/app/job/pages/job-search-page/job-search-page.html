@@ -14,7 +14,7 @@
         <job-search-pagination 
             [numeroPaginas]="busquedaOfertasResource.value()!.totalElements"
             [numeroOfertasPorPagina]="busquedaOfertasResource.value()!.content.length"
-            [eventoPaginacion]="changePageEvent"
+            (eventoPaginacion)="changePageEvent($event)"
         />
     } 
 </main>

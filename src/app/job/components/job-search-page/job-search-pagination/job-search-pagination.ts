@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Paginator, PaginatorModule, PaginatorState } from 'primeng/paginator';
 
 @Component({
@@ -11,10 +11,9 @@ export class JobSearchPagination {
   
   numeroPaginas = input.required<number>();
   numeroOfertasPorPagina = input.required<number>();
-  eventoPaginacion = input.required<(arg: any) => void>();
+  eventoPaginacion = output<PaginatorState>();
 
-  onPageChange1(event: PaginatorState) {
-    /* El doble parentesis es porque el callback es una señal y tienes que llamar al signal y al callback */
-    this.eventoPaginacion()(event);
+  onPageChangeCallback(arg: PaginatorState) {
+    this.eventoPaginacion.emit(arg);
   }
 }

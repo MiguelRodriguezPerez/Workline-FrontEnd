@@ -1,6 +1,6 @@
 import { BusquedaOferta } from "./BusquedaOferta";
 
-export interface PaginaJobSearchRequest {
+export interface PaginaJobRequest {
     pagina: number,
     busquedaOferta: BusquedaOferta
 }
