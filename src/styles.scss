@@ -5,12 +5,13 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
-@use './app/generalStyles/mixins' as resp-screen;
+@use './app/generalStyles/mixins' as mixins;
 @use './app/generalStyles/variables' as variables;
 @use './app/generalStyles/fonts' as fonts;
 @use 'app/generalStyles/generalRules.scss';
 @use 'app/generalStyles/forms.scss';
 @use 'app/job/components/job-search-page/job-search-pagination/actual-pagination.scss';
+@use "primeicons/primeicons.css";
 
 html {
   @include mat.theme((
@@ -63,7 +64,14 @@ app-root > :nth-child(2) {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    @include mixins.change-layout(phone) {
+      margin-left: 7vw;
+      margin-right: 7vw;
+    }
 }
+
+
 
 
 

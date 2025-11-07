@@ -1,3 +1,5 @@
+@use '../../../../../generalStyles/mixins' as mixins;
+
 :host {
   display: block;
 
@@ -26,6 +28,7 @@ div.oferta-card {
 div.oferta-card > header,footer,section {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
 
     :nth-child(2) {
@@ -39,3 +42,21 @@ div.oferta-card > header,footer,section {
     }
 } 
 
+@include mixins.change-layout(tablet) {
+
+  div.oferta-card {
+    gap: 10px;
+  }
+
+  div.oferta-card > header,footer,section {
+    gap: 8px;
+    :nth-child(2) {
+      margin-left: 0px;
+    }
+  }
+
+  div.oferta-card > footer, div.oferta-card > header {
+    flex-direction: column;
+    
+  }
+}

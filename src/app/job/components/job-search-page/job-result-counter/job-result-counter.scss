@@ -1,3 +1,5 @@
+@use '../../../../generalStyles/mixins' as mixins;
+
 :host {
   display: flex;
   flex-direction: row;
@@ -9,5 +11,9 @@
     font-size: 1.6em;
     font-weight: normal;
     text-align: center;
+  }
+
+  @include mixins.change-layout(tablet) {
+    padding-bottom: 0px;
   }
 }

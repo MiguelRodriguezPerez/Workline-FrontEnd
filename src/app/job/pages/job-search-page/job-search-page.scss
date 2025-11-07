@@ -1,4 +1,5 @@
 @use '../../../generalStyles/variables' as colors;
+@use '../../../generalStyles/mixins' as mixins;
 
 :host {
   display: block;
@@ -9,4 +10,15 @@ main.job-page-container {
   display: grid;
   grid-template-columns: 23% 70%;
   gap: 20px 7%;
+
+  @include mixins.change-layout(tablet) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    /* ¿Recuerdas el div que pusiste al inicio a la izquierda de job-counter para tener dos columnas
+    y poder centrar el counter acorde a job feed? Es este */
+     > div:first-child {
+      display: none;
+     }
+  }
 }

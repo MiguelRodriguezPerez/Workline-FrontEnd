@@ -2,24 +2,23 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalidadTrabajo } from '../../../objects/enums/ModalidadTrabajo';
-import { TipoContrato } from '../../../objects/enums/TipoContrato';
-import { BusquedaOfertaFormGroup } from '../../../objects/interfaces/BusquedaOferta';
-import { BusquedaOfertaMapper } from '../../../objects/mappers/BusquedaOfertaMapper';
-import { BusquedaOfertaService } from '../../../services/busquedaOferta.service';
+import { ModalidadTrabajo } from '../../../../objects/enums/ModalidadTrabajo';
+import { TipoContrato } from '../../../../objects/enums/TipoContrato';
+import { BusquedaOfertaFormGroup } from '../../../../objects/interfaces/BusquedaOferta';
+import { BusquedaOfertaMapper } from '../../../../objects/mappers/BusquedaOfertaMapper';
+import { BusquedaOfertaService } from '../../../../services/busquedaOferta.service';
 
 
 @Component({
-  selector: 'job-search-form',
-  standalone: true, // asegúrate de tener esto
+  selector: 'job-search-form-pc',
   imports: [
     MatSelectModule,
     ReactiveFormsModule
   ],
-  templateUrl: './job-search-form.html',
-  styleUrl: './job-search-form.scss',
+  templateUrl: './job-search-form-pc.html',
+  styleUrl: './job-search-form-pc.scss',
 })
-export class JobSearchForm {
+export class JobSearchFormPc {
   tiposContratoKeys = Object.keys(TipoContrato);
   tiposModalidadesKeys = Object.keys(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;

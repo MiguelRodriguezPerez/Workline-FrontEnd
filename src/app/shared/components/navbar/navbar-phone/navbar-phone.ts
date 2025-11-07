@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavLogo } from "../nav-login/nav-logo/nav-logo";
+import { NavLogo } from "../nav-logo/nav-logo";
 import { NavLogin } from "../nav-login/nav-login";
 import { NavbarPhoneSideMenu } from "./navbar-phone-side-menu/navbar-phone-side-menu";
 

@@ -6,17 +6,18 @@ import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
 import { JobResultCounter } from '../../components/job-search-page/job-result-counter/job-result-counter';
 import { JobSearchFeedWrapper } from '../../components/job-search-page/job-search-feed/job-search-feed-wrapper/job-search-feed-wrapper';
-import { JobSearchForm } from '../../components/job-search-page/job-search-form/job-search-form';
 import { JobSearchPagination } from "../../components/job-search-page/job-search-pagination/job-search-pagination";
 import { PaginaJobRequest } from '../../objects/interfaces/PaginaJobRequest';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../services/busquedaOferta.service';
+import { JobSearchFormWrapper } from '../../components/job-search-page/job-search-form-wrapper/wrapper/job-search-form-wrapper';
+
 
 
 @Component({
   selector: 'job-search-page',
-  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchForm, JobSearchFeedWrapper, JobSearchPagination],
+  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper],
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })
@@ -28,8 +29,7 @@ export class JobSearchPage {
   private currentRoute = inject(ActivatedRoute);
   private queryParamsSignal: Signal<Params> = toSignal(this.currentRoute.queryParams, { initialValue: {} });
   currentNumPag = computed<number>(() => {
-    const params = this.queryParamsSignal();
-    return Number(params['numPag'] ?? 0);
+    return Number(this.queryParamsSignal()['numPag'] ?? 0);
   });
   private busquedaOfertaMapper = BusquedaOfertaMapper;
   private ofertaService = inject(BusquedaOfertaService);

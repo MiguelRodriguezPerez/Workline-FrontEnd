@@ -15,6 +15,7 @@ export class JobSearchPagination {
   numeroResultados = input.required<number>();
   eventoPaginacion = output<PaginatorState>();
   currentFirst = signal<number>(0);
+  
   // TODO: Comentar
   constructor() {
     effect(() => {
