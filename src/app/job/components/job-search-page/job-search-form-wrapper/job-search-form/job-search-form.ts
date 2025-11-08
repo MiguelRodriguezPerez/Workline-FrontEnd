@@ -1,5 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalidadTrabajo } from '../../../../objects/enums/ModalidadTrabajo';
@@ -10,15 +9,18 @@ import { BusquedaOfertaService } from '../../../../services/busquedaOferta.servi
 
 
 @Component({
-  selector: 'job-search-form-pc',
+  selector: 'job-search-form',
   imports: [
     MatSelectModule,
     ReactiveFormsModule
   ],
-  templateUrl: './job-search-form-pc.html',
-  styleUrl: './job-search-form-pc.scss',
+  templateUrl: './job-search-form.html',
+  styleUrl: './job-search-form.scss',
 })
-export class JobSearchFormPc {
+export class JobSearchForm {
+
+  closeMenu = input<() => void>();
+
   tiposContratoKeys = Object.keys(TipoContrato);
   tiposModalidadesKeys = Object.keys(ModalidadTrabajo);
   busquedaOfertaMapper = BusquedaOfertaMapper;

@@ -1,7 +1,9 @@
 <form class="job-search-form cloud" id="job-search-form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
     <div>
         <span class="job-search-remove-filters" (click)="resetForm()">Reiniciar formulario</span>
-        <!-- <img src="/images/jobs/cerrar2.png" alt="cerrar.png" /> -->
+        @if(closeMenu()) {
+            <img src="/images/jobs/cerrar.png" alt="cerrar.png" (click)="closeMenu()?.()" />
+        }
     </div>
 
     <label for="puesto">Puesto</label>

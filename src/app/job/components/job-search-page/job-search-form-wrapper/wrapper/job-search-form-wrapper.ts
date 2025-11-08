@@ -1,11 +1,11 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { JobSearchFormPc } from '../job-search-form-pc/job-search-form-pc';
 import { JobSearchFormTablet } from '../job-search-form-tablet/job-search-form-tablet';
+import { JobSearchForm } from '../job-search-form/job-search-form';
 
 
 @Component({
   selector: 'job-search-form-wrapper',
-  imports: [JobSearchFormPc, JobSearchFormTablet],
+  imports: [JobSearchForm, JobSearchFormTablet],
   templateUrl: './job-search-form-wrapper.html',
   styleUrl: './job-search-form-wrapper.scss',
 })

@@ -29,3 +29,7 @@ main#tablet-form-container {
   justify-content: center;
   align-content: center;
 }
+
+main#tablet-form-container > job-search-form {
+  margin: 0px 5vw;
+}

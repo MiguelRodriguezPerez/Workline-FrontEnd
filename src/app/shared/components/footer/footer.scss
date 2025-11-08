@@ -8,6 +8,11 @@
   margin-right: -10vw;
 
   margin-top: auto;
+
+  @include mixins.change-layout('phone') {
+    margin-left: -7vw;
+    margin-right: -7vw;
+  }
 }
 
 footer.wk-footer {
