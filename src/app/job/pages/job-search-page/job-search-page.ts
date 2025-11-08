@@ -36,7 +36,7 @@ export class JobSearchPage {
   private currentBusqueda: Signal<PaginaJobRequest> = linkedSignal(() => {
     const resultado: PaginaJobRequest = {
       pagina: this.currentNumPag(),
-      busquedaOferta: this.busquedaOfertaMapper.mapQueryParamsToBusquedaOferta(this.queryParamsSignal)
+      busquedaOferta: this.busquedaOfertaMapper.mapQueryParamsToBusquedaOferta(this.queryParamsSignal())
     }
     return resultado;
   });

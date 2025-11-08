@@ -31,8 +31,6 @@ export class BusquedaOfertaService {
     return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg,
       { headers: commonHeaders })
       .pipe(
-        tap(response => console.log(response)
-        ),
         catchError(error => {
           console.log('Error fetching ofertas page');
           return throwError(() => new Error(error))

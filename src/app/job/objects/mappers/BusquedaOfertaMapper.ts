@@ -8,7 +8,7 @@ import { TipoContrato } from '../enums/TipoContrato';
 export class BusquedaOfertaMapper {
 
     /* Recibes un objeto con varios FormControl */
-    static mapBusquedaOfertaFromForm(formGroup: FormGroup<BusquedaOfertaFormGroup>): BusquedaOferta {
+    static mapBusquedaOfertaFromForm(formGroup: FormGroup<BusquedaOfertaFormGroup>): BusquedaOferta { 
         /* En el formulario de búsqueda no encontre la manera de hacer que el input de salarioMinimoAnual
         al tener por valor 0 se mostrara vacío (No se pueden aplicar pipes sobre el valor de un input reactivo)
 
@@ -24,7 +24,6 @@ export class BusquedaOfertaMapper {
             modalidadTrabajo: modalidad,
             salarioAnualMinimo: salarioAnualMinimo ?? 0,
         };
-
         return resultado;
     }
 

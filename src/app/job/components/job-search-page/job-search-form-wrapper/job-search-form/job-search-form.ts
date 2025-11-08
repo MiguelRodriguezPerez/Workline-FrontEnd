@@ -19,6 +19,7 @@ import { BusquedaOfertaService } from '../../../../services/busquedaOferta.servi
 })
 export class JobSearchForm {
 
+  /* Si este callback existe, significa que este componente tiene como padre job-search-form-tablet  */
   closeMenu = input<() => void>();
 
   tiposContratoKeys = Object.keys(TipoContrato);
@@ -40,12 +41,15 @@ export class JobSearchForm {
   selected: null | ModalidadTrabajo = null;
 
   submitForm() {
+    this.closeMenu()?.();
+
     this.ofertaService.browseFormQueryParams(
       this.busquedaOfertaMapper.mapBusquedaOfertaFromForm(this.searchForm)
     )
   }
 
   resetForm() {
+    this.closeMenu()?.();
     this.searchForm.reset();
     this.ofertaService.browseEmptyQueryParams();
   }
