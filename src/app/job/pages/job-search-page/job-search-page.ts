@@ -13,8 +13,6 @@ import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper
 import { BusquedaOfertaService } from '../../services/busquedaOferta.service';
 import { JobSearchFormWrapper } from '../../components/job-search-page/job-search-form-wrapper/wrapper/job-search-form-wrapper';
 
-
-
 @Component({
   selector: 'job-search-page',
   imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper],

@@ -28,8 +28,7 @@ export class BusquedaOfertaService {
   searchOfertas(requestArg: PaginaJobRequest): Observable<PaginaJobResponse> {
     if (!requestArg) return of();
 
-    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg,
-      { headers: commonHeaders })
+    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg)
       .pipe(
         catchError(error => {
           console.log('Error fetching ofertas page');
