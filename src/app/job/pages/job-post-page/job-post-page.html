@@ -1,2 +1,12 @@
-<p>job-post-page works!</p>
-<span>{{ jobIdRequest.value() | json }}</span>
+<navbar-wrapper/>
+<main>
+    @if (jobIdRequest.isLoading()) {
+        <job-search-feed-loading/>
+    }
+    @else {
+        <span>Volver atrás</span>
+        <job-post-header [jobPost]="jobIdRequest.value()!"/>
+        <job-post-body [jobPost]="jobIdRequest.value()!"/>
+    }
+</main>
+<wkFooter/>

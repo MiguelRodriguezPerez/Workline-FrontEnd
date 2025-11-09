@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+header.job-post-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 0px;
+  padding: 15px 20px;
+
+  >span:nth-child(2), >div:last-child {
+    justify-self: right;
+  }
+
+  >h3 {
+    font-size: 1em;
+    align-self: center;
+  }
+}
+
+button.inscription-button {
+  padding: 5px 10px;
+}

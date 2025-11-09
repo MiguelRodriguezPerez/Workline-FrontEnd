@@ -11,6 +11,10 @@
 
     border: 0;
     border-radius: 8px;
+
+    &.red-button {
+        background-color: rgb(235, 9, 9);
+    }
 }
 
 .cloud {
