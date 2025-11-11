@@ -5,7 +5,15 @@
   margin-left: -10vw;
   margin-right: -10vw;
 
-  margin-bottom: 45px;
+  /* Esta cantidad ridícula de margin bottom es porque no se puede aplicar directamente
+  al header con position:fixed */
+  margin-bottom: 110px;
+}
+
+header#wk-nav-container {
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
 
 .wk-nav {
