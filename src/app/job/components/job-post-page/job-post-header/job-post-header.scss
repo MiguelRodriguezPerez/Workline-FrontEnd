@@ -1,3 +1,6 @@
+@use '../../../../generalStyles/mixins' as mixins;
+
+
 :host {
   display: block;
 }
@@ -8,13 +11,26 @@ header.job-post-header {
   gap: 10px 0px;
   padding: 15px 20px;
 
-  >span:nth-child(2), >div:last-child {
+  > span:nth-child(2), > div:last-child {
     justify-self: right;
   }
 
-  >h3 {
+  > h3 {
     font-size: 1em;
     align-self: center;
+  }
+
+  @include mixins.change-layout(phone) {
+
+    > h2, div:last-child {
+      grid-column: 1/3;
+      margin-right: auto;
+    }
+
+    > span:first-of-type, > h3 {
+      height: fit-content;
+      margin: auto auto auto 0;
+    }
   }
 }
 

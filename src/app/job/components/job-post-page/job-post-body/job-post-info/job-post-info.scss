@@ -10,33 +10,15 @@ table.job-post-info {
   grid-template-columns: 1fr;
   padding: 10px;
 
+  > tr:first-child {
+    border-bottom: solid 1px black;
+  }
+
   @include mixins.change-layout(phone) {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-table.job-post-info {
-  > tr > td {
-    border: solid 1px black;
-    border-collapse: collapse;
-  }
-
-  > tr:first-child > td {
-    border-top: 0px;
-  }
-
-  > tr:last-child > td {
-    border-bottom: 0px;
-  }
-
-  > tr > td:first-child {
-    border-left: 0px;
-  }
-
-  > tr > td:last-child {
-    border-right: 0px;
-  }  
-}
 
 table.job-post-info > tr {
   display: grid;
@@ -56,16 +38,12 @@ table.job-post-info > tr {
 
 table.job-post-info {
   @include mixins.change-layout(phone) {
-    tr > td {
+    tr > td, tr:first-child {
       border: 0px;
     }
 
     tr:first-child {
       border-right: solid 1px black;
-    }
-
-    tr > td {
-      border-bottom: solid 1px black !important;
     }
 
     tr > td:last-child {
