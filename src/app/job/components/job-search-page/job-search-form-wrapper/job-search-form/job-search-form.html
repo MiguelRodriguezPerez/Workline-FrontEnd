@@ -1,0 +1,42 @@
+<form class="job-search-form cloud" id="job-search-form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
+    <div>
+        <span class="job-search-remove-filters" (click)="resetForm()">Reiniciar formulario</span>
+        @if(closeMenu()) {
+            <img src="/images/jobs/cerrar.png" alt="cerrar.png" (click)="closeMenu()?.()" />
+        }
+    </div>
+
+    <label for="puesto">Puesto</label>
+    <input type="text" class="wk-form-input" name="puesto" formControlName="puesto" />
+
+    <label for="tipoContrato">Tipo Contrato</label>
+    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
+     null este seleccionado -->
+    <mat-select formControlName="tipoContrato" name="tipoContrato" placeholder="Elige una opción">
+        <mat-option [value]="null">Elige una opción</mat-option>
+        @for (tipoContrato of tiposContratoKeys; track tipoContrato) {
+        <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
+        }
+    </mat-select>
+
+    <label for="ciudad">Ciudad</label>
+    <input type="text" class="wk-form-input" name="ciudad" formControlName="ciudad" />
+
+    <label for="salarioAnualMinimo">Salario mínimo</label>
+    <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo" />
+    <p class="mensaje-error"></p>
+
+    <label for="modalidadTrabajo">Modalidad</label>
+    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
+     null este seleccionado -->
+    <mat-select formControlName="modalidadTrabajo" name="modalidadTrabajo" placeholder="Elige una opción">
+        <mat-option [value]="null">Elige una opción</mat-option>
+        @for (modalidad of tiposModalidadesKeys; track modalidad) {
+        <mat-option [value]="modalidad">{{ modalidad }}</mat-option>
+        }
+    </mat-select>
+
+    <div>
+        <button type="submit" class="green-button"> Buscar ofertas</button>
+    </div>
+</form>

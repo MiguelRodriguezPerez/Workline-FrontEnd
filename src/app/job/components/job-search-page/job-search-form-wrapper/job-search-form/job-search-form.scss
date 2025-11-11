@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+form#job-search-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px 20px;
+
+  div:first-child {
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 15px;
+
+    span:first-child {
+      cursor: pointer;
+      font-size: 0.75em;
+      margin-right: auto;
+    }
+  }
+
+  div:last-child > button {
+    display: block;
+    padding: 5px 20px;
+    margin: 0px auto;
+  }
+  
+  label {
+    font-size: 0.83em;
+    margin-bottom: 4px;
+  }
+
+  input[type=submit] {
+    width: fit-content;
+    padding: 5px 30px;
+    margin: 0px auto;
+  }
+
+  .dropdown-form {
+    padding: 0px;
+  }
+}
+

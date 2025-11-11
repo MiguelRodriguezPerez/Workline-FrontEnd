@@ -1,0 +1,19 @@
+@use '../../../../../generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+section.job-post-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 3%;
+  margin-top: 15px;
+
+  @include mixins.change-layout(tablet) {
+    grid-template-columns: 1fr;
+    gap: 15px 0px;
+  }
+}
+
+

@@ -1,0 +1,12 @@
+<table class="job-post-info cloud">
+  <tr>
+    <td>{{ jobPost().ciudad }}</td>
+    <td>{{ jobPost().tipoContrato | titlecase }}</td>
+    <td>{{ jobPost().horas }} horas</td>
+  </tr>
+  <tr>
+    <td>{{ jobPost().salarioAnual }}</td>
+    <td>{{ jobPost().modalidadTrabajo | titlecase }}</td>
+    <td>{{ jobPost().sector }}</td>
+  </tr>
+</table>

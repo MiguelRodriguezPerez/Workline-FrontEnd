@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+ul.job-search-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

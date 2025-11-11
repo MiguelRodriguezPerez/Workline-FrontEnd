@@ -1,0 +1,9 @@
+<ul class="job-search-feed">
+    @for (oferta of listaOfertas(); track oferta.id) {
+        <li>
+            <job-search-card [oferta]="oferta"/>
+        </li>
+    }
+</ul>
+
+

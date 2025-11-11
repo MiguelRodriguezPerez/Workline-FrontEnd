@@ -1,0 +1,23 @@
+<navbar-wrapper/>
+<main class="job-page-container">
+    <div></div>
+    <job-result-counter 
+        [isLoading]="busquedaOfertasResource.isLoading()"
+        [numOfertasResultado]=" busquedaOfertasResource.value()?.totalElements ?? 0"/>
+    <job-search-form-wrapper/>
+    <job-search-feed-wrapper
+        [listaOfertas]="busquedaOfertasResource.value()?.content ?? []"
+        [isLoading]="busquedaOfertasResource.isLoading()"
+    />
+    <div></div>
+    <!-- @if fuerza el reinicio de las señales cada vez que se renderiza este componente. No lo hagas -->
+    <job-search-pagination 
+        [paginaActual]="currentNumPag()"
+        [numeroResultados]="busquedaOfertasResource.value()?.totalElements ?? 0"
+        [numeroPaginas]="busquedaOfertasResource.value()?.totalPages ?? 0"
+        [numeroOfertasPorPagina]="10"
+        (eventoPaginacion)="changePageEvent($event)"
+    />
+
+</main>
+<wkFooter/>

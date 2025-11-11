@@ -1,0 +1,53 @@
+@use '../../../../../generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+table.job-post-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+
+  > tr:first-child {
+    border-bottom: solid 1px black;
+  }
+
+  @include mixins.change-layout(phone) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+table.job-post-info > tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+
+  > td {
+    width: 100%;
+    padding: 15px 5px;
+    text-align: center;
+  }
+
+  @include mixins.change-layout(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+table.job-post-info {
+  @include mixins.change-layout(phone) {
+    tr > td, tr:first-child {
+      border: 0px;
+    }
+
+    tr:first-child {
+      border-right: solid 1px black;
+    }
+
+    tr > td:last-child {
+      border-bottom: 0px !important;
+    }
+  }
+}

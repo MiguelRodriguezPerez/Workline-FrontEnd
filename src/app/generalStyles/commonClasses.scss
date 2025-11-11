@@ -11,5 +11,26 @@
 
     border: 0;
     border-radius: 8px;
-    padding: 12px 10px;
+
+    &.red-button {
+        background-color: rgb(235, 9, 9);
+    }
+}
+
+.cloud {
+    border-radius: 8px;
+    background-color: white;
+}
+
+.mat-mdc-form-field .mdc-floating-label {
+    font-size: 0.8em;
+}
+
+.wk-form-input {
+    background-color: transparent;
+    border: 0px;
+    border-bottom: solid 1px black;
+    font-size: 0.7em;
+    padding: 5px 5px 3px;
+    margin-bottom: 15px;
 }

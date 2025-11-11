@@ -18,7 +18,7 @@
     background-color: green;
   }
 
-  @include mixins.change-layout(phone) {
+  @include mixins.change-layout('phone') {
     grid-template-columns: 1fr;
   }
 }
@@ -40,7 +40,7 @@ div.home-option-text {
     font-size: 31px;
   }
 
-  @include mixins.change-layout(phone) {
+  @include mixins.change-layout('phone') {
     margin-top: 10px;
     padding-left: 10px;
     padding-right: 10px;

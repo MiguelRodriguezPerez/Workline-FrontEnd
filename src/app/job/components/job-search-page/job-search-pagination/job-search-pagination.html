@@ -1,0 +1,10 @@
+<section>
+    <p-paginator (onPageChange)="onPageChangeCallback($event)" 
+        [first]="currentFirst()" 
+        [rows]="numeroOfertasPorPagina()" 
+        [totalRecords]="numeroResultados()"  
+        [pageLinkSize]="4"
+        [showFirstLastIcon]="true"
+        #paginator
+    />
+</section>

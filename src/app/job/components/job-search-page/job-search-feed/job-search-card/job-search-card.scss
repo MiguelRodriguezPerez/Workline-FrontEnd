@@ -1,0 +1,62 @@
+@use '../../../../../generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+
+  :hover{
+    background-color: #F3F9FB;
+  } 
+}
+
+div.oferta-card {
+  cursor: pointer;
+  padding: 20px 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  span {
+    font-size: 0.8em;
+  }
+
+  h4 {
+    font-size: 0.9em;
+  }
+}
+
+div.oferta-card > header,footer,section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    :nth-child(2) {
+      margin-left: auto;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+} 
+
+@include mixins.change-layout(tablet) {
+
+  div.oferta-card {
+    gap: 10px;
+  }
+
+  div.oferta-card > header,footer,section {
+    gap: 8px;
+    :nth-child(2) {
+      margin-left: 0px;
+    }
+  }
+
+  div.oferta-card > footer, div.oferta-card > header {
+    flex-direction: column;
+    
+  }
+}

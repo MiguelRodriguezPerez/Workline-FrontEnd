@@ -8,6 +8,11 @@
   margin-right: -10vw;
 
   margin-top: auto;
+
+  @include mixins.change-layout('phone') {
+    margin-left: -7vw;
+    margin-right: -7vw;
+  }
 }
 
 footer.wk-footer {
@@ -18,7 +23,7 @@ footer.wk-footer {
   background-color: wkVar.$black-nav;
   padding: 20px 10vw;
 
-  @include mixins.change-layout(phone) {
+  @include mixins.change-layout('phone') {
     flex-direction: column;
     gap: 10px;
   }

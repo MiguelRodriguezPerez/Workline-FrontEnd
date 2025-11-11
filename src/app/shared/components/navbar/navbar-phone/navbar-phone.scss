@@ -1,12 +1,19 @@
 @use '../../../../generalStyles/variables' as colors;
+@use '../../../../generalStyles/mixins' as mixins;
 
 :host {
   display: block;
+  margin-right: -10vw;
+  margin-left: -10vw;
+
+  @include mixins.change-layout('phone') {
+    margin-left: -7vw;
+    margin-right: -7vw;
+  }
 }
 
 header.navbar-phone {
-  margin-right: -10vw;
-  margin-left: -10vw;
+  margin-bottom: 20px;
 
   display: grid;
   grid-template-columns: 1fr auto auto;
