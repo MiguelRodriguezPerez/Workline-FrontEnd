@@ -12,10 +12,11 @@ import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../services/busquedaOferta.service';
 import { JobSearchFormWrapper } from '../../components/job-search-page/job-search-form-wrapper/wrapper/job-search-form-wrapper';
+import { JobSearchNoResults } from "../../components/job-search-page/job-search-no-results/job-search-no-results";
 
 @Component({
   selector: 'job-search-page',
-  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper],
+  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper, JobSearchNoResults],
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })

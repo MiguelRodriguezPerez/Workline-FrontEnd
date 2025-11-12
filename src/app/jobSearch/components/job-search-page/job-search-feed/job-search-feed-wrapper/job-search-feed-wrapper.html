@@ -1,6 +1,10 @@
 @if (isLoading()) {
     <job-search-feed-loading/>
 }
+@if (listaOfertas().length === 0) {
+    <job-search-no-results/>
+}
+
 @else {
     <job-search-feed
         [listaOfertas]="listaOfertas()"

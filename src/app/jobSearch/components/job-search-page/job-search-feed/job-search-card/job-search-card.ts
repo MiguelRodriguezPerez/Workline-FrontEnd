@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
 import { Oferta } from '../../../../objects/interfaces/Oferta';
 import { RouterLink } from "@angular/router";
 
