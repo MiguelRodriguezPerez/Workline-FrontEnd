@@ -1,0 +1,32 @@
+@use '../../../../generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+section.job-search-no-results {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include mixins.change-layout(tablet) {
+    flex-direction: column;
+  }
+}
+
+img {
+  @include mixins.change-layout(tablet) {
+    width: 80%;
+  }
+}
+
+section.job-search-no-results > div {
+  h3 {
+    height: fit-content;
+    margin-bottom: 10px;
+  }
+
+  @include mixins.change-layout(tablet) {
+    padding: 0vw 5vw;
+  }
+}

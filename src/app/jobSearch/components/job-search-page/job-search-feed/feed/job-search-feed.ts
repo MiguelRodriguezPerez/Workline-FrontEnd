@@ -1,7 +1,7 @@
 import { Component, input, OnInit } from '@angular/core';
 
-import { JobSearchCard } from './job-search-card/job-search-card';
-import { Oferta } from '../../../objects/interfaces/Oferta';
+import { JobSearchCard } from '../job-search-card/job-search-card';
+import { Oferta } from '../../../../objects/interfaces/Oferta';
 
 @Component({
   selector: 'job-search-feed',

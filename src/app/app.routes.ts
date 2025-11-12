@@ -8,6 +8,6 @@ export const routes: Routes = [
     },
     {
         path: 'jobs',
-        loadChildren: () => import('./job/job.routes').then((m) => m.jobRoutes)
+        loadChildren: () => import('./jobSearch/job.routes').then((m) => m.jobRoutes)
     }
 ];
