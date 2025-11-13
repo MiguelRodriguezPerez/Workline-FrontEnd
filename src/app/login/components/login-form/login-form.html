@@ -1,0 +1,9 @@
+<!-- <mat-icon aria-hidden="false" aria-label="user">person</mat-icon> -->
+<form class="cloud" id="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <div>
+        <p-float-label variant="on">
+            <input pInputText id="username" autocomplete="off" formControlName="username"/>
+            <label for="username">Usuario</label>
+        </p-float-label>
+    </div>
+</form>

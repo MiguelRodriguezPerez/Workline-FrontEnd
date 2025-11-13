@@ -1,4 +1,11 @@
 :host {
+  display: block;
+}
+
+div.login-container {
+  height: 100%;
+  cursor: pointer;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;

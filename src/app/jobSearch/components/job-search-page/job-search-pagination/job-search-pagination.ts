@@ -25,6 +25,7 @@ export class JobSearchPagination {
 
   onPageChangeCallback(arg: PaginatorState) {
     this.eventoPaginacion.emit(arg);
+    window.scroll(0,0);
   }
 
 }

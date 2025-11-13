@@ -15,7 +15,8 @@ export const sharedInterceptor: HttpInterceptorFn = (req, next) => {
   const updatedReq = req.clone({
     setHeaders: {
       'Content-Type':'application/json'
-    }
+    },
+    withCredentials: true
   })
 
   return next(updatedReq);

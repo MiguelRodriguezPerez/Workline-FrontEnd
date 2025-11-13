@@ -14,7 +14,7 @@ import { BusquedaOfertaMapper } from '../objects/mappers/BusquedaOfertaMapper';
 })
 export class BusquedaOfertaService {
 
-  private apiUrl: string = environment.apiUrl;
+  private backendBaseUrl: string = environment.apiUrl;
   private baseJobEndpoint: string = '/ofertas/api';
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -28,9 +28,8 @@ export class BusquedaOfertaService {
   searchOfertas(requestArg: PaginaJobRequest): Observable<PaginaJobResponse> {
     if (!requestArg) return of();
 
-    return this.http.post<PaginaJobResponse>(`${this.apiUrl}${this.baseJobEndpoint}/busqueda`, requestArg)
+    return this.http.post<PaginaJobResponse>(`${this.backendBaseUrl}${this.baseJobEndpoint}/busqueda`, requestArg)
       .pipe(
-        tap(response => console.log(response)),
         catchError(error => {
           console.log('Error fetching ofertas page');
           return throwError(() => new Error(error))
