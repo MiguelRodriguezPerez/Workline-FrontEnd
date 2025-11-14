@@ -8,6 +8,12 @@ button.p-button:not(:disabled):hover {
     font-size: 20px;
 }
 
-#login-form .p-button {
+.reverse-color > button.p-button, 
+.reverse-color > button.p-button.p-button:not(:disabled):hover.reverse-color  {
+    background-color: transparent;
+    color: var.$green-workline;
+}
+
+#login-container .p-button {
   width: 100%;
 }

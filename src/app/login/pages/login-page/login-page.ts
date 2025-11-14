@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from "@angular/router";
+import { Button } from "primeng/button";
 import { LoginForm } from "../../components/login-form/login-form";
-import { LoginLogo } from "../../components/login-logo/login-logo";
-import { LoginButton } from "../../components/login-button/login-button";
 
 @Component({
   selector: 'login-page',
-  imports: [LoginForm, LoginLogo, LoginButton],
+  imports: [LoginForm, Button, RouterLink],
   templateUrl: './login-page.html',
   styleUrl: './login-page.scss',
 })

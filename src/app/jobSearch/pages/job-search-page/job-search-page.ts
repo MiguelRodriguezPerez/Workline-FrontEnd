@@ -6,17 +6,16 @@ import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
 import { JobResultCounter } from '../../components/job-search-page/job-result-counter/job-result-counter';
 import { JobSearchFeedWrapper } from '../../components/job-search-page/job-search-feed/job-search-feed-wrapper/job-search-feed-wrapper';
+import { JobSearchFormWrapper } from '../../components/job-search-page/job-search-form-wrapper/wrapper/job-search-form-wrapper';
 import { JobSearchPagination } from "../../components/job-search-page/job-search-pagination/job-search-pagination";
 import { PaginaJobRequest } from '../../objects/interfaces/PaginaJobRequest';
 import { PaginaJobResponse } from '../../objects/interfaces/PaginaJobResponse';
 import { BusquedaOfertaMapper } from '../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../services/busquedaOferta.service';
-import { JobSearchFormWrapper } from '../../components/job-search-page/job-search-form-wrapper/wrapper/job-search-form-wrapper';
-import { JobSearchNoResults } from "../../components/job-search-page/job-search-no-results/job-search-no-results";
 
 @Component({
   selector: 'job-search-page',
-  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper, JobSearchNoResults],
+  imports: [NavbarWrapper, Footer, JobResultCounter, JobSearchFeedWrapper, JobSearchPagination, JobSearchFormWrapper],
   templateUrl: './job-search-page.html',
   styleUrl: './job-search-page.scss',
 })

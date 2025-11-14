@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { LoginFormGroup } from '../../interfaces/LoginRequest';
+import { MatIcon } from "@angular/material/icon";
+import { Button } from "primeng/button";
 import { FloatLabel } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { MatIcon } from "@angular/material/icon";
+import { LoginFormGroup } from '../../interfaces/LoginRequest';
 import { LoginButton } from "../login-button/login-button";
-import { Button } from "primeng/button";
 
 @Component({
   selector: 'login-form',
   imports: [
-    ReactiveFormsModule, FloatLabel, InputTextModule,
+    ReactiveFormsModule, InputTextModule,
     MatIcon,
-    LoginButton,
     Button
 ],
   templateUrl: './login-form.html',
