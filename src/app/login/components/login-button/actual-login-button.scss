@@ -9,11 +9,11 @@ button.p-button:not(:disabled):hover {
 }
 
 .reverse-color > button.p-button, 
-.reverse-color > button.p-button.p-button:not(:disabled):hover.reverse-color  {
+.reverse-color > button.p-button.p-button:not(:disabled):hover  {
     background-color: transparent;
     color: var.$green-workline;
 }
 
-#login-container .p-button {
+* > .p-button {
   width: 100%;
 }
