@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
-import { UserContextInterface } from '../../shared/interfaces/UserContextInterface';
-import { LoginRequestFormGroup } from '../interfaces/LoginRequestFormGroup';
+
+import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedContextInterface';
+import { LoginRequest, LoginRequestFormGroup } from '../interfaces/LoginRequestFormGroup';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,14 @@ export class LoginService {
   private apiUrl: string = '/auth';
   private http = inject(HttpClient);
 
-  uploadLogin(loginRequest: FormGroup<LoginRequestFormGroup>): Observable<UserContextInterface | null> {
-    if (!loginRequest) return of(null);
+  uploadLogin(loginRequest: LoginRequest): Observable<LoggedUserContext> {
+    console.log('ASCO DE VIDA');
+    
 
-    return this.http.post<UserContextInterface>(`${this.backendBaseUrl}${this.apiUrl}/login`,
-      loginRequest.getRawValue())
+    if (!loginRequest) return of();
+
+    return this.http.post<LoggedUserContext>(`${this.backendBaseUrl}${this.apiUrl}/login`,
+      loginRequest)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           /* Al hacer peticiones asíncronas todos los errores que puedas recibir usando HttpClient
@@ -28,6 +32,15 @@ export class LoginService {
           return throwError(() => error);
         })
       );
+  }
+
+  uploadLogout(): Observable<null> {
+    return this.http.get<null>(`${this.backendBaseUrl}${this.apiUrl}/logout`)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(() => error)
+        })
+      )
   }
 
 }

@@ -1,12 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges, effect } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatIcon } from "@angular/material/icon";
-import { Button } from "primeng/button";
-import { FloatLabel } from 'primeng/floatlabel';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { InputTextModule } from 'primeng/inputtext';
-import { LoginRequestFormGroup } from '../../interfaces/LoginRequestFormGroup';
-import { LoginButton } from "../login-button/login-button";
-import { LoginService } from '../../services/login.service';
+import { requestLogin } from '../../../shared/globalState/login/login.action';
+import { selectLoggedUser, selectLoginState } from '../../../shared/globalState/login/login.selector';
+import { LoginRequest, LoginRequestFormGroup } from '../../interfaces/LoginRequestFormGroup';
+import { Button } from "primeng/button";
+
 
 @Component({
   selector: 'login-form',
@@ -14,30 +16,50 @@ import { LoginService } from '../../services/login.service';
     ReactiveFormsModule, InputTextModule,
     MatIcon,
     Button
-  ],
+],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
 export class LoginForm {
 
+  private router = inject(Router);
   private fb = inject(NonNullableFormBuilder);
-  private loginService = inject(LoginService);
+  private store = inject(Store);
+  private state = this.store.selectSignal(selectLoginState);
+  private user = this.store.selectSignal(selectLoggedUser);
 
   loginForm: FormGroup<LoginRequestFormGroup> = this.fb.group({
     username: [''],
     password: ['']
   },
-    {
-      asyncValidators: null
-    });
+  {
+    asyncValidators: null
+  });
 
   submitLoginForm() {
-    this.loginService.uploadLogin(this.loginForm).subscribe({
-      next: value => console.log('Implementar ngrx'),
-      error: err => {
-        console.log('El error existe');
-        this.loginForm.setErrors({ loginFailed: 'Usuario y/o contraseña incorrectos'})
-      }
-    })
+    this.store.dispatch(
+      requestLogin({
+        loginRequest: this.loginForm.value as LoginRequest
+      })
+    );
   }
+
+  /* No puedes evaluar cambios de valor en ngRx de manera síncrona (Al menos los derivados de efectos asíncronos)
+  En su lugar declaras un efecto que controle el valor del status */
+  loginEffect = effect(() => {
+    /* Nota: Si a lo largo de la aplicacion el state tiene status === 'error' significa que el último login fallo */
+
+    /* Evita que el efecto reaccione ante otros estados distintos */
+    if (this.state().status === 'loading' || this.state().status === 'pending') return;
+
+    if (this.state().status === 'success') 
+    {
+      console.log(this.user());
+      this.router.navigate(['/']);
+      
+    }
+    else (this.state().status === 'error') 
+      this.loginForm.setErrors({ loginFailed: 'Usuario o contraseña incorrectos' });
+  });
+
 }
