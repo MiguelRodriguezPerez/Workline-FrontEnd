@@ -26,7 +26,6 @@ export class LoginForm {
   private fb = inject(NonNullableFormBuilder);
   private store = inject(Store);
   private state = this.store.selectSignal(selectLoginState);
-  private user = this.store.selectSignal(selectLoggedUser);
 
   loginForm: FormGroup<LoginRequestFormGroup> = this.fb.group({
     username: [''],
@@ -48,17 +47,7 @@ export class LoginForm {
   En su lugar declaras un efecto que controle el valor del status */
   loginEffect = effect(() => {
     /* Nota: Si a lo largo de la aplicacion el state tiene status === 'error' significa que el último login fallo */
-
-    /* Evita que el efecto reaccione ante otros estados distintos */
-    if (this.state().status === 'loading' || this.state().status === 'pending') return;
-
-    if (this.state().status === 'success') 
-    {
-      console.log(this.user());
-      this.router.navigate(['/']);
-      
-    }
-    else (this.state().status === 'error') 
+    if (this.state().status === 'error') 
       this.loginForm.setErrors({ loginFailed: 'Usuario o contraseña incorrectos' });
   });
 
