@@ -12,6 +12,7 @@ import { routes } from './app.routes';
 import { LoginEffects } from './shared/globalState/login/login.effect';
 import { loginReducer } from './shared/globalState/login/login.reducer';
 import { sharedInterceptor } from './shared/interceptors/shared.interceptor';
+import { localStorageMetaReducer } from './shared/globalState/localStorage.metareducer';
 
 
 export const appConfig: ApplicationConfig = {
@@ -25,7 +26,11 @@ export const appConfig: ApplicationConfig = {
                 preset: null
             }
         }),
-        provideStore(),
+        provideStore({
+            loginState: loginReducer
+        },{
+            metaReducers: [localStorageMetaReducer]
+        }),
         provideState('loginState', loginReducer),
         provideEffects([LoginEffects]),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })

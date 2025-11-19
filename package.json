@@ -36,6 +36,7 @@
     "@ngrx/store-devtools": "^20.1.0",
     "@primeuix/themes": "^1.2.5",
     "glob": "^12.0.0",
+    "ngrx-store-localstorage": "^20.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^20.3.0",
     "rxjs": "~7.8.0",
