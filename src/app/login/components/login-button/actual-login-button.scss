@@ -1,0 +1,29 @@
+@use '../../../generalStyles/variables' as var;
+
+button.p-button, 
+button.p-button:not(:disabled):hover {
+    background-color: var.$green-workline;
+    border-color: var.$green-workline;
+    color: white;
+    font-size: 20px;
+    padding: 5px 0px;
+    border-radius: 8px;
+}
+
+p-button.reverse-color > button.p-button, 
+p-button.reverse-color > button.p-button:not(:disabled):hover  {
+    background-color: transparent;
+    color: var.$green-workline;
+    border-color: var.$green-workline !important;
+}
+
+.reverse-color .p-button {
+    background-color: transparent;
+    border: 1px solid var.$green-workline;
+    color: var.$green-workline;
+}
+
+
+* > .p-button {
+  width: 100%;
+}

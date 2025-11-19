@@ -1,0 +1,23 @@
+<!-- <mat-icon aria-hidden="false" aria-label="user">person</mat-icon> -->
+<form class="cloud" id="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <div>
+        <div>
+            <mat-icon aria-hidden="false" aria-label="user">person</mat-icon>
+        </div>
+        <input pInputText id="username" autocomplete="off" formControlName="username"
+            placeholder="Nombre de usuario"/>
+    </div>
+    <div>
+        <div>
+            <mat-icon aria-hidden="false" aria-label="user">lock</mat-icon>
+        </div>
+        <input pInputText id="password" autocomplete="off" formControlName="password"
+            placeholder="Contraseña" type="password"/>
+    </div>
+    @if(loginForm.getError('loginFailed')) {
+       <div class="div-mensaje-error">
+         <span class="mensaje-error">{{ loginForm.getError('loginFailed') }}</span>
+       </div>
+    }
+    <p-button label="Iniciar Sesión" (onClick)="submitLoginForm()" />
+</form>

@@ -11,6 +11,8 @@
 @use 'app/generalStyles/generalRules.scss';
 @use 'app/generalStyles/forms.scss';
 @use 'app/jobSearch/components/job-search-page/job-search-pagination/actual-pagination.scss';
+@use 'app/login/components/login-form/actual-form.scss';
+@use 'app/login/components/login-button/actual-login-button.scss';
 @use "primeicons/primeicons.css";
 
 html {
@@ -70,9 +72,6 @@ app-root > :nth-child(2) {
       margin-right: 7vw;
     }
 }
-
-
-
 
 
 

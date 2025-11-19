@@ -1,4 +1,5 @@
 @use './fonts' as fonts;
+@use './variables' as variables;
 @use '@angular/material' as mat;
 
 ul,li, p {
@@ -8,6 +9,7 @@ ul,li, p {
 }
 
 a {
+    color: variables.$black-nav;
     text-decoration: none;
 }
 

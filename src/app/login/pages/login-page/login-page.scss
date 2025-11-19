@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+main#login-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 10px;
+
+
+  img {
+    margin: 0 auto;
+  }
+
+  a {
+    font-size: 22px;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+}
+
+

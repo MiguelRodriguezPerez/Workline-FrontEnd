@@ -1,4 +1,11 @@
 :host {
+  display: block;
+}
+
+div.login-container {
+  height: 100%;
+  cursor: pointer;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -10,7 +17,7 @@
   }
 
   .mat-icon {
-    font-size: 30px;
-    margin-top: -5px;
+    font-size: 26px;
+    margin-top: 0;
   }
 }

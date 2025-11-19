@@ -1,5 +1,5 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { Navbar } from "../navbar";
+import { Navbar } from "../navbar/navbar";
 import { NavbarPhone } from "../navbar-phone/navbar-phone";
 
 @Component({
