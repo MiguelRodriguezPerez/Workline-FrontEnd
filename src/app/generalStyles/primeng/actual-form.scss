@@ -1,4 +1,4 @@
-@use '../../../generalStyles/fonts' as fonts;
+@use '../fonts' as fonts;
 
 .p-floatlabel:has(input:focus) label,
 .p-floatlabel:has(input:-webkit-autofill) label,
