@@ -6,14 +6,21 @@ import { TipoContrato } from '../../../../objects/enums/TipoContrato';
 import { BusquedaOfertaFormGroup } from '../../../../objects/interfaces/BusquedaOferta';
 import { BusquedaOfertaMapper } from '../../../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../../../services/busquedaOferta.service';
+import { SelectModule } from 'primeng/select';
+import { InputText } from "primeng/inputtext";
+import { Button } from "primeng/button";
+
 
 
 @Component({
   selector: 'job-search-form',
   imports: [
     MatSelectModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    SelectModule,
+    InputText,
+    Button
+],
   templateUrl: './job-search-form.html',
   styleUrl: './job-search-form.scss',
 })

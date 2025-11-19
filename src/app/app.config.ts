@@ -13,6 +13,8 @@ import { LoginEffects } from './shared/globalState/login/login.effect';
 import { loginReducer } from './shared/globalState/login/login.reducer';
 import { sharedInterceptor } from './shared/interceptors/shared.interceptor';
 import { localStorageMetaReducer } from './shared/globalState/localStorage.metareducer';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import Aura from '@primeuix/themes/aura';
 
 
 export const appConfig: ApplicationConfig = {
@@ -23,7 +25,7 @@ export const appConfig: ApplicationConfig = {
         provideHttpClient(withFetch(), withInterceptors([sharedInterceptor])),
         providePrimeNG({
             theme: {
-                preset: null
+                preset: Aura
             }
         }),
         provideStore({
@@ -33,6 +35,8 @@ export const appConfig: ApplicationConfig = {
         }),
         provideState('loginState', loginReducer),
         provideEffects([LoginEffects]),
-        provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+        provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+        // TODO: Averiguar como usar un proveedor de animaciones no deprecated
+        provideAnimationsAsync() 
     ]
 };

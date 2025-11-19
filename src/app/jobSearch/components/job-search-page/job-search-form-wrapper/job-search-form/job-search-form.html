@@ -7,36 +7,33 @@
     </div>
 
     <label for="puesto">Puesto</label>
-    <input type="text" class="wk-form-input" name="puesto" formControlName="puesto" />
+    <input type="text" pInputText name="puesto" formControlName="puesto" />
 
     <label for="tipoContrato">Tipo Contrato</label>
-    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
-     null este seleccionado -->
-    <mat-select formControlName="tipoContrato" name="tipoContrato" placeholder="Elige una opción">
-        <mat-option [value]="null">Elige una opción</mat-option>
-        @for (tipoContrato of tiposContratoKeys; track tipoContrato) {
-        <mat-option [value]="tipoContrato">{{ tipoContrato }}</mat-option>
-        }
-    </mat-select>
+    <p-select
+        [options]="tiposContratoKeys"
+        placeholder="Elige una opción"
+        formControlName="tipoContrato"
+        name="tipoContrato"
+    />
 
     <label for="ciudad">Ciudad</label>
-    <input type="text" class="wk-form-input" name="ciudad" formControlName="ciudad" />
+    <input type="text" pInputText name="ciudad" formControlName="ciudad" />
 
     <label for="salarioAnualMinimo">Salario mínimo</label>
-    <input type="number" class="wk-form-input" name="salarioAnualMinimo" formControlName="salarioAnualMinimo" />
-    <p class="mensaje-error"></p>
+    <input type="number" pInputText name="salarioAnualMinimo" formControlName="salarioAnualMinimo" />
 
     <label for="modalidadTrabajo">Modalidad</label>
-    <!-- placeholder es obligatorio porque si no se interactúa con el no muestra nada aunque
-     null este seleccionado -->
-    <mat-select formControlName="modalidadTrabajo" name="modalidadTrabajo" placeholder="Elige una opción">
-        <mat-option [value]="null">Elige una opción</mat-option>
-        @for (modalidad of tiposModalidadesKeys; track modalidad) {
-        <mat-option [value]="modalidad">{{ modalidad }}</mat-option>
-        }
-    </mat-select>
+    <p-select
+        [options]="tiposModalidadesKeys"
+        placeholder="Elige una opción"
+        formControlName="modalidadTrabajo"
+        name="modalidadTrabajo"
+    />
 
-    <div>
-        <button type="submit" class="green-button"> Buscar ofertas</button>
+    <div [style.margin]="'0px 20px'">
+        <p-button label="Buscar ofertas" type="submit" [style]="{
+            width: '100%',
+        }" />
     </div>
 </form>
