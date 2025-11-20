@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { MatIcon } from "@angular/material/icon";
 import { Router, RouterLink } from "@angular/router";
 import { Store } from '@ngrx/store';
-import { selectLoggedUser } from '../../../globalState/login/login.selector';
 import { requestLogout } from '../../../globalState/login/login.action';
+import { selectLoggedUser } from '../../../globalState/login/login.selector';
 
 @Component({
   selector: 'nav-login',
-  imports: [MatIcon, RouterLink],
+  imports: [RouterLink],
   templateUrl: './nav-login.html',
   styleUrl: './nav-login.scss',
 })

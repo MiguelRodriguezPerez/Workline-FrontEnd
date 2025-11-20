@@ -1,4 +1,4 @@
-@use '../../../generalStyles/variables' as var;
+@use '../variables' as var;
 
 button.p-button, 
 button.p-button:not(:disabled):hover {
@@ -21,9 +21,12 @@ p-button.reverse-color > button.p-button:not(:disabled):hover  {
     background-color: transparent;
     border: 1px solid var.$green-workline;
     color: var.$green-workline;
+    // TODO: Arreglar
+    width: 100%;
 }
 
-
-* > .p-button {
-  width: 100%;
+span.p-button-label,
+span.p-button-label.ng-star-inserted,
+span.ng-star-inserted {
+    font-size: 22px;
 }

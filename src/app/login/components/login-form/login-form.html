@@ -1,16 +1,11 @@
-<!-- <mat-icon aria-hidden="false" aria-label="user">person</mat-icon> -->
 <form class="cloud" id="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
     <div>
-        <div>
-            <mat-icon aria-hidden="false" aria-label="user">person</mat-icon>
-        </div>
+        <span class="pi pi-user" style="font-size: 0.8em"></span>
         <input pInputText id="username" autocomplete="off" formControlName="username"
             placeholder="Nombre de usuario"/>
     </div>
     <div>
-        <div>
-            <mat-icon aria-hidden="false" aria-label="user">lock</mat-icon>
-        </div>
+        <span class="pi pi-lock" style="font-size: 0.8em"></span>
         <input pInputText id="password" autocomplete="off" formControlName="password"
             placeholder="Contraseña" type="password"/>
     </div>
@@ -19,5 +14,5 @@
          <span class="mensaje-error">{{ loginForm.getError('loginFailed') }}</span>
        </div>
     }
-    <p-button label="Iniciar Sesión" (onClick)="submitLoginForm()" />
+    <p-button label="Iniciar Sesión" [style]="{width: '100%'}" (onClick)="submitLoginForm()" />
 </form>

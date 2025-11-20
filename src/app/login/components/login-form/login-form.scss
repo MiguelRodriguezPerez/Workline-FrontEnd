@@ -21,16 +21,11 @@ form#login-form > div {
   grid-template-columns: auto 1fr;
   gap: 15px;
   justify-content: center;
+  align-content: center;
+  align-items: center;
 
-  > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-top: 5px;
-  }
-
-  > div > mat-icon {
-    font-size: 28px;
+  > span {
+    padding-top: 12px;
   }
 
   &.div-mensaje-error {

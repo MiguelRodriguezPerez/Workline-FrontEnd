@@ -1,13 +1,12 @@
 @if(user() === null) {
     <div class="login-container" routerLink="/login">
         <span>Iniciar Sesión</span>
-        <mat-icon aria-hidden="false" aria-label="user">person</mat-icon>
+        <span class="pi pi-user"></span>
     </div>
 }
 @else {
     <div class="login-container" routerLink="/login">
         <span>{{ user()!.username }}</span>
-        <mat-icon aria-hidden="false" aria-label="user">person</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="user" (click)="onClickLogout()">logout</mat-icon>
+        <span class="pi pi-sign-out" (click)="onClickLogout()"></span>
     </div>
 }

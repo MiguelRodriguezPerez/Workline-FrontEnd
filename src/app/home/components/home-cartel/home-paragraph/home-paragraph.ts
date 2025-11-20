@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { HomeParagraphButton } from "../home-paragraph-button/home-paragraph-button";
+import { Button } from "primeng/button";
 
 @Component({
   selector: 'home-paragraph',
-  imports: [HomeParagraphButton],
+  imports: [Button],
   templateUrl: './home-paragraph.html',
   styleUrl: './home-paragraph.scss',
 })
 export class HomeParagraph { 
-  // TODO
+
 }
