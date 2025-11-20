@@ -25,3 +25,8 @@ p-button.reverse-color > button.p-button:not(:disabled):hover  {
     width: 100%;
 }
 
+span.p-button-label,
+span.p-button-label.ng-star-inserted,
+span.ng-star-inserted {
+    font-size: 22px;
+}

@@ -1,21 +1,19 @@
 import { Component, inject, input } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
+import { Button } from "primeng/button";
+import { InputText } from "primeng/inputtext";
+import { SelectModule } from 'primeng/select';
 import { ModalidadTrabajo } from '../../../../objects/enums/ModalidadTrabajo';
 import { TipoContrato } from '../../../../objects/enums/TipoContrato';
 import { BusquedaOfertaFormGroup } from '../../../../objects/interfaces/BusquedaOferta';
 import { BusquedaOfertaMapper } from '../../../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../../../services/busquedaOferta.service';
-import { SelectModule } from 'primeng/select';
-import { InputText } from "primeng/inputtext";
-import { Button } from "primeng/button";
 
 
 
 @Component({
   selector: 'job-search-form',
   imports: [
-    MatSelectModule,
     ReactiveFormsModule,
     SelectModule,
     InputText,

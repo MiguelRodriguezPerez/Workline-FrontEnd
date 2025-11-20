@@ -1,6 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MatIcon } from "@angular/material/icon";
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Button } from "primeng/button";
@@ -14,7 +13,7 @@ import { LoginRequest, LoginRequestFormGroup } from '../../interfaces/LoginReque
   selector: 'login-form',
   imports: [
     ReactiveFormsModule, InputTextModule,
-    MatIcon,
+
     Button
 ],
   templateUrl: './login-form.html',
