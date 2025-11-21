@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 import { JobPostInfo } from "../job-post-info/job-post-info";
 import { JobPostDescription } from "../job-post-description/job-post-description";
 

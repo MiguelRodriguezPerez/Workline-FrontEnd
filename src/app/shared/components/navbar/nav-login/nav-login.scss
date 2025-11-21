@@ -5,6 +5,7 @@
 div.login-container {
   height: 100%;
   cursor: pointer;
+  pointer-events: auto;
 
   display: flex;
   justify-content: flex-end;

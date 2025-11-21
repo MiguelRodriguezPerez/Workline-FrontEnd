@@ -11,7 +11,7 @@ import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { LoginEffects } from './shared/globalState/login/login.effect';
 import { loginReducer } from './shared/globalState/login/login.reducer';
-import { sharedInterceptor } from './shared/interceptors/shared.interceptor';
+import { sharedInterceptor } from './general/interceptors/shared.interceptor';
 import { localStorageMetaReducer } from './shared/globalState/localStorage.metareducer';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import Aura from '@primeuix/themes/aura';

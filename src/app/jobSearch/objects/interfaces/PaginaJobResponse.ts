@@ -1,31 +1,31 @@
-import { Oferta } from "./Oferta";
+import { Oferta } from "../../../shared/objects/interfaces/oferta/Oferta";
 
 export interface PaginaJobResponse {
-    content:          Oferta[];
-    pageable:         Pageable;
-    last:             boolean;
-    totalPages:       number;
-    totalElements:    number;
-    size:             number;
-    number:           number;
-    sort:             Sort;
-    first:            boolean;
+    content: Oferta[];
+    pageable: Pageable;
+    last: boolean;
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    number: number;
+    sort: Sort;
+    first: boolean;
     numberOfElements: number;
-    empty:            boolean;
+    empty: boolean;
 }
 
 
 export interface Pageable {
     pageNumber: number;
-    pageSize:   number;
-    sort:       Sort;
-    offset:     number;
-    paged:      boolean;
-    unpaged:    boolean;
+    pageSize: number;
+    sort: Sort;
+    offset: number;
+    paged: boolean;
+    unpaged: boolean;
 }
 
 export interface Sort {
-    empty:    boolean;
-    sorted:   boolean;
+    empty: boolean;
+    sorted: boolean;
     unsorted: boolean;
 }

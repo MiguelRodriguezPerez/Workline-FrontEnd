@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 import { JobSearchFeed } from '../feed/job-search-feed';
 import { JobSearchFeedLoading } from "../job-search-feed-loading/job-search-feed-loading";
 import { JobSearchNoResults } from "../../job-search-no-results/job-search-no-results";
@@ -10,7 +10,7 @@ import { JobSearchNoResults } from "../../job-search-no-results/job-search-no-re
   templateUrl: './job-search-feed-wrapper.html',
   styleUrl: './job-search-feed-wrapper.scss',
 })
-export class JobSearchFeedWrapper { 
+export class JobSearchFeedWrapper {
 
   listaOfertas = input.required<Oferta[]>();
   isLoading = input.required<boolean>();

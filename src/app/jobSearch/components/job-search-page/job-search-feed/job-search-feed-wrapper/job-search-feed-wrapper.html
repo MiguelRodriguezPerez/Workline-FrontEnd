@@ -1,7 +1,7 @@
 @if (isLoading()) {
     <job-search-feed-loading/>
 }
-@if (listaOfertas().length === 0) {
+@if (listaOfertas().length === 0 && !isLoading()) {
     <job-search-no-results/>
 }
 

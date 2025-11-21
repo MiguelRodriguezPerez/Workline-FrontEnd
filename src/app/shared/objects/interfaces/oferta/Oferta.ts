@@ -1,6 +1,6 @@
-import { Contrata } from "../../../shared/objects/interfaces/Contrata";
-import { ModalidadTrabajo } from "../enums/ModalidadTrabajo";
-import { TipoContrato } from "../enums/TipoContrato";
+import { Contrata } from "../Contrata";
+import { ModalidadTrabajo } from "../../../../jobSearch/objects/enums/ModalidadTrabajo";
+import { TipoContrato } from "../../../../jobSearch/objects/enums/TipoContrato";
 
 export interface Oferta {
     id: number,
