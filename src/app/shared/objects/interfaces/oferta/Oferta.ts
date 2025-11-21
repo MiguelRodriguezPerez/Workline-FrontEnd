@@ -13,5 +13,6 @@ export interface Oferta {
     fechaPublicacion: Date,
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
-    contrata: Contrata
+    contrata: Contrata,
+    numCandidatos: number
 }

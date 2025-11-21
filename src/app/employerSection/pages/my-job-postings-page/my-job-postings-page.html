@@ -1,4 +1,5 @@
 <navbar-wrapper/>
-<job-postings-counter/>
-<new-job-posting-button/>
+    <job-postings-counter/>
+    <new-job-posting-button/>
+    <user-job-postings-feed [jobPostingsList]="currentUserJobPostingsResource.value()?.content ?? []"/>
 <wkFooter/>

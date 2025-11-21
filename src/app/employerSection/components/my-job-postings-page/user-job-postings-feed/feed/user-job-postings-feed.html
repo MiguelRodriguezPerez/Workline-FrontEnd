@@ -1,0 +1,5 @@
+<ul class="user-job-post-feed">
+    @for (jobPosting of jobPostingsList(); track jobPosting.id) {
+        <user-job-posting-card [jobPosting]="jobPosting"/>
+    }
+</ul>

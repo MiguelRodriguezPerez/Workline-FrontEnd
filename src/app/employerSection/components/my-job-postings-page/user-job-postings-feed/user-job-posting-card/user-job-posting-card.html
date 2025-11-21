@@ -1,0 +1,15 @@
+<li class="user-job-posting-li">
+    <!-- {{ jobPosting() | json }} -->
+    <header>
+        <h2>{{ jobPosting().puesto }}</h2>
+        <div>
+            <span class="pi pi-user-plus" style="color: white; font-size: 18px;"></span>
+            <span>{{jobPosting().numCandidatos}}</span>
+        </div>
+        <span class="pi pi-trash" style="color: white; font-size: 18px;"></span>
+    </header>
+    <p>{{ jobPosting() | json}}</p>
+    <ul>
+
+    </ul>
+</li>

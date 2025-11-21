@@ -1,0 +1,22 @@
+@use '../../../../../general/generalStyles/variables' as variables;
+@use '../../../../../general/generalStyles/fonts' as fonts;
+
+:host {
+  display: block;
+  margin-top: 25px;
+}
+
+li.user-job-posting-li > header {
+  background-color: variables.$green-workline;
+  border-radius: 8px 8px 0px 0px;
+  padding: 18px 15px;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+
+  > h2 {
+    font-size: 24px;
+    color: variables.$white-font;
+  }
+}
