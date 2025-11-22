@@ -11,11 +11,7 @@ import { Rol } from '../../../objects/enums/Rol';
   templateUrl: './nav-login.html',
   styleUrl: './nav-login.scss',
 })
-export class NavLogin implements OnInit{
-  ngOnInit(): void {
-    console.log(this.user()?.rol === Rol.CONTRATA);
-    
-  } 
+export class NavLogin {
   /* Los selectores de ngrx devuelven por defecto observables, pero puedes solicitar que devuelvan señales en su lugar.
   Si decides recibir observables tendrás que usar el asyncPipe para mostrar sus valores reales.
 

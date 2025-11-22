@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 import { UserJobPostingCard } from "../user-job-posting-card/user-job-posting-card";
 
@@ -8,6 +8,11 @@ import { UserJobPostingCard } from "../user-job-posting-card/user-job-posting-ca
   templateUrl: './user-job-postings-feed.html',
   styleUrl: './user-job-postings-feed.scss',
 })
-export class UserJobPostingsFeed {
+export class UserJobPostingsFeed implements OnInit{
+  
   jobPostingsList = input.required<Oferta[]>();
+
+  ngOnInit(): void {
+    console.log(this.jobPostingsList());
+  }
 }
