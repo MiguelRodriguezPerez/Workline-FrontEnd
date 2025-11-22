@@ -8,8 +8,13 @@
         </div>
         <span class="pi pi-trash" style="color: white; font-size: 18px;"></span>
     </header>
-    <p>{{ jobPosting() | json}}</p>
     <ul>
-
+        @for (value of jobCardValues(); track $index) {
+            <li>{{ value }}</li>
+        }
     </ul>
 </li>
+<!-- <li>{{ jobPosting().salarioAnual }}</li>
+        <li>{{ jobPosting().modalidadTrabajo | titlecase }}</li>
+        <li>{{ jobPosting().horas }}</li>
+        <li>{{ jobPosting().ciudad }}</li> -->

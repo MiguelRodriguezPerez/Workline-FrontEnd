@@ -20,3 +20,14 @@ li.user-job-posting-li > header {
     color: variables.$white-font;
   }
 }
+
+li.user-job-posting-li > ul {
+
+  background-color: variables.$white-font;
+  padding: 10px 18px;
+  border-radius: 0px 0px 8px 8px;
+
+  > li {
+    font-size: 0.9em;
+  }
+} 
