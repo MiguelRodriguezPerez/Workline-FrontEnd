@@ -9,15 +9,22 @@
 li.user-job-posting-li > header {
   background-color: variables.$green-workline;
   border-radius: 8px 8px 0px 0px;
-  padding: 18px 15px;
+  padding: 15px;
+  /* ¿Sabes lo del texto del puesto que si es más largo de la cuenta redimensiona la cabecera
+  del card y arrastra al resto? Esta es la única solución que se me ocurrio */
+  height: 70px;
 
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr 14% auto;
   gap: 14px;
 
   > h2 {
     font-size: 24px;
     color: variables.$white-font;
+    width: fit-content;
+    height: fit-content;
+
+    margin: auto 0;
   }
 }
 

@@ -6,4 +6,6 @@ ul.user-job-post-feed {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px 30px;
+
+  margin-bottom: 50px;
 }

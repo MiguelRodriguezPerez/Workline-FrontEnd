@@ -1,5 +1,5 @@
 <navbar-wrapper/>
-    <job-postings-counter/>
+    <job-postings-counter [totalJobPostings]="currentUserJobPostingsResource.value()?.totalElements ?? 0"/>
     <new-job-posting-button/>
     <user-job-postings-feed [jobPostingsList]="currentUserJobPostingsResource.value()?.content ?? []"/>
 <wkFooter/>

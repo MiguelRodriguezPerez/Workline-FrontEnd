@@ -14,5 +14,5 @@ export interface Oferta {
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
     contrata: Contrata,
-    numCandidatos: number
+    numeroCandidatos: number
 }

@@ -2,10 +2,7 @@
     <!-- {{ jobPosting() | json }} -->
     <header>
         <h2>{{ jobPosting().puesto }}</h2>
-        <div>
-            <span class="pi pi-user-plus" style="color: white; font-size: 18px;"></span>
-            <span>{{jobPosting().numCandidatos}}</span>
-        </div>
+        <job-posting-candidate-counter [numeroCandidatos]="jobPosting().numeroCandidatos"/>
         <span class="pi pi-trash" style="color: white; font-size: 18px;"></span>
     </header>
     <ul>
@@ -14,7 +11,3 @@
         }
     </ul>
 </li>
-<!-- <li>{{ jobPosting().salarioAnual }}</li>
-        <li>{{ jobPosting().modalidadTrabajo | titlecase }}</li>
-        <li>{{ jobPosting().horas }}</li>
-        <li>{{ jobPosting().ciudad }}</li> -->

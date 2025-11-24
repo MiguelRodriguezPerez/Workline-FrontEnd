@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'job-postings-counter',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './job-postings-counter.html',
   styleUrl: './job-postings-counter.scss',
 })
-export class JobPostingsCounter { }
+export class JobPostingsCounter { 
+  totalJobPostings = input.required<number>();
+}
