@@ -29,11 +29,15 @@
     }
   }
 
-  p-button {
-    width: 300px;
-    
-    button {
-      padding-top: 15px;
-    }
+}
+
+/*Rompe la encapsulación del componente de primeng
+No hay una manera no deprecada de lograrlo*/
+
+:host > p-button::ng-deep > button {
+  padding: 10px 15px;
+
+  > span {
+    font-size: 23px;
   }
 }

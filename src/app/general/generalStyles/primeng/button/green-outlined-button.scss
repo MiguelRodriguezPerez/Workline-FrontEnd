@@ -1,0 +1,26 @@
+p-button.green-outlined-button {
+  width: fit-content;
+}
+
+p-button.green-outlined-button.w-100 {
+  width: 100%;
+
+  > button.p-button,
+  > button.p-button:not(:disabled):hover {
+    width: 100%;
+  }
+}
+
+
+p-button.green-outlined-button > button.p-button, 
+p-button.green-outlined-button > button.p-button:not(:disabled):hover  {
+    background-color: transparent;
+    border-color: green;
+    padding: 5px 15px;
+    border-radius: 8px;
+
+    > span {
+        color: black;
+        font-size: 21px;
+    }
+}

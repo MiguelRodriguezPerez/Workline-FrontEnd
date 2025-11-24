@@ -1,28 +1,7 @@
 @use './fonts' as fonts;
 
-.green-button {
-    cursor: pointer;
-    background-color: green;
-    color:white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: fonts.$font;
-
-    border: 0;
-    border-radius: 8px;
-
-    &.red-button {
-        background-color: rgb(235, 9, 9);
-    }
-}
-
 .cloud {
     border-radius: 8px;
     background-color: white;
-}
-
-.mat-mdc-form-field .mdc-floating-label {
-    font-size: 0.8em;
 }
 

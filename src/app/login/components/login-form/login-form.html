@@ -14,7 +14,15 @@
          <span class="mensaje-error">{{ loginForm.getError('loginFailed') }}</span>
        </div>
     }
-    <p-button label="Iniciar Sesión" [style]="{width: '100%'}" (onClick)="submitLoginForm()" />
+    <p-button 
+        label="Iniciar Sesión" 
+        class="green-button w-100"
+        (onClick)="submitLoginForm()" 
+    />
+    <p-button 
+        label="Crear cuenta" 
+        class="green-outlined-button w-100" 
+    />
 </form>
 <span>Reformas López</span>
 <br/>

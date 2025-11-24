@@ -3,11 +3,12 @@
 @use './app/general/generalStyles/fonts' as fonts;
 @use './app/general/generalStyles/generalRules.scss';
 @use './app/general/generalStyles/forms.scss';
-@use './app/general/generalStyles/primeng/actual-pagination.scss';
-@use './app/general/generalStyles/primeng/actual-form.scss';
-@use './app/general/generalStyles/primeng/actual-login-button.scss';
-@use './app/general/generalStyles/primeng/p-select.scss';
 @use "primeicons/primeicons.css";
+@use './app/general/generalStyles/primeng/button/green-button.scss';
+@use './app/general/generalStyles/primeng/button/green-outlined-button.scss';
+@use './app/general/generalStyles/primeng/input/input.scss';
+@use './app/general/generalStyles/primeng/paginator/paginator.scss';
+@use './app/general/generalStyles/primeng/select/select.scss';
 
 
 body {

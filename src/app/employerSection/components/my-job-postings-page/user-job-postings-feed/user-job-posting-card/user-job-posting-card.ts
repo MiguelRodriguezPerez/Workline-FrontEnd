@@ -4,7 +4,7 @@ import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 
 @Component({
   selector: 'user-job-posting-card',
-  imports: [TitleCasePipe],
+  imports: [],
   templateUrl: './user-job-posting-card.html',
   styleUrl: './user-job-posting-card.scss',
 })

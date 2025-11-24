@@ -9,7 +9,7 @@ form#login-form {
   background-color: #F5F5F5;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 5px;
+  gap: 12px;
 }
 
 form#login-form > div {
@@ -24,14 +24,15 @@ form#login-form > div {
   align-content: center;
   align-items: center;
 
-  > span {
-    padding-top: 12px;
-  }
 
   &.div-mensaje-error {
     gap: 0px !important;
     margin-top: 5px;
     margin-bottom: -10px;
+  }
+
+  input {
+    font-size: 20px;
   }
 
   @include mixins.change-layout(phone) {
@@ -40,6 +41,3 @@ form#login-form > div {
 }
 
 
-form#login-form > p-button {
-  margin-top: 15px;
-}
