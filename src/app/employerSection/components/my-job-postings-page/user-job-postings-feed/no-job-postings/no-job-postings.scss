@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  gap: 15px;
+
+  margin-bottom: 50px;
+}
+
+:host > img {
+  width: 40%;
+  margin: 0 auto;
+}
+
+/* Toda esta tontería de márgenes relativos se debe a que al centrar la imagen 
+no se "alinea" verticalmente con el resto de nodos de texto cuando estos también estan centrados */
+
+:host > h1 {
+  font-size: 33px;
+  text-align: center;
+  width: fit-content;
+  margin: 0 0 0 36%;
+}
+
+:host > p {
+  font-size: 26px;
+  width: fit-content;
+  margin: 0 0 0 45.5%;
+}
+
+:host > new-job-posting-button {
+  margin: 0 0 0 48%;
+}

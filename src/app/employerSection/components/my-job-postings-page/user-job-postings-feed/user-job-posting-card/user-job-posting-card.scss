@@ -16,6 +16,7 @@ li.user-job-posting-li > header {
 
   display: grid;
   grid-template-columns: 1fr 14% auto;
+  align-items: center;
   gap: 14px;
 
   > h2 {
@@ -26,6 +27,10 @@ li.user-job-posting-li > header {
 
     margin: auto 0;
   }
+
+  > span:last-child {
+    margin-top: -5px;
+  }
 }
 
 li.user-job-posting-li > ul {
@@ -35,6 +40,10 @@ li.user-job-posting-li > ul {
   border-radius: 0px 0px 8px 8px;
 
   > li {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
     font-size: 0.9em;
   }
 } 
