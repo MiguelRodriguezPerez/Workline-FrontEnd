@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Button } from "primeng/button";
+import { RouterLink } from "@angular/router";
+import { ButtonDirective } from "primeng/button";
 
 @Component({
   selector: 'new-job-posting-button',
-  imports: [Button],
+  imports: [ButtonDirective, RouterLink],
   templateUrl: './new-job-posting-button.html',
   styleUrl: './new-job-posting-button.scss',
 })

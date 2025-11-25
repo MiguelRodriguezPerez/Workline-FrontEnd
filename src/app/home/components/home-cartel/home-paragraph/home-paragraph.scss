@@ -33,8 +33,8 @@
 
 /*Rompe la encapsulación del componente de primeng
 No hay una manera no deprecada de lograrlo*/
-
-:host > p-button::ng-deep > button {
+:host > p-button::ng-deep > button, 
+:host > p-button::ng-deep > button.p-button:not(:disabled):hover  {
   padding: 10px 15px;
 
   > span {

@@ -1,1 +1,40 @@
 
+<form [formGroup]="jobPostingForm" (ngSubmit)="submitForm()">
+    <section class="cloud first-form-section">
+        <div>
+            <label for="puesto">Puesto</label>
+            <input pInputText id="puesto" name="puesto" formControlName="puesto">
+
+            <label for="horas">Horas</label>
+            <input pInputText id="horas" type="number" name="horas" formControlName="horas">
+
+            <label for="sector">Sector</label>
+            <input pInputText id="sector" name="sector" formControlName="sector">
+
+            <label for="salario">Salario anual</label>
+            <input pInputText id="salario" type="number" name="salario" formControlName="salarioAnual">
+        </div>
+        <div>
+            <label for="modalidad">Modalidad</label>
+            <p-select 
+                [options]="tiposModalidadesKeys"
+                placeholder="Elige una opción"
+                formControlName="modalidadTrabajo"
+                name="modalidadTrabajo"
+                id="modalidad"
+            />
+            <label for="tipoContrato">Tipo de Contrato</label>
+            <p-select 
+                [options]="tiposContratoKeys"
+                placeholder="Elige una opción"
+                formControlName="tipoContrato"
+                name="tipoContrato"
+                id="tipoContrato"
+            />
+            <label for="ciudad">Ciudad</label>
+            <input pInputText id="ciudad" type="text" name="ciudad" formControlName="ciudad">
+            <p-button class="green-button" label="Publicar Oferta"/>
+        </div>
+    </section>
+</form>
+

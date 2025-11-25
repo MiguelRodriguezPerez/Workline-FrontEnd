@@ -1,3 +1,35 @@
 :host {
   display: block;
 }
+
+section.first-form-section {
+  padding: 10px 30px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+section.first-form-section > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 3%;
+
+  > input, > p-select {
+    margin-right: 30%;
+    font-size: 21px;
+  }
+
+  > p-select::ng-deep > span {
+    font-size: 19px;
+  }
+
+  > label {
+    margin-top: 10px;
+    height: fit-content;
+  }
+  
+}
+
+section.first-form-section > div > p-button {
+  margin-top: 15px;
+}
