@@ -5,7 +5,8 @@ Para evitar contaminarlo, declare este archivo aquí y lo importe en el styles.s
 
 p-paginator.p-paginator {
   background: transparent;
-  padding: 30px;
+  padding: 0px;
+  margin: 20px 0px;
 
   button {
     color: black;

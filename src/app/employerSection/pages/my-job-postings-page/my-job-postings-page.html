@@ -1,9 +1,9 @@
-<navbar-wrapper/>
-    <job-postings-counter [totalJobPostings]="currentUserJobPostingsResource.value()?.totalElements ?? 0"/>
+<navbar-wrapper/>  
     @if (currentUserJobPostingsResource.isLoading()) {
         <wk-loading/>
     }
     @else if (currentUserJobPostingsResource.value()) {
+        <job-postings-counter [totalJobPostings]="currentUserJobPostingsResource.value()?.totalElements ?? 0"/>
         <new-job-posting-button/>
         <user-job-postings-feed [jobPostingsList]="currentUserJobPostingsResource.value()?.content ?? []"/>
         <wk-paginator
