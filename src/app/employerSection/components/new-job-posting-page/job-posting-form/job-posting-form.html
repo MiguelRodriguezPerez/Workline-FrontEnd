@@ -4,15 +4,35 @@
         <div>
             <label for="puesto">Puesto</label>
             <input pInputText id="puesto" name="puesto" formControlName="puesto">
+            @if ( formUtils.isValidField(jobPostingForm, 'puesto') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'puesto')}}
+                </span>
+            }
 
             <label for="horas">Horas</label>
             <input pInputText id="horas" type="number" name="horas" formControlName="horas">
+            @if ( formUtils.isValidField(jobPostingForm, 'horas') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'horas')}}
+                </span>
+            }
 
             <label for="sector">Sector</label>
             <input pInputText id="sector" name="sector" formControlName="sector">
+            @if ( formUtils.isValidField(jobPostingForm, 'sector') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'sector')}}
+                </span>
+            }
 
             <label for="salario">Salario anual</label>
             <input pInputText id="salario" type="number" name="salario" formControlName="salarioAnual">
+            @if ( formUtils.isValidField(jobPostingForm, 'salarioAnual') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'horas')}}
+                </span>
+            }
         </div>
         <div>
             <label for="modalidad">Modalidad</label>
@@ -23,6 +43,11 @@
                 name="modalidadTrabajo"
                 id="modalidad"
             />
+             @if ( formUtils.isValidField(jobPostingForm, 'modalidadTrabajo') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'modalidadTrabajo')}}
+                </span>
+            }
             <label for="tipoContrato">Tipo de Contrato</label>
             <p-select 
                 [options]="tiposContratoKeys"
@@ -31,10 +56,31 @@
                 name="tipoContrato"
                 id="tipoContrato"
             />
+            @if (formUtils.isValidField(jobPostingForm, 'tipoContrato') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'tipoContrato')}}
+                </span>
+            }
             <label for="ciudad">Ciudad</label>
             <input pInputText id="ciudad" type="text" name="ciudad" formControlName="ciudad">
-            <p-button class="green-button" label="Publicar Oferta"/>
+            @if ( formUtils.isValidField(jobPostingForm, 'ciudad') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'ciudad')}}
+                </span>
+            }
+            <p-button class="green-button" label="Publicar Oferta" type="submit"/>
         </div>
+    </section>
+    <section class="cloud second-form-section">
+        <label for="ciudad">Ciudad</label>
+        <textarea name="descripcion" id="descripcion" formControlName="descripcion">
+
+        </textarea>
+        @if ( formUtils.isValidField(jobPostingForm, 'descripcion') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'descripcion')}}
+                </span>
+            }
     </section>
 </form>
 
