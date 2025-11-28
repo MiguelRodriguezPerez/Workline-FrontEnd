@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { defer, of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import { LoginService } from '../../../login/services/login.service';
-import { failedRequestLogin, failedRequestLogout, requestLogin, requestLogout, succededLogoutRequest, succededRequestLogin } from './login.action';
+import { failedRequestLogin, failedRequestLogout, requestLogin, requestLogout, succededLogoutRequest, succededRequestLogin, checkUserCredentials, checkUserCredentialsSucceded, checkUserCredentialsFailed } from './login.action';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -31,12 +31,28 @@ export class LoginEffects {
 
   logoutEffect = createEffect(() =>
     this.actions$.pipe(
-      ofType(requestLogout),
+      ofType(requestLogout,checkUserCredentialsFailed),
       exhaustMap(() =>
         this.loginService.uploadLogout().pipe(
           map(() => succededLogoutRequest()),
           catchError(error => of(failedRequestLogout({ content: error }))),
           tap(() => this.router.navigate(['/']))
+        )
+      )
+    )
+  );
+
+  checkUserCredentialsEffect = createEffect(() =>
+    this.actions$.pipe(
+      ofType(checkUserCredentials),
+      exhaustMap(() =>
+        this.loginService.areCredentialsValid().pipe(
+          /* NOTA: Este efecto no se encarga de borrar la cookie jwt token */
+          map(isValid =>
+            isValid ? checkUserCredentialsSucceded() : checkUserCredentialsFailed()
+          ),
+          tap((isValid) => console.log(isValid)),
+          catchError(() => of(checkUserCredentialsFailed()))
         )
       )
     )

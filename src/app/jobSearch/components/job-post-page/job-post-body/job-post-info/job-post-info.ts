@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { TitleCasePipe } from '@angular/common';
   templateUrl: './job-post-info.html',
   styleUrl: './job-post-info.scss',
 })
-export class JobPostInfo { 
+export class JobPostInfo {
 
   jobPost = input.required<Oferta>();
 

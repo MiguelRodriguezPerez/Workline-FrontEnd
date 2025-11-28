@@ -7,7 +7,7 @@ import { JobPostBody } from "../../components/job-post-page/job-post-body/body/j
 import { JobPostHeader } from "../../components/job-post-page/job-post-header/job-post-header";
 import { JobSearchFeedLoading } from "../../components/job-search-page/job-search-feed/job-search-feed-loading/job-search-feed-loading";
 import { OfertaService } from '../../services/oferta.service';
-import { Oferta } from './../../objects/interfaces/Oferta';
+import { Oferta } from '../../../shared/objects/interfaces/oferta/Oferta';
 import { Location } from '@angular/common';
 import { jobRoutes } from '../../job.routes';
 
@@ -35,7 +35,7 @@ export class JobPostPage {
     }
   });
 
-  goBackEvent (oferta: Oferta) {
+  goBackEvent(oferta: Oferta) {
     // Si el historial tiene length mayor de 0 y se hizo en esta página, hay navegación previa
     if (history.length && document.referrer.includes('worklinejobs')) {
       this.location.back();
@@ -43,7 +43,7 @@ export class JobPostPage {
     else {
       this.router.navigate(['/jobs'], {
         queryParams: {
-          'ciudad' : oferta.ciudad,
+          'ciudad': oferta.ciudad,
           'salarioAnual': oferta.salarioAnual
         }
       })

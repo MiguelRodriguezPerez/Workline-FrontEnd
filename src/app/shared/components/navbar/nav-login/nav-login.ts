@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { Store } from '@ngrx/store';
 import { requestLogout } from '../../../globalState/login/login.action';
 import { selectLoggedUser } from '../../../globalState/login/login.selector';
+import { Rol } from '../../../objects/enums/Rol';
 
 @Component({
   selector: 'nav-login',
@@ -10,7 +11,7 @@ import { selectLoggedUser } from '../../../globalState/login/login.selector';
   templateUrl: './nav-login.html',
   styleUrl: './nav-login.scss',
 })
-export class NavLogin { 
+export class NavLogin {
   /* Los selectores de ngrx devuelven por defecto observables, pero puedes solicitar que devuelvan señales en su lugar.
   Si decides recibir observables tendrás que usar el asyncPipe para mostrar sus valores reales.
 
@@ -25,6 +26,7 @@ export class NavLogin {
   router = inject(Router);
   store = inject(Store);
   user = this.store.selectSignal(selectLoggedUser);
+  
 
 
   onClickLogout() {

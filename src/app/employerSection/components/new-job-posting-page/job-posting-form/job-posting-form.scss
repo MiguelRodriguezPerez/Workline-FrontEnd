@@ -1,0 +1,60 @@
+:host {
+  display: block;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+section.first-form-section {
+  padding: 10px 30px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+section.first-form-section > div,
+section.second-form-section  {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 3%;
+
+  > input, > p-select {
+    margin-right: 30%;
+    font-size: 21px;
+  }
+
+  > p-select::ng-deep > span {
+    font-size: 19px;
+  }
+
+  > label {
+    margin-top: 10px;
+    height: fit-content;
+  }
+  
+}
+
+section.first-form-section > div > p-button {
+  margin-top: 15px;
+}
+
+section.second-form-section {
+  margin-bottom: 30px;
+}
+
+section.second-form-section > textarea {
+  background-color: transparent;
+  margin-bottom: 20px;
+
+  height: 6em;
+  color: black;
+  font-size: 20px;
+}
+
+span.text-danger {
+  font-size: 18px;
+  color: red;
+}

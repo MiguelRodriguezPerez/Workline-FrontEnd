@@ -1,0 +1,49 @@
+@use '../../../../../general/generalStyles/mixins' as mixins;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  gap: 15px;
+
+  margin: auto;
+
+  @include mixins.change-layout(tablet) {
+    gap: 8px;
+  }
+}
+
+:host > img {
+  width: 50%;
+  margin: 0 auto;
+
+  @include mixins.change-layout(tablet) {
+    width: 80%;
+  }
+}
+
+/* Toda esta tontería de márgenes relativos se debe a que al centrar la imagen 
+no se "alinea" verticalmente con el resto de nodos de texto cuando estos también estan centrados */
+
+:host > h1 {
+  font-size: 36px;
+  text-align: center;
+
+  @include mixins.change-layout(phone) {
+    font-size: 30px;
+  }
+}
+
+:host > p {
+  font-size: 28px;
+  text-align: center;
+
+  @include mixins.change-layout(phone) {
+    font-size: 25px;
+  }
+}
+
+:host > * {
+  margin: 0 auto;
+}

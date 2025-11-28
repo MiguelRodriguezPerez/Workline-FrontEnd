@@ -1,5 +1,5 @@
 export enum Rol {
-    ADMIN,
-    BUSCA,
-    CONTRATA
+    ADMIN = 'ADMIN',
+    BUSCA = 'BUSCA',
+    CONTRATA = 'CONTRATA'
 }

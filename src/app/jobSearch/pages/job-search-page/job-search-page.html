@@ -11,12 +11,12 @@
     />
     <div></div>
     <!-- @if fuerza el reinicio de las señales cada vez que se renderiza este componente. No lo hagas -->
-    <job-search-pagination 
-        [paginaActual]="currentNumPag()"
-        [numeroResultados]="busquedaOfertasResource.value()?.totalElements ?? 0"
+    <wk-paginator 
+        [paginaActual]="currentPage()"
         [numeroPaginas]="busquedaOfertasResource.value()?.totalPages ?? 0"
-        [numeroOfertasPorPagina]="10"
-        (eventoPaginacion)="changePageEvent($event)"
+        [numeroOfertasPorPagina]="8"
+        [numeroResultados]="busquedaOfertasResource.value()?.totalElements ?? 0"
+        (paginacionOutput)="changePage($event)"
     />
 
 </main>

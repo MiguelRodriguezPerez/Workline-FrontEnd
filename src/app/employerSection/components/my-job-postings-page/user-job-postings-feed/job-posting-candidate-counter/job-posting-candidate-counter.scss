@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+
+  margin-top: -5px;
+
+  span:first-child {
+    font-size: 23px;
+  }
+
+  span:last-child {
+    margin-bottom: 3px;
+  }
+}

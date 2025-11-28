@@ -1,6 +1,6 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 import { RouterLink } from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import { RouterLink } from "@angular/router";
   templateUrl: './job-search-card.html',
   styleUrl: './job-search-card.scss',
 })
-export class JobSearchCard { 
+export class JobSearchCard {
 
   oferta = input.required<Oferta>();
 
