@@ -10,8 +10,9 @@ export interface Oferta {
     ciudad: string,
     salarioAnual: number,
     horas: number,
-    fechaPublicacion: Date,
+    fechaPublicacion: Date | null,
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
-    usuarioDto: UsuarioDto
+    contrata: UsuarioDto,
+    numeroCandidatos: number
 }

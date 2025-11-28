@@ -37,7 +37,7 @@ export class JobPostPage {
 
   goBackEvent(oferta: Oferta) {
     // Si el historial tiene length mayor de 0 y se hizo en esta página, hay navegación previa
-    if (history.length && document.referrer.includes('worklinejobs')) {
+    if (history.length && document.referrer.includes('/jobs')) {
       this.location.back();
     }
     else {
