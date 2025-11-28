@@ -1,6 +1,6 @@
-import { Contrata } from "../Contrata";
 import { ModalidadTrabajo } from "../../../../jobSearch/objects/enums/ModalidadTrabajo";
 import { TipoContrato } from "../../../../jobSearch/objects/enums/TipoContrato";
+import { UsuarioDto } from "../UsuarioDto";
 
 export interface Oferta {
     id: number,
@@ -13,6 +13,5 @@ export interface Oferta {
     fechaPublicacion: Date,
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
-    contrata: Contrata,
-    numeroCandidatos: number
+    usuarioDto: UsuarioDto
 }
