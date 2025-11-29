@@ -2,7 +2,11 @@
     <header>
         <h2>{{ jobPosting().puesto }}</h2>
         <job-posting-candidate-counter [numeroCandidatos]="jobPosting().numeroCandidatos"/>
-        <span class="pi pi-trash" style="color: white; font-size: 18px;"></span>
+        <span  
+            (click)="deleteJobPostEvent()"
+            class="pi pi-trash" 
+            style="color: white; font-size: 18px;"
+        ></span>
     </header>
     <ul>
         @for (value of jobCardValues(); track $index) {

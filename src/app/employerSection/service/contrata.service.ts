@@ -24,13 +24,23 @@ export class ContrataService {
           return throwError(() => error)
         })
       )
-  }
+  };
 
   uploadNewOferta (oferta: Oferta): Observable<Oferta> {
     return this.http.post<Oferta>(`${this.backendUrl}${this.baseContrataEndpoint}/nuevaOferta`, oferta)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error creating new job post');
+          return throwError(() => error)
+        })
+      )
+  };
+
+  deleteOferta (ofertaId: number): Observable<Oferta> {
+    return this.http.delete<Oferta>(`${this.backendUrl}${this.baseContrataEndpoint}/borrarOferta/${ofertaId}`)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error deleting job post');
           return throwError(() => error)
         })
       )
