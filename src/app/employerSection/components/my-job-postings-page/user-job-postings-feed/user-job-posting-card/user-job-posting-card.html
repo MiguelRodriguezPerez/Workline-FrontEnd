@@ -1,9 +1,9 @@
-<li class="user-job-posting-li">
+<li class="user-job-posting-li" (click)="redirectJobDetail()">
     <header>
         <h2>{{ jobPosting().puesto }}</h2>
         <job-posting-candidate-counter [numeroCandidatos]="jobPosting().numeroCandidatos"/>
         <span  
-            (click)="deleteJobPostEvent()"
+            (click)="deleteJobPostEvent($event)"
             class="pi pi-trash" 
             style="color: white; font-size: 18px;"
         ></span>

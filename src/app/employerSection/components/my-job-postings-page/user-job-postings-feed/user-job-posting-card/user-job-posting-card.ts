@@ -5,6 +5,7 @@ import { JobPostingCandidateCounter } from "../job-posting-candidate-counter/job
 import { OfertaService } from '../../../../../jobSearch/services/oferta.service';
 import { ContrataService } from '../../../../service/contrata.service';
 import { JobPostingContextService } from '../../../../context/JobPostingContextService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-job-posting-card',
@@ -14,10 +15,12 @@ import { JobPostingContextService } from '../../../../context/JobPostingContextS
 })
 export class UserJobPostingCard {
 
+  private jobPostingContext = inject(JobPostingContextService);
+  private router = inject(Router);
+  private titleCasePipe = new TitleCasePipe();
+
   contrataService = inject(ContrataService);
   jobPosting = input.required<Oferta>();
-  private jobPostingContext = inject(JobPostingContextService);
-  private titleCasePipe = new TitleCasePipe();
 
   jobCardValues = linkedSignal(() => {
     const resultado = {
@@ -30,10 +33,16 @@ export class UserJobPostingCard {
     return Object.values(resultado);
   });
 
-  deleteJobPostEvent () {
+  deleteJobPostEvent (event: Event) {
+    event.stopPropagation();
+
     this.contrataService.deleteOferta(this.jobPosting().id!).subscribe({
       next: () => this.jobPostingContext.removeJobPosting(this.jobPosting().id!)
     });
+  }
+
+  redirectJobDetail () {
+    this.router.navigate(['employerSection','jobPostDetail', this.jobPosting().id]);
   }
 
 }
