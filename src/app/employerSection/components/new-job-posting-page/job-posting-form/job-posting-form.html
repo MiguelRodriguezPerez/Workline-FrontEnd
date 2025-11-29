@@ -1,5 +1,8 @@
 
 <form [formGroup]="jobPostingForm" (ngSubmit)="submitForm()">
+    <section class="job-posting-form-options">
+        <a (click)="goBackEvent()">Volver atrás</a>
+    </section>
     <section class="cloud first-form-section">
         <div>
             <label for="puesto">Puesto</label>
@@ -37,7 +40,7 @@
         <div>
             <label for="modalidad">Modalidad</label>
             <p-select 
-                [options]="tiposModalidadesKeys"
+                [options]="tiposModalidadesOptions"
                 placeholder="Elige una opción"
                 formControlName="modalidadTrabajo"
                 name="modalidadTrabajo"
@@ -50,7 +53,7 @@
             }
             <label for="tipoContrato">Tipo de Contrato</label>
             <p-select 
-                [options]="tiposContratoKeys"
+                [options]="tiposContratoOptions"
                 placeholder="Elige una opción"
                 formControlName="tipoContrato"
                 name="tipoContrato"

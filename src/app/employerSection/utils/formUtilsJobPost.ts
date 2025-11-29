@@ -12,6 +12,8 @@ export class FormUtilsJobPosting {
                    return 'Este campo es requerido';
                 case 'minlength':
                     return `Minímo de ${error['minlength'].requiredLength} carácteres.`;
+                case 'maxlength':
+                    return `Máximo de ${error['maxlength'].requiredLength} carácteres.`;
                 case 'required':
                     return `Campo obligatorio`;
                 case 'pattern':

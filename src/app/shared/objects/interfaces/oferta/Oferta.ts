@@ -3,13 +3,13 @@ import { TipoContrato } from "../../../../jobSearch/objects/enums/TipoContrato";
 import { UsuarioDto } from "../UsuarioDto";
 
 export interface Oferta {
-    id: number,
+    id: number | null,
     puesto: string,
     sector: string,
-    descripcion: string,
+    descripcion: string | null,
     ciudad: string,
-    salarioAnual: number,
-    horas: number,
+    salarioAnual: number | null,
+    horas: number | null,
     fechaPublicacion: Date | null,
     tipoContrato: TipoContrato,
     modalidadTrabajo: ModalidadTrabajo,
