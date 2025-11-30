@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, inject } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 import { OfertaService } from '../../../jobSearch/services/oferta.service';
 import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
+import { Oferta } from '../../../shared/objects/interfaces/oferta/Oferta';
 import { JobPostingForm } from "../../components/shared/job-posting-form/job-posting-form";
 
 @Component({
@@ -16,11 +16,17 @@ import { JobPostingForm } from "../../components/shared/job-posting-form/job-pos
 export class JobPostDetailPage {
   
   private activatedRoute = inject(ActivatedRoute);
-  private id = this.activatedRoute.snapshot.paramMap.get('id')!;
+  private id = computed(() =>
+    parseInt(this.activatedRoute.snapshot.paramMap.get('id')!)
+  );
+
   private ofertaService = inject(OfertaService);
-  jobPost = toSignal(this.ofertaService.obtenerOfertaPorId(parseInt(this.id)));
 
-
+  jobPost = rxResource({
+    params: () => this.id(),
+    stream: ({ params: id }) => this.ofertaService.obtenerOfertaPorId(id),
+    defaultValue: {} as Oferta,
+  });
 
   
 }

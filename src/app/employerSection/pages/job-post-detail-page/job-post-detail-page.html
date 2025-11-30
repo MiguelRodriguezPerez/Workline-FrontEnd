@@ -1,3 +1,5 @@
 <navbar-wrapper/>
-    <job-posting-form [jobPostInput]="jobPost()"/>
+    @if (jobPost.status() === 'resolved') {
+        <job-posting-form [jobPostInput]="jobPost.value()"/>
+    }
 <wkFooter/>
