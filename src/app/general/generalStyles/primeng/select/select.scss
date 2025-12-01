@@ -7,6 +7,26 @@ p-select.p-component.p-inputwrapper.p-select{
     background-color: white;
 }
 
+p-select.p-component.p-inputwrapper.p-select.read-only{
+    border: 0px;
+    background-color: white;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    height: fit-content;
+
+    div.p-select-dropdown {
+        display: none;
+    }
+
+    span.p-select-label {
+        padding-left: 0px;
+        padding-top: 0px;
+        font-size: 1em;
+    }
+}
+
 p-select div.p-select-list-container {
     background-color: white;
 

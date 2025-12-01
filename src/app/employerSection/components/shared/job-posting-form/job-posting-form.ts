@@ -1,5 +1,5 @@
-import { TitleCasePipe } from '@angular/common';
-import { Component, effect, inject, input } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Button } from "primeng/button";
@@ -7,17 +7,18 @@ import { InputText } from "primeng/inputtext";
 import { Select } from "primeng/select";
 import { ModalidadTrabajo } from '../../../../jobSearch/objects/enums/ModalidadTrabajo';
 import { TipoContrato } from '../../../../jobSearch/objects/enums/TipoContrato';
-import { OfertaDtoJobSearch } from '../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
+import { OfertaDtoEmployer } from '../../../../shared/objects/interfaces/oferta/OfertaDtoEmployer';
 import { OfertaFormGroup as OfertaEmployerFormGroup } from '../../../../shared/objects/interfaces/oferta/OfertaFormGroup';
 import { OfertaMapper } from '../../../../shared/objects/interfaces/oferta/OfertaMapper';
 import { ContrataService } from '../../../service/contrata.service';
 import { FormUtilsJobPosting } from '../../../utils/formUtilsJobPost';
-import { OfertaDtoEmployer } from '../../../../shared/objects/interfaces/oferta/OfertaDtoEmployer';
+import { tiposContratoOptions, tiposModalidadesOptions } from './form-enums';
+import { patchFormFromJobPost } from './patchFormFromJobPost';
 
 
 @Component({
   selector: 'job-posting-form',
-  imports: [ReactiveFormsModule, InputText, Select, Button],
+  imports: [ReactiveFormsModule, InputText, Select, Button, NgClass],
   templateUrl: './job-posting-form.html',
   styleUrl: './job-posting-form.scss',
 })
@@ -25,23 +26,15 @@ export class JobPostingForm {
 
   private ofertaMapper = OfertaMapper;
   private fb = inject(NonNullableFormBuilder);
-  private titleCasePipe = new TitleCasePipe();
   private contrataService = inject(ContrataService);
 
   formUtils = FormUtilsJobPosting;
   router = inject(Router);
   jobPostInput = input<OfertaDtoEmployer>();
+  tiposModalidadesOptions = tiposModalidadesOptions;
+  tiposContratoOptions = tiposContratoOptions;
 
-  tiposContratoOptions = Object.values(TipoContrato).map(value => ({
-    label: this.titleCasePipe.transform(value),
-    value: value
-  }));
-
-  tiposModalidadesOptions = Object.values(ModalidadTrabajo).map(value => ({
-    label: this.titleCasePipe.transform(value),
-    value: value
-  }));
-
+  isReadOnly = signal<boolean>(false);
 
   jobPostingForm: FormGroup<OfertaEmployerFormGroup> = this.fb.group({
     puesto: ['', [Validators.required, Validators.pattern(this.formUtils.onlyCharactersRegex), Validators.maxLength(23)]],
@@ -57,16 +50,8 @@ export class JobPostingForm {
   private _patchFormEffect = effect(() => {
     const jobPost = this.jobPostInput();
     if (jobPost) {
-      this.jobPostingForm.patchValue({
-        puesto: jobPost.puesto,
-        sector: jobPost.sector,
-        descripcion: jobPost.descripcion ?? '',
-        ciudad: jobPost.ciudad,
-        horas: jobPost.horas,
-        salarioAnual: jobPost.salarioAnual,
-        modalidadTrabajo: jobPost.modalidadTrabajo,
-        tipoContrato: jobPost.tipoContrato,
-      });
+      this.isReadOnly.set(true);
+      patchFormFromJobPost(jobPost,this.jobPostingForm);
     }
   });
 
@@ -97,5 +82,15 @@ export class JobPostingForm {
   goBackEvent() {
     this.router.navigate(['employerSection', 'myJobPostings'])
   }
+
+  editFormEvent() {
+    if (this.isReadOnly()) {
+      patchFormFromJobPost(this.jobPostInput()!, this.jobPostingForm);
+      this.isReadOnly.set(false);
+    } 
+    else 
+      this.isReadOnly.set(true);
+  }
+
 
 }

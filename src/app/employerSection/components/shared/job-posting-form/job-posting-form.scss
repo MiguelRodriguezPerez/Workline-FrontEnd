@@ -16,9 +16,13 @@ section.job-posting-form-options {
   flex-direction: row;
   margin-bottom: -5px;
 
-  > a {
+  > a, > span {
     font-size: 22px;
     cursor: pointer;
+  }
+
+  > span {
+    margin-left: auto;
   }
 }
 
