@@ -1,0 +1,5 @@
+<ul class="candidate-grid">
+    @for (candidate of buscaDtoArr(); track $index) {
+        <candidate-card [candidate]="candidate"/>
+    }
+</ul>

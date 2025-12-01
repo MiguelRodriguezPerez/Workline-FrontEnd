@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { JobSearchFeed } from '../feed/job-search-feed';
 
 import { JobSearchNoResults } from "../../job-search-no-results/job-search-no-results";
@@ -13,7 +13,7 @@ import { JobSearchFeedLoading } from "../../../../../shared/components/wk-loadin
 })
 export class JobSearchFeedWrapper {
 
-  listaOfertas = input.required<Oferta[]>();
+  listaOfertas = input.required<OfertaDtoJobSearch[]>();
   isLoading = input.required<boolean>();
 
 }

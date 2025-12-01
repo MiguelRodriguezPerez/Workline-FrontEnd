@@ -1,5 +1,9 @@
 <navbar-wrapper/>
-    @if (jobPost.status() === 'resolved') {
-        <job-posting-form [jobPostInput]="jobPost.value()"/>
+    @if (jobPostResource.status() === 'resolved') {
+        <job-posting-form [jobPostInput]="jobPostResource.value()"/>
+
+        @if(jobPostResource.value().listaCandidatos.length > 0) {
+            <candidate-grid [buscaDtoArr]="jobPostResource.value().listaCandidatos" />
+        }
     }
 <wkFooter/>

@@ -4,7 +4,9 @@ import { environment } from '../../../environments/environment.development';
 import { catchError, Observable, throwError } from 'rxjs';
 import { PaginaJobRequest } from '../../jobSearch/objects/interfaces/PaginaJobRequest';
 import { PaginaJobResponse } from '../../jobSearch/objects/interfaces/PaginaJobResponse';
-import { Oferta } from '../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
+import { EmployerPageResponse } from '../interfaces/EmployerPageResponse';
+import { OfertaDtoEmployer } from '../../shared/objects/interfaces/oferta/OfertaDtoEmployer';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +18,8 @@ export class ContrataService {
   private backendUrl: string = environment.apiUrl;
   private baseContrataEndpoint: string = '/contrata/api';
 
-  getOfertasContrataPage(pageNum: number): Observable<PaginaJobResponse> {
-    return this.http.get<PaginaJobResponse>(`${this.backendUrl}${this.baseContrataEndpoint}/ofertas/pagina/${pageNum}`)
+  getOfertasContrataPage(pageNum: number): Observable<EmployerPageResponse> {
+    return this.http.get<EmployerPageResponse>(`${this.backendUrl}${this.baseContrataEndpoint}/ofertas/pagina/${pageNum}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error fetching user job postings');
@@ -26,8 +28,8 @@ export class ContrataService {
       )
   };
 
-  uploadNewOferta (oferta: Oferta): Observable<Oferta> {
-    return this.http.post<Oferta>(`${this.backendUrl}${this.baseContrataEndpoint}/nuevaOferta`, oferta)
+  uploadNewOferta(oferta: OfertaDtoEmployer): Observable<OfertaDtoEmployer> {
+    return this.http.post<OfertaDtoEmployer>(`${this.backendUrl}${this.baseContrataEndpoint}/nuevaOferta`, oferta)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error creating new job post');
@@ -36,8 +38,18 @@ export class ContrataService {
       )
   };
 
-  deleteOferta (ofertaId: number): Observable<Oferta> {
-    return this.http.delete<Oferta>(`${this.backendUrl}${this.baseContrataEndpoint}/borrarOferta/${ofertaId}`)
+  updateOferta(oferta: OfertaDtoEmployer): Observable<OfertaDtoEmployer> {
+    return this.http.put<OfertaDtoEmployer>(`${this.backendUrl}${this.baseContrataEndpoint}/editarOferta`, oferta)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error updating job post');
+          return throwError(() => error)
+        })
+      )
+  };
+
+  deleteOferta(ofertaId: number): Observable<OfertaDtoJobSearch> {
+    return this.http.delete<OfertaDtoJobSearch>(`${this.backendUrl}${this.baseContrataEndpoint}/borrarOferta/${ofertaId}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error deleting job post');

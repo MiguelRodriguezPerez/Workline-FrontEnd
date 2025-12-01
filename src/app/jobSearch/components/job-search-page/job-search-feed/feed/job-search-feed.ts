@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 
-import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { JobSearchCard } from '../job-search-card/job-search-card';
 
 @Component({
@@ -11,6 +11,6 @@ import { JobSearchCard } from '../job-search-card/job-search-card';
 })
 export class JobSearchFeed {
 
-  listaOfertas = input.required<Oferta[]>();
+  listaOfertas = input.required<OfertaDtoJobSearch[]>();
 
 }

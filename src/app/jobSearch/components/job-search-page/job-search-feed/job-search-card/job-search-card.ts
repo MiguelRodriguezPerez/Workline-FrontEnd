@@ -1,7 +1,7 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from "@angular/router";
-import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 
 @Component({
   selector: 'job-search-card',
@@ -11,6 +11,6 @@ import { Oferta } from '../../../../../shared/objects/interfaces/oferta/Oferta';
 })
 export class JobSearchCard {
 
-  oferta = input.required<Oferta>();
+  oferta = input.required<OfertaDtoJobSearch>();
 
 }

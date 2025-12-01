@@ -7,11 +7,12 @@ import { InputText } from "primeng/inputtext";
 import { Select } from "primeng/select";
 import { ModalidadTrabajo } from '../../../../jobSearch/objects/enums/ModalidadTrabajo';
 import { TipoContrato } from '../../../../jobSearch/objects/enums/TipoContrato';
-import { Oferta } from '../../../../shared/objects/interfaces/oferta/Oferta';
-import { OfertaFormGroup } from '../../../../shared/objects/interfaces/oferta/OfertaFormGroup';
+import { OfertaDtoJobSearch } from '../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
+import { OfertaFormGroup as OfertaEmployerFormGroup } from '../../../../shared/objects/interfaces/oferta/OfertaFormGroup';
 import { OfertaMapper } from '../../../../shared/objects/interfaces/oferta/OfertaMapper';
 import { ContrataService } from '../../../service/contrata.service';
 import { FormUtilsJobPosting } from '../../../utils/formUtilsJobPost';
+import { OfertaDtoEmployer } from '../../../../shared/objects/interfaces/oferta/OfertaDtoEmployer';
 
 
 @Component({
@@ -26,23 +27,23 @@ export class JobPostingForm {
   private fb = inject(NonNullableFormBuilder);
   private titleCasePipe = new TitleCasePipe();
   private contrataService = inject(ContrataService);
-  
+
   formUtils = FormUtilsJobPosting;
   router = inject(Router);
-  jobPostInput = input<Oferta>();
+  jobPostInput = input<OfertaDtoEmployer>();
 
   tiposContratoOptions = Object.values(TipoContrato).map(value => ({
     label: this.titleCasePipe.transform(value),
     value: value
   }));
-  
-  tiposModalidadesOptions = Object.values(ModalidadTrabajo).map(value => ({
-    label: this.titleCasePipe.transform(value), 
-    value: value                               
-  }));
-  
 
-  jobPostingForm: FormGroup<OfertaFormGroup> = this.fb.group({
+  tiposModalidadesOptions = Object.values(ModalidadTrabajo).map(value => ({
+    label: this.titleCasePipe.transform(value),
+    value: value
+  }));
+
+
+  jobPostingForm: FormGroup<OfertaEmployerFormGroup> = this.fb.group({
     puesto: ['', [Validators.required, Validators.pattern(this.formUtils.onlyCharactersRegex), Validators.maxLength(23)]],
     sector: ['', [Validators.required, Validators.pattern(this.formUtils.onlyCharactersRegex), Validators.maxLength(23)]],
     descripcion: ['', Validators.maxLength(500)],
@@ -53,17 +54,7 @@ export class JobPostingForm {
     tipoContrato: [null as TipoContrato | null, Validators.required],
   });
 
-  /* Si, toda la parafernalia de declarar un rxResource en el page y esta abominación de efecto es porque
-  aunque el observable declarado en el componente page se resuelva, la actualización de los valores en el input
-  no fuerza el cambio de valores en el formulario aunque los pongas por defecto. Ejemplo: 
-  
-  puesto: [this.jobPostInput()?.puesto || '', [Validators.required, Validators.pattern(this.formUtils.onlyCharactersRegex), Validators.maxLength(23)]]
-  Esto no provocaría que el campo puesto cambiará de valor por defecto */
-
   private _patchFormEffect = effect(() => {
-    /* Declaras un efecto que afecta al input. Cuando el input cambie (es decir, se resuelva el observable
-    con el valor final) actualizas manualmente los valores del input. Pináculo de la optimización */
-
     const jobPost = this.jobPostInput();
     if (jobPost) {
       this.jobPostingForm.patchValue({
@@ -79,21 +70,32 @@ export class JobPostingForm {
     }
   });
 
-  submitForm () {
+  submitForm() {
     this.jobPostingForm.markAllAsTouched();
 
-    if (this.jobPostingForm.valid) {
-      this.contrataService.uploadNewOferta(
-        this.ofertaMapper.mapNewOfertaFormGroupToOferta(this.jobPostingForm)
-      ).subscribe({
-        next: () => this.router.navigate(['employerSection','myJobPostings'])
-      })
+    if (!this.jobPostingForm.valid) return;
+
+    if (this.jobPostInput()) {
+        this.contrataService.updateOferta(
+          this.ofertaMapper.mapOfertaFormGroupToOferta(this.jobPostingForm,this.jobPostInput()!)
+        )
+        .subscribe({
+          next: () => this.router.navigate(['employerSection', 'myJobPostings'])
+        })
+    }
+    else {
+        this.contrataService.uploadNewOferta (
+          this.ofertaMapper.mapNewOfertaFormGroupToOferta(this.jobPostingForm)
+        )
+        .subscribe({
+          next: () => this.router.navigate(['employerSection', 'myJobPostings'])
+        })
     }
 
   }
 
-  goBackEvent () {
-    this.router.navigate(['employerSection','myJobPostings'])
+  goBackEvent() {
+    this.router.navigate(['employerSection', 'myJobPostings'])
   }
 
 }

@@ -2,7 +2,7 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { BusquedaOferta, BusquedaOfertaFormGroup } from '../interfaces/BusquedaOferta';
 import { ModalidadTrabajo } from '../enums/ModalidadTrabajo';
 import { PaginaJobResponse } from '../interfaces/PaginaJobResponse';
-import { Oferta } from '../../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { Params } from '@angular/router';
 import { TipoContrato } from '../enums/TipoContrato';
 export class BusquedaOfertaMapper {
@@ -27,7 +27,7 @@ export class BusquedaOfertaMapper {
         return resultado;
     }
 
-    static mapPaginaJobResponseToOfertaArr(response: PaginaJobResponse): Oferta[] {
+    static mapPaginaJobResponseToOfertaArr(response: PaginaJobResponse): OfertaDtoJobSearch[] {
         return response.content;
     }
 

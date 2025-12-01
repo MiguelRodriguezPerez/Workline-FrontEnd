@@ -1,19 +1,21 @@
 import { inject, Injectable, linkedSignal, signal } from "@angular/core";
 import { rxResource } from "@angular/core/rxjs-interop";
 import { PaginaJobResponse } from "../../jobSearch/objects/interfaces/PaginaJobResponse";
-import { Oferta } from '../../shared/objects/interfaces/oferta/Oferta';
+import { OfertaDtoJobSearch } from '../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { ContrataService } from "../service/contrata.service";
+import { OfertaDtoEmployer } from "../../shared/objects/interfaces/oferta/OfertaDtoEmployer";
+import { EmployerPageResponse } from "../interfaces/EmployerPageResponse";
 
 @Injectable({ providedIn: 'root' })
 export class JobPostingContextService {
     private contrataService = inject(ContrataService);
 
     currentPage = signal<number>(0);
-    currentJobPostingArr = linkedSignal<Oferta[]>(() =>
+    currentJobPostingArr = linkedSignal<OfertaDtoEmployer[]>(() =>
         this.currentUserJobPostingsResource.value()?.content ?? []
     );
 
-    currentUserJobPostingsResource = rxResource<PaginaJobResponse, number>({
+    currentUserJobPostingsResource = rxResource<EmployerPageResponse, number>({
         params: () => this.currentPage(),
         stream: ({ params }) => {
             return this.contrataService.getOfertasContrataPage(params)

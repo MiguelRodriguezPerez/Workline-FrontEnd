@@ -1,51 +1,7 @@
 @use '../../../../../general/generalStyles/variables' as variables;
 @use '../../../../../general/generalStyles/fonts' as fonts;
+@use '../../../../styles/employer-card.scss';
 
 :host {
   display: block;
-  margin-top: 25px;
-  cursor: pointer;
 }
-
-li.user-job-posting-li > header {
-  background-color: variables.$green-workline;
-  border-radius: 8px 8px 0px 0px;
-  padding: 15px;
-  /* ¿Sabes lo del texto del puesto que si es más largo de la cuenta redimensiona la cabecera
-  del card y arrastra al resto? Esta es la única solución que se me ocurrio */
-  height: 70px;
-
-  display: grid;
-  grid-template-columns: 1fr 14% auto;
-  align-items: center;
-  gap: 14px;
-
-  > h2 {
-    font-size: 24px;
-    color: variables.$white-font;
-    width: fit-content;
-    height: fit-content;
-
-    margin: auto 0;
-  }
-
-  > span:last-child {
-    margin-top: -5px;
-    cursor: pointer;
-  }
-}
-
-li.user-job-posting-li > ul {
-
-  background-color: variables.$white-font;
-  padding: 10px 18px;
-  border-radius: 0px 0px 8px 8px;
-
-  > li {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    font-size: 0.9em;
-  }
-} 

@@ -1,7 +1,8 @@
-import { OfertaDtoJobSearch } from "../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch";
+import { OfertaDtoEmployer } from "../../shared/objects/interfaces/oferta/OfertaDtoEmployer";
 
-export interface PaginaJobResponse {
-    content: OfertaDtoJobSearch[];
+
+export interface EmployerPageResponse {
+    content: OfertaDtoEmployer[];
     pageable: Pageable;
     last: boolean;
     totalPages: number;

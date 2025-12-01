@@ -1,0 +1,22 @@
+@use '../../../../general/generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+ul.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 30px;
+
+  margin-bottom: 30px;
+
+  @include mixins.change-layout(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mixins.change-layout(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
