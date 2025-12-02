@@ -1,0 +1,17 @@
+@if (this.conocimientos()) {
+  <h1>Conocimientos</h1>
+  <ul class="candidate-entity-grid">
+    @for (conocimiento of this.conocimientos()!; track conocimiento.id) {
+      <conocimiento-card [conocimientoInput]="conocimiento" />
+    }
+  </ul>
+}
+@else if (this.experiencias()) {
+  <h1>Experiencias</h1>  
+  <ul class="candidate-entity-grid">
+    @for (experiencia of this.experiencias()!; track experiencia.id) {
+      <experiencia-card [experienciaInput]="experiencia" />
+    }
+  </ul>
+}
+

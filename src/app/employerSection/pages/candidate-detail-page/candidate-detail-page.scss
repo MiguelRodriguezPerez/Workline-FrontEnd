@@ -1,3 +1,24 @@
+@use '../../../general/generalStyles/mixins' as mixins;
+
 :host {
   display: block;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 35px;
+  margin-bottom: 25px;
+
+  @include mixins.change-layout(tablet) {
+      grid-template-columns: 1fr;
+  }
+
+  > candidate-info-card:first-child {
+    grid-column: 1/-1;
+
+    @include mixins.change-layout(tablet) {
+      grid-column: 1/2;
+    }
+  }
 }

@@ -6,11 +6,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { BuscaService } from '../../../shared/services/busca.service';
 import { BuscaDto } from '../../../shared/objects/interfaces/busca/BuscaDto';
+import { CandidateEntityGrid } from "../../components/candidate-detail-page/candidate-entity-grid/candidate-entity-grid";
 
 
 @Component({
   selector: 'candidate-detail-page',
-  imports: [NavbarWrapper, Footer, CandidateInfoCard],
+  imports: [NavbarWrapper, Footer, CandidateInfoCard, CandidateEntityGrid],
   templateUrl: './candidate-detail-page.html',
   styleUrl: './candidate-detail-page.scss',
 })
