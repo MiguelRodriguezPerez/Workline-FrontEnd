@@ -5,7 +5,7 @@
     </div>
 }
 @else {
-    <div class="login-container" routerLink="/login">
+    <div class="login-container" routerLink="/">
         <span>{{ user()!.username }}</span>
         <span class="pi pi-sign-out" (click)="onClickLogout()"></span>
     </div>

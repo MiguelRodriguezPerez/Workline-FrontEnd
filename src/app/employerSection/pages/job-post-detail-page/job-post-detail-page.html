@@ -1,0 +1,10 @@
+<navbar-wrapper/>
+    @if (jobPostResource.status() === 'resolved') {
+        <job-posting-form [jobPostInput]="jobPostResource.value()"/>
+
+        @if(jobPostResource.value().listaCandidatos.length > 0) {
+            <candidate-grid [buscaDtoArr]="jobPostResource.value().listaCandidatos" />
+        }
+    }
+    <router-outlet/>
+<wkFooter/>

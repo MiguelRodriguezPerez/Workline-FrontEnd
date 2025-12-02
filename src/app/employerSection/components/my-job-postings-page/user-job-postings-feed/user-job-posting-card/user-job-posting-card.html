@@ -1,0 +1,20 @@
+<li class="employer-card" (click)="redirectJobDetail()">
+    <header>
+        <h2>{{ jobPosting().puesto }}</h2>
+        <job-posting-candidate-counter [numeroCandidatos]="jobPosting().listaCandidatos.length"/>
+        <span  
+            (click)="deleteJobPostEvent($event)"
+            class="pi pi-trash" 
+            style="color: white; font-size: 18px;"
+        ></span>
+    </header>
+    <ul>
+        @for (value of jobCardValues(); track $index) {
+
+            <li>
+                <span class="pi pi-minus" style="font-size: 12px;"></span>
+                <span>{{ value }}</span>
+            </li>
+        }
+    </ul>
+</li>

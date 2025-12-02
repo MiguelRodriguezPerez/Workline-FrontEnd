@@ -1,0 +1,19 @@
+<li class="employer-card candidate-card" [routerLink]="['candidateDetail',candidate().id]" [queryParamsHandling]="'preserve'">
+    <header>
+        <h2>{{ candidate().nombre }}</h2>
+    </header>
+    <ul>
+        <li>
+            <span class="pi pi-minus" style="font-size: 12px;"></span>
+            <span>{{ candidate().email }}</span>
+        </li>
+        <li>
+            <span class="pi pi-minus" style="font-size: 12px;"></span>
+            <span>{{ candidate().telefono }}</span>
+        </li>
+        <li>
+            <span class="pi pi-minus" style="font-size: 12px;"></span>
+            <span>{{ candidate().ciudad }}</span>
+        </li>
+    </ul>
+</li>

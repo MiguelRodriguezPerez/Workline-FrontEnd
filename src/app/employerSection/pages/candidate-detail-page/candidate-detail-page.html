@@ -1,0 +1,9 @@
+<navbar-wrapper/>
+    @if (buscaDto()) {
+        <main>
+            <candidate-info-card [buscaDto]="buscaDto()!"/>
+            <candidate-entity-grid [entityArr]="buscaDto()!.listaConocimientos" />
+            <candidate-entity-grid [entityArr]="buscaDto()!.listaExperiencias" />
+        </main>
+    }
+<wkFooter/>

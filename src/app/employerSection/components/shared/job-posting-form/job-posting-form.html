@@ -1,0 +1,150 @@
+<form [formGroup]="jobPostingForm" (ngSubmit)="submitForm()">
+    <section class="job-posting-form-options">
+        <a (click)="goBackEvent()">Volver atrás</a>
+        @if(this.jobPostInput()) {
+            <span id="spanReadOnly" (click)="editFormEvent()">
+                {{ isReadOnly() ? 'Editar oferta' : 'Cancelar' }}
+            </span>
+        }
+    </section>
+
+    <section class="cloud first-form-section">
+        <div>
+            <label for="puesto">Puesto</label>
+            <input 
+                pInputText
+                id="puesto"
+                formControlName="puesto"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'puesto') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'puesto')}}
+                </span>
+            }
+
+            <label for="horas">Horas</label>
+            <input 
+                pInputText 
+                id="horas" 
+                type="number" 
+                name="horas" 
+                formControlName="horas"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'horas') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'horas')}}
+                </span>
+            }
+
+            <label for="sector">Sector</label>
+            <input 
+                pInputText 
+                id="sector" 
+                name="sector" 
+                formControlName="sector"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'sector') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'sector')}}
+                </span>
+            }
+
+            <label for="salario">Salario anual</label>
+            <input 
+                pInputText 
+                id="salario" 
+                type="number" 
+                name="salario" 
+                formControlName="salarioAnual"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'salarioAnual') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'horas')}}
+                </span>
+            }
+        </div>
+
+        <div>
+            <label for="modalidad">Modalidad</label>
+            <p-select 
+                [options]="tiposModalidadesOptions"
+                placeholder="Elige una opción"
+                formControlName="modalidadTrabajo"
+                name="modalidadTrabajo"
+                id="modalidad"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'modalidadTrabajo') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'modalidadTrabajo')}}
+                </span>
+            }
+
+            <label for="tipoContrato">Tipo de Contrato</label>
+            <p-select 
+                [options]="tiposContratoOptions"
+                placeholder="Elige una opción"
+                formControlName="tipoContrato"
+                name="tipoContrato"
+                id="tipoContrato"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if (formUtils.isValidField(jobPostingForm, 'tipoContrato') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'tipoContrato')}}
+                </span>
+            }
+
+            <label for="ciudad">Ciudad</label>
+            <input 
+                pInputText 
+                id="ciudad" 
+                type="text" 
+                name="ciudad" 
+                formControlName="ciudad"
+                [readonly]="isReadOnly()"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if ( formUtils.isValidField(jobPostingForm, 'ciudad') ) {
+                <span class="form-text text-danger">
+                    {{ formUtils.getFieldError(jobPostingForm,'ciudad')}}
+                </span>
+            }
+
+            @if (!isReadOnly()) {
+                <p-button class="green-button" label="Publicar Oferta" type="submit"/>
+            }
+            @else {
+                    <span style="color: transparent">_</span>
+                    <span style="color: transparent">_</span>
+            }
+        </div>
+    </section>
+
+    <section class="cloud second-form-section">
+        <label for="ciudad">Ciudad</label>
+        <textarea 
+            name="descripcion" 
+            id="descripcion" 
+            formControlName="descripcion"
+            [readonly]="isReadOnly()"
+            [ngClass]="{'read-only' : isReadOnly() }"
+        ></textarea>
+
+        @if ( formUtils.isValidField(jobPostingForm, 'descripcion') ) {
+            <span class="form-text text-danger">
+                {{ formUtils.getFieldError(jobPostingForm,'descripcion')}}
+            </span>
+        }
+    </section>
+</form>

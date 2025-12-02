@@ -1,0 +1,20 @@
+<navbar-wrapper/>  
+    @if (context.currentUserJobPostingsResource.isLoading()) {
+        <wk-loading/>
+    }
+    @else if (context.currentUserJobPostingsResource.value()) {
+        <job-postings-counter [totalJobPostings]="context.currentUserJobPostingsResource.value()?.totalElements ?? 0"/>
+        <new-job-posting-button/>
+        <user-job-postings-feed [jobPostingsList]="context.currentJobPostingArr()"/>
+        <wk-paginator
+            [paginaActual]="context.currentPage()"
+            [numeroPaginas]="context.currentUserJobPostingsResource.value()?.totalPages ?? 0"
+            [numeroOfertasPorPagina]="8"
+            [numeroResultados]="context.currentUserJobPostingsResource.value()?.totalElements ?? 0"
+            (paginacionOutput)="context.changePage($event)"
+        />
+    }
+    @else {
+        <no-job-postings/>
+    }  
+<wkFooter/>

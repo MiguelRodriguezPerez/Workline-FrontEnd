@@ -5,53 +5,34 @@
 form#job-search-form {
   display: flex;
   flex-direction: column;
-  padding: 15px 20px 20px;
+  padding: 15px 20px 12px;
 
-  // Primera fila de elementos
-  div:first-child {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-bottom: 15px;
-
-    // Span dentro de la primera fila
-    span:first-child {
-      cursor: pointer;
-      font-size: 0.75em;
-      margin-right: auto;
-    }
-  }
-
-  // Última fila: botones
-  div:last-child > button {
-    display: block;
-    padding: 5px 20px;
-    margin: 0 auto;
-  }
-
-  // Estilo de etiquetas
   label {
     font-size: 0.83em;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
   }
 
-  // Inputs y selects generales
-  input[type="text"],
-  input[type="number"],
-  p-select {
-    margin-bottom: 15px;
+  input, p-select {
+    margin-bottom: 10px;
   }
+}
 
-  // Botón de envío
-  input[type="submit"] {
-    width: fit-content;
-    padding: 5px 30px;
-    margin: 0 auto;
-  }
+form#job-search-form > div:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
 
-  // Dropdowns específicos del formulario
-  .dropdown-form {
-    padding: 0;
+  span:first-child {
+    cursor: pointer;
+    font-size: 0.75em;
+    margin-right: auto;
   }
+}
+
+
+form#job-search-form > p-button {
+  margin: 10px 0px;
+  padding: 0px 10%;
 }

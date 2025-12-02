@@ -1,0 +1,54 @@
+// p-select > span.p-placeholder.p-select-label{
+//     font-size: 19px;
+// }
+
+p-select.p-component.p-inputwrapper.p-select{
+    border: solid 1px black;
+    background-color: white;
+}
+
+p-select.p-component.p-inputwrapper.p-select.read-only{
+    border: 0px;
+    background-color: white;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    height: fit-content;
+
+    div.p-select-dropdown {
+        display: none;
+    }
+
+    span.p-select-label {
+        padding-left: 0px;
+        padding-top: 0px;
+        font-size: 1em;
+    }
+}
+
+p-select div.p-select-list-container {
+    background-color: white;
+
+}
+
+li.p-ripple.p-select-option {
+    background-color: white;
+
+    &.p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus,
+    &.p-select-option.p-select-option-selected.p-focus {
+        background-color: rgba(84, 155, 225, 0.404);
+    }
+
+
+}
+
+span.ng-star-inserted {
+    font-size: 19px;
+    color: black;
+}
+
+span.p-select-label {
+    color: black;
+    font-size: 17px;
+}

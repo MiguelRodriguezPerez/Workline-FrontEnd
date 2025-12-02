@@ -1,0 +1,51 @@
+@use '../../fonts' as fonts;
+
+
+input.p-inputtext.p-component,
+input:-internal-autofill-selected {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid black;
+    color: black;
+    padding-left: 0;
+    padding-bottom: 2px;
+    padding-top: 0;
+    font-size: 18px;
+    border-radius: 0;
+}
+
+input.p-inputtext.p-component.read-only,
+input:-internal-autofill-selected.read-only {
+    border-bottom: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+input.p-inputtext:-webkit-autofill,
+input.p-inputtext:-webkit-autofill:hover,
+input.p-inputtext:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    background-color: transparent !important;
+    color: black !important;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+input.p-inputtext:-webkit-autofill::first-line {
+    color: black !important;
+    font-size: 18px;
+}
+
+
+input.p-inputtext:enabled:focus {
+    border-color: black;
+}
+
+span.mensaje-error {
+    font-size: 20px;
+    color: red;
+}
+

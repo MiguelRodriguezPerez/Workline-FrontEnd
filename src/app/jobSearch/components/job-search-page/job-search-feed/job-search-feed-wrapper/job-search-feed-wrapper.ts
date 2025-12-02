@@ -1,18 +1,19 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { JobSearchFeed } from '../feed/job-search-feed';
-import { JobSearchFeedLoading } from "../job-search-feed-loading/job-search-feed-loading";
+
 import { JobSearchNoResults } from "../../job-search-no-results/job-search-no-results";
+import { JobSearchFeedLoading } from "../../../../../shared/components/wk-loading/wk-loading";
 
 @Component({
   selector: 'job-search-feed-wrapper',
-  imports: [JobSearchFeed, JobSearchFeedLoading, JobSearchNoResults],
+  imports: [JobSearchFeed, JobSearchNoResults, JobSearchFeedLoading],
   templateUrl: './job-search-feed-wrapper.html',
   styleUrl: './job-search-feed-wrapper.scss',
 })
-export class JobSearchFeedWrapper { 
+export class JobSearchFeedWrapper {
 
-  listaOfertas = input.required<Oferta[]>();
+  listaOfertas = input.required<OfertaDtoJobSearch[]>();
   isLoading = input.required<boolean>();
 
 }

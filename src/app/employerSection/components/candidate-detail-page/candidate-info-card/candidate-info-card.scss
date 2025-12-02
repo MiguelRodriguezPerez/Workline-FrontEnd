@@ -1,0 +1,11 @@
+@use '../../../../general/generalStyles/components/entity-card.scss';
+
+:host {
+  display: block;
+}
+
+section.entity-card.cloud > div:last-child > span {
+  text-align: left;
+}
+
+

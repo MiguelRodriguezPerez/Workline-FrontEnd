@@ -5,12 +5,14 @@
 div.login-container {
   height: 100%;
   cursor: pointer;
+  pointer-events: auto;
 
   display: flex;
   justify-content: flex-end;
+  align-content: center;
   align-items: center;
   gap: 20px;
-  padding-right: 18px;
+  padding-right: 30px;
   
   span {
     font-size: 1.35rem;

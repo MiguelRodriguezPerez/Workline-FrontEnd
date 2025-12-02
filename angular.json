@@ -30,7 +30,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/generalStyles/commonClasses.scss"
+              "src/app/general/generalStyles/commonClasses.scss"
             ]
           },
           "configurations": {

@@ -1,7 +1,7 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input } from '@angular/core';
 
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { JobSearchCard } from '../job-search-card/job-search-card';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
 
 @Component({
   selector: 'job-search-feed',
@@ -9,8 +9,8 @@ import { Oferta } from '../../../../objects/interfaces/Oferta';
   templateUrl: './job-search-feed.html',
   styleUrl: './job-search-feed.scss',
 })
-export class JobSearchFeed { 
+export class JobSearchFeed {
 
-  listaOfertas = input.required<Oferta[]>();
-  
+  listaOfertas = input.required<OfertaDtoJobSearch[]>();
+
 }

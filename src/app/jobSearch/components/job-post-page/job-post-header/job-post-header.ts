@@ -1,14 +1,15 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../objects/interfaces/Oferta';
+import { OfertaDtoJobSearch } from '../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'job-post-header',
-  imports: [],
+  imports: [Button],
   templateUrl: './job-post-header.html',
   styleUrl: './job-post-header.scss',
 })
-export class JobPostHeader { 
-  
-  jobPost = input.required<Oferta>();
-  
+export class JobPostHeader {
+
+  jobPost = input.required<OfertaDtoJobSearch>();
+
 }

@@ -32,3 +32,15 @@ export const failedRequestLogout = createAction(
     '[User Logged API] Failed logout request',
     props<{ content: Error }>()
 );
+
+export const checkUserCredentials = createAction(
+    '[User Logged API] Checking user credentials'
+);
+
+export const checkUserCredentialsSucceded = createAction(
+    '[User Logged API] User credentials remain valid'
+);
+
+export const checkUserCredentialsFailed = createAction(
+    '[User Logged API] User credentials are not valid anymore'
+);

@@ -1,0 +1,28 @@
+p-button.green-button {
+  width: fit-content;
+}
+
+p-button.green-button.w-100 {
+  width: 100%;
+
+  > button.p-button,
+  > button.p-button:not(:disabled):hover {
+    width: 100%;
+  }
+}
+
+a.p-button.green-button.p-component,
+a.p-button.p-component:not(:disabled):hover,
+p-button.green-button > button.p-button,
+p-button.green-button > button.p-button:not(:disabled):hover {
+  background-color: green;
+  border-color: green;
+  padding: 5px 15px;
+  border-radius: 8px;
+
+  > span {
+    color: white;
+    font-size: 21px;
+  }
+}
+

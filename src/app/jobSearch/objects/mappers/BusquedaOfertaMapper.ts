@@ -2,13 +2,13 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { BusquedaOferta, BusquedaOfertaFormGroup } from '../interfaces/BusquedaOferta';
 import { ModalidadTrabajo } from '../enums/ModalidadTrabajo';
 import { PaginaJobResponse } from '../interfaces/PaginaJobResponse';
-import { Oferta } from '../interfaces/Oferta';
+import { OfertaDtoJobSearch } from '../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { Params } from '@angular/router';
 import { TipoContrato } from '../enums/TipoContrato';
 export class BusquedaOfertaMapper {
 
     /* Recibes un objeto con varios FormControl */
-    static mapBusquedaOfertaFromForm(formGroup: FormGroup<BusquedaOfertaFormGroup>): BusquedaOferta { 
+    static mapBusquedaOfertaFromForm(formGroup: FormGroup<BusquedaOfertaFormGroup>): BusquedaOferta {
         /* En el formulario de búsqueda no encontre la manera de hacer que el input de salarioMinimoAnual
         al tener por valor 0 se mostrara vacío (No se pueden aplicar pipes sobre el valor de un input reactivo)
 
@@ -27,13 +27,13 @@ export class BusquedaOfertaMapper {
         return resultado;
     }
 
-    static mapPaginaJobResponseToOfertaArr(response: PaginaJobResponse): Oferta[] {
+    static mapPaginaJobResponseToOfertaArr(response: PaginaJobResponse): OfertaDtoJobSearch[] {
         return response.content;
     }
 
     static mapQueryParamsToBusquedaOferta(queryParams: Params): BusquedaOferta {
         /* NOTA: Estas obteniendo los enums usando sus KEYS y no sus values */
-    
+
         const resultado: BusquedaOferta = {
             puesto: queryParams['puesto'] ?? '',
             /* Si, este es todo el contorsionismo que hay que hacer para convertir un valor dinámico en enum */

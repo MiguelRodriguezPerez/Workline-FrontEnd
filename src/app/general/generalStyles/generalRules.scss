@@ -1,0 +1,40 @@
+@use './fonts' as fonts;
+@use './variables' as variables;
+
+ul,li, p {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    color: variables.$black-nav;
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+  // line-height: 10px;
+  line-height: 0.85em;
+  margin: 0px;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+
+
+input, textarea {
+  font-family: fonts.$font;
+}
+
+/* Impide que en los input type number muestre las flechas*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

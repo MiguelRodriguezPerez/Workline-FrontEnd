@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, lastValueFrom, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
 import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedContextInterface';
@@ -17,9 +17,6 @@ export class LoginService {
   private http = inject(HttpClient);
 
   uploadLogin(loginRequest: LoginRequest): Observable<LoggedUserContext> {
-    console.log('ASCO DE VIDA');
-    
-
     if (!loginRequest) return of();
 
     return this.http.post<LoggedUserContext>(`${this.backendBaseUrl}${this.apiUrl}/login`,
@@ -42,5 +39,10 @@ export class LoginService {
         })
       )
   }
+
+  areCredentialsValid(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.backendBaseUrl}${this.apiUrl}/areCredentialsValid`);
+  }
+
 
 }

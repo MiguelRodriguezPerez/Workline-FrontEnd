@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Oferta } from '../../../../objects/interfaces/Oferta';
+import { OfertaDtoJobSearch } from '../../../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { JobPostInfo } from "../job-post-info/job-post-info";
 import { JobPostDescription } from "../job-post-description/job-post-description";
 
@@ -11,6 +11,6 @@ import { JobPostDescription } from "../job-post-description/job-post-description
 })
 export class JobPostBody {
 
-  jobPost = input.required<Oferta>();
+  jobPost = input.required<OfertaDtoJobSearch>();
 
 }

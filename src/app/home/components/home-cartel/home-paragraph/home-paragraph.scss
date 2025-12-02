@@ -1,5 +1,5 @@
-@use '../../../../generalStyles/fonts' as fonts;
-@use '../../../../generalStyles/mixins' as mixins;
+@use '../../../../general/generalStyles/fonts' as fonts;
+@use '../../../../general/generalStyles/mixins' as mixins;
 
 :host {
   display: flex;
@@ -29,11 +29,15 @@
     }
   }
 
-  p-button {
-    width: 300px;
-    
-    button {
-      padding-top: 15px;
-    }
+}
+
+/*Rompe la encapsulación del componente de primeng
+No hay una manera no deprecada de lograrlo*/
+:host > p-button::ng-deep > button, 
+:host > p-button::ng-deep > button.p-button:not(:disabled):hover  {
+  padding: 10px 15px;
+
+  > span {
+    font-size: 23px;
   }
 }
