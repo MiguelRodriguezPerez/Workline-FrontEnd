@@ -4,6 +4,7 @@ import { ExperienciaDto } from "./ExperienciaDto";
 
 
 export interface BuscaDto {
+  id: number;
   nombre: string;
   email: string;
   ciudad: string;

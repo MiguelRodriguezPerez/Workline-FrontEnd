@@ -1,4 +1,4 @@
-<li class="employer-card candidate-card" (click)="redirectEvent()">
+<li class="employer-card candidate-card" [routerLink]="['candidateDetail',candidate().id]" [queryParamsHandling]="'preserve'">
     <header>
         <h2>{{ candidate().nombre }}</h2>
     </header>

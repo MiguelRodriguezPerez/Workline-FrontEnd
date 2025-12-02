@@ -1,5 +1,8 @@
-<ul class="candidate-grid">
-    @for (candidate of buscaDtoArr(); track $index) {
-        <candidate-card [candidate]="candidate"/>
-    }
-</ul>
+<section>
+    <h1>Lista candidatos</h1>
+    <ul class="candidate-grid">
+        @for (candidate of buscaDtoArr(); track $index) {
+            <candidate-card [candidate]="candidate"/>
+        }
+    </ul>
+</section>

@@ -4,6 +4,13 @@
   display: block;
 }
 
+h1 {
+  font-size: 1.2em;
+  margin-top: 15px;
+  border-bottom: solid 1px black;
+  padding-bottom: 8px;
+}
+
 ul.candidate-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
