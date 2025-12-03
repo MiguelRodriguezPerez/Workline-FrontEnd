@@ -1,0 +1,53 @@
+@use '../mixins' as mixins;
+
+.double-column-form-options {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  > a, > span {
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  > span {
+    margin-left: auto;
+  }
+}
+
+.double-column-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  padding: 0px 25px 20px;
+
+  @include mixins.change-layout(tablet) {
+    grid-template-columns: 1fr;
+    gap: 0px;
+  }
+}
+
+.double-column-form-section {
+  margin: 0px 50px;
+
+  @include mixins.change-layout(tablet) {
+    margin: 0px;
+  }
+}
+
+.double-column-form-section > div {
+  display: flex;
+  flex-direction: column;
+
+  > label {
+    margin-top: 15px;
+  }
+}
+
+
+
+.text-danger {
+  font-size: 18px;
+  color: red;
+  height: fit-content;
+  margin-bottom: -10px;
+}

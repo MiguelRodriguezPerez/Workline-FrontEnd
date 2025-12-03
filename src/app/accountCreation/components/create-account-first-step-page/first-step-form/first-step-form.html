@@ -1,0 +1,62 @@
+<div class="double-column-form-options">
+    <a>Volver atrás</a>
+    <span>Volver al inicio</span>
+</div>
+<form class="cloud double-column-form">
+    <section class="double-column-form-section">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input 
+                pInputText
+                id="nombre"
+            />
+            <span class="form-text text-danger">Error</span>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input 
+                pInputText
+                id="email"
+            />
+            <span class="form-text text-danger">Error</span>
+        </div>
+        <div>
+            <label for="tipoUsuario">¿Para que vas a usar la cuenta?</label>
+            <p-select
+                [options]="userTypeOptions"
+                placeholder="Elige una opción"
+                id="tipoUsuario"
+            />
+        </div>
+    </section>
+    <section class="double-column-form-section">
+        <div>
+            <label for="ciudad">Ciudad</label>
+            <input 
+                pInputText
+                id="ciudad"
+            />
+            <span class="form-text text-danger">Error</span>
+        </div>
+        <div>
+            <label for="teléfono">Teléfono</label>
+            <input 
+                pInputText
+                id="teléfono"
+            />
+            <span class="form-text text-danger">Error</span>
+        </div>
+        <div>
+            <label for="password">Contraseña</label>
+            <input 
+                pInputText
+                id="password"
+            />
+            <span class="form-text text-danger">Error</span>
+        </div>
+        <div>
+            <p-button class="green-button" label="Crear usuario"/>
+        </div>
+    </section>
+</form>
+
