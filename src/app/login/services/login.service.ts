@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
-import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedContextInterface';
+import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedUserContextInterface';
 import { LoginRequest } from '../interfaces/LoginRequestFormGroup';
 
 @Injectable({

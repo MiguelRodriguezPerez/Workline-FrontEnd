@@ -13,6 +13,8 @@ export class GlobalFormUtils {
     private static getTextError (errors: ValidationErrors): string | null {
         for (const key of Object.keys(errors)) {
             switch (key) {
+                case 'usernameAlreadyTaken':
+                    return 'Este nombre de usuario ya existe';
                 case 'required':
                    return 'Este campo es requerido';
                 case 'email':

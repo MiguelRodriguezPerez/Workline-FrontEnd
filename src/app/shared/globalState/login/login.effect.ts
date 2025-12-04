@@ -36,7 +36,6 @@ export class LoginEffects {
         this.loginService.uploadLogout().pipe(
           map(() => succededLogoutRequest()),
           catchError(error => of(failedRequestLogout({ content: error }))),
-          tap(() => this.router.navigate(['/']))
         )
       )
     )

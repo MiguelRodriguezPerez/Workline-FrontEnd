@@ -1,3 +1,4 @@
+
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Button } from "primeng/button";
@@ -7,8 +8,10 @@ import { GlobalFormUtils } from '../../../../shared/globalFormUtils';
 import { Rol } from '../../../../shared/objects/enums/Rol';
 import { NuevoUsuarioFormGroup } from '../../../interfaces/NuevoUsuarioFormGroup';
 import { NuevoUsuarioMapper } from '../../../interfaces/NuevoUsuarioMapper';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { NewAccountService } from '../../../services/new-account.service';
+import { Store } from '@ngrx/store';
+import { newUserCreated } from '../../../../shared/globalState/login/login.action';
 
 @Component({
   selector: 'first-step-form',
@@ -18,10 +21,13 @@ import { NewAccountService } from '../../../services/new-account.service';
 })
 export class FirstStepForm {
 
-  private newAccountService = inject(NewAccountService);
   private fb = inject(NonNullableFormBuilder);
+  private newAccountService = inject(NewAccountService);
+  private nuevoUsuarioMapper = NuevoUsuarioMapper;
+  private store = inject(Store);
+  private router = inject(Router);
+
   globalFormUtils = GlobalFormUtils;
-  nuevoUsuarioMapper = NuevoUsuarioMapper;
 
   userTypeOptions = [
     { label: 'Contratar personal', value: Rol.CONTRATA },
@@ -31,8 +37,8 @@ export class FirstStepForm {
   // 1234kasdddddddjfA#
 
   newUserForm: FormGroup<NuevoUsuarioFormGroup> = this.fb.group({
-    nombre: ['', [Validators.required, Validators.maxLength(25)]],
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(35)], [this.newAccountService.isUsernameRepeated()]],
+    nombre: ['', [Validators.required, Validators.maxLength(25)], [this.newAccountService.isUsernameRepeated()]],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(35)]],
     telefono: ['', [Validators.required, Validators.pattern(this.globalFormUtils.phoneRegex), Validators.minLength(9), Validators.maxLength(9)]],
     ciudad: ['', [Validators.required, Validators.maxLength(25)]],
     password: ['', [Validators.required, Validators.pattern(this.globalFormUtils.passwordRegex)]],
@@ -41,14 +47,23 @@ export class FirstStepForm {
 
   submitEvent() {
     this.newUserForm.markAllAsTouched();
-    if (this.newUserForm.valid) {
-      console.log(
-        this.nuevoUsuarioMapper.mapNuevoUsuarioFormGroupToDto(
-          this.newUserForm
-        )
-      );
 
-    }
+    if (!this.newUserForm.valid) return;
 
+    this.newAccountService.createUserRequest(
+      this.nuevoUsuarioMapper.mapNuevoUsuarioFormGroupToDto(this.newUserForm)
+    ).subscribe({
+      next: (response) => {
+        this.store.dispatch(
+          newUserCreated({
+            content: response})
+        );
+
+        if (response.rol === Rol.BUSCA) this.router.navigate(['/accountCreation/secondStep']);
+      },
+      error: (err) => {
+        console.error('Error en la creación del usuario:', err);
+      }
+    });
   }
 }
