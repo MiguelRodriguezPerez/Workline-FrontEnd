@@ -4,7 +4,6 @@
 :host {
   display: block;
   padding: 0px 100px;
-  margin-top: 20px;
 
   @include mixins.change-layout(phone) {
     padding: 0px;
