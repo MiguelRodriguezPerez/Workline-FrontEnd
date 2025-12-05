@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GlobalFormUtils } from '../../../globalFormUtils';
 import { Button } from 'primeng/button';
-import { ExperienciaForm } from '../../../objects/interfaces/busca/ExperienciaDto';
+import { ExperienciaDto, ExperienciaForm } from '../../../objects/interfaces/busca/ExperienciaDto';
 import { BuscaService } from '../../../services/busca.service';
 import { ExperienciaMapper } from '../../../objects/interfaces/busca/ExperienciaMapper';
 import { InputText } from 'primeng/inputtext';
@@ -16,6 +16,7 @@ import { InputText } from 'primeng/inputtext';
 })
 export class ExperienciaCardForm { 
 
+  experienciaInput = input<ExperienciaDto>();
   private fb = inject(NonNullableFormBuilder);
   globalFormUtils = GlobalFormUtils;
   private experienciaMapper = ExperienciaMapper;

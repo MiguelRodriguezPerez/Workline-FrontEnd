@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GlobalFormUtils } from '../../../globalFormUtils';
 import { Button } from "primeng/button";
-import { ConocimientoForm } from '../../../objects/interfaces/busca/ConocimientoDto';
+import { ConocimientoDto, ConocimientoForm } from '../../../objects/interfaces/busca/ConocimientoDto';
 import { BuscaService } from '../../../services/busca.service';
 import { ConocimientoMapper } from '../../../objects/interfaces/busca/ConocimientoMapper';
 import { InputText } from 'primeng/inputtext';
@@ -15,6 +15,7 @@ import { InputText } from 'primeng/inputtext';
 })
 export class ConocimientoCardForm { 
 
+  conocimientoInput = input<ConocimientoDto>();
   private fb = inject(NonNullableFormBuilder);
   globalFormUtils = GlobalFormUtils;
   private conocimientoMapper = ConocimientoMapper;

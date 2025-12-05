@@ -1,3 +1,5 @@
+@use '../../general/generalStyles/mixins' as mixins;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -11,6 +13,10 @@ h1,h2 {
 
 h1 {
   font-size: 1.5em;
+
+  @include mixins.change-layout(phone) {
+    margin-top: 10px;
+  }
 }
 h2 {
   font-size: 1.1em;

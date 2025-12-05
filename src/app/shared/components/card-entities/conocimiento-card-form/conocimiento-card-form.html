@@ -1,7 +1,13 @@
 <form 
-    class="cloud double-column-form"
+    class="cloud double-column-form entity-card-form"
     [formGroup]="conocimientoForm"
     (submit)="submitEvent()">
+
+    @if (conocimientoInput()) {
+        <section class="card-form-options">
+            lorem
+        </section>
+    }
 
     <section class="double-column-form-section">
         <div>
