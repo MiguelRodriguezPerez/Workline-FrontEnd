@@ -1,0 +1,71 @@
+<form 
+    class="cloud double-column-form"
+    [formGroup]="conocimientoForm"
+    (submit)="submitEvent()">
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="centroEducativo">Centro educativo</label>
+            <input 
+                pInputText
+                formControlName="centroEducativo"
+                id="centroEducativo"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('centroEducativo')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('centroEducativo')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <label for="inicioPeriodoConocimiento">Inicio estudios</label>
+            <input 
+                pInputText
+                id="inicioPeriodoConocimiento"
+                formControlName="inicioPeriodoConocimiento"
+                placeholder="dd/mm/yyyy"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('inicioPeriodoConocimiento')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('inicioPeriodoConocimiento')!) }}
+                </span>
+            }
+        </div>
+    </section>
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="titulo">Título</label>
+            <input 
+                pInputText
+                formControlName="titulo"
+                id="titulo"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('titulo')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('titulo')!) }}
+                </span>
+            }
+        </div>
+        <div>
+            <label for="finPeriodoConocimiento">Fin estudios</label>
+            <input 
+                pInputText
+                id="finPeriodoConocimiento"
+                formControlName="finPeriodoConocimiento"
+                placeholder="dd/mm/yyyy"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('finPeriodoConocimiento')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('finPeriodoConocimiento')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <p-button class="green-button" label="Guardar" type="submit"/>
+        </div>
+    </section>
+
+</form>

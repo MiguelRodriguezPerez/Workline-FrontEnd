@@ -6,7 +6,8 @@ export class GlobalFormUtils {
     static passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).*$/;
     static onlyCharactersRegex: RegExp = /^[a-zA-Z ]+$/;
     static onlyNumbersRegex: RegExp = /^[0-9]+$/;
-
+    // Es larga porque impide días incorrectos como el 30 de febrero
+    static dateRegex: RegExp = /^(?:(?:31\/(?:0[13578]|1[02]))|(?:29|30\/(?:0[13-9]|1[0-2]))|(?:29\/02\/(?:\d{2}(?:0[48]|[2468][048]|[13579][26])|(?:[048]|[2468][048]|[13579][26])00))|(?:0[1-9]|1\d|2[0-8])\/(?:02))\/\d{4}$/;
     /* Evalúa las claves del objeto errores que suele ser { validacionErronea : valorEsperado} 
     y devuelve un string según el error */
 
@@ -39,9 +40,11 @@ export class GlobalFormUtils {
 
         switch (true) {
             case errorRegex === this.passwordRegex.toString():
-                return 'La contraseña debe tener mayúsculas, minúsculas, números y carácteres especiales'
+                return 'La contraseña debe tener mayúsculas, minúsculas, números y carácteres especiales';
             case errorRegex === this.phoneRegex.toString():
-                return 'Teléfono no válido'
+                return 'Teléfono no válido';
+            case errorRegex === this.dateRegex.toString():
+                return 'Fecha inválida. La fecha ha de ser en formato dd/mm/yyyy';
         }
 
         return null;

@@ -1,0 +1,18 @@
+@use '../../../../general/generalStyles/components/double-column-form.scss';
+
+:host {
+  display: block;
+  margin-top: 10px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+h3 {
+  padding-bottom: 10px;
+  border-bottom: solid 1px black;
+  margin-bottom: 10px;
+}

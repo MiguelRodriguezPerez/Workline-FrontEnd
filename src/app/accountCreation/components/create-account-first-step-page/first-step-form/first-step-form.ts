@@ -66,4 +66,8 @@ export class FirstStepForm {
       }
     });
   }
+
+  resetEvent () {
+    this.newUserForm.reset();
+  }
 }

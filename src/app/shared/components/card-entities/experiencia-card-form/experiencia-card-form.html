@@ -1,0 +1,73 @@
+<form 
+    class="cloud double-column-form"
+    [formGroup]="experienciaForm"
+    (submit)="submitEvent()">
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="puesto">Puesto</label>
+            <input 
+                pInputText
+                formControlName="puesto"
+                id="puesto"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('puesto')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('puesto')!) }}
+                </span>
+            }
+        </div>
+
+
+        <div>
+            <label for="inicioExperiencia">Inicio experiencia</label>
+            <input 
+                pInputText
+                id="inicioExperiencia"
+                formControlName="inicioExperiencia"
+                placeholder="dd/mm/yyyy"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('inicioExperiencia')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('inicioExperiencia')!) }}
+                </span>
+            }
+        </div>
+    </section>
+
+    <section class="double-column-form-section">
+
+         <div>
+            <label for="empresa">Empresa</label>
+            <input 
+                pInputText
+                formControlName="empresa"
+                id="empresa"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('empresa')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('empresa')!) }}
+                </span>
+            }
+        </div>
+        <div>
+            <label for="finExperiencia">Fin experiencia</label>
+            <input 
+                pInputText
+                id="finExperiencia"
+                formControlName="finExperiencia"
+                placeholder="dd/mm/yyyy"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('finExperiencia')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('finExperiencia')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <p-button class="green-button" label="Guardar" type="submit"/>
+        </div>
+    </section>
+
+</form>

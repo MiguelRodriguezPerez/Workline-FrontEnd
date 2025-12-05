@@ -1,7 +1,1 @@
-:host {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-content: center;
-  background-color: #F5F5F5;
-}
+@use '../../styles/new-user-page-structure.scss';

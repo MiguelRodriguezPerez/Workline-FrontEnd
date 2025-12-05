@@ -1,17 +1,1 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-h1,h2 {
-  text-align: center;
-}
-
-h1 {
-  font-size: 1.5em;
-}
-h2 {
-  font-size: 1.1em;
-}
+@use '../../../styles/titles-styles.scss';
