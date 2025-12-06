@@ -7,7 +7,7 @@ import { BuscaService } from '../../../services/busca.service';
 import { ConocimientoMapper } from '../../../objects/interfaces/busca/ConocimientoMapper';
 import { InputText } from 'primeng/inputtext';
 import { Store } from '@ngrx/store';
-import { newConocimientoAdded } from '../../../globalState/login/login.action';
+import { deleteSelectedConocimiento, newConocimientoAdded, updatedConocimiento } from '../../../globalState/login/login.action';
 import { NgClass } from '@angular/common';
 
 
@@ -29,7 +29,6 @@ export class ConocimientoCardForm {
   // Si conocimientoInput existe, inicialmente readonly
   isReadOnly = signal<boolean>(false);
 
-  // Formulario sin valores por defecto
   conocimientoForm: FormGroup<ConocimientoForm> = this.fb.group({
     centroEducativo: ['', Validators.required],
     titulo: ['', Validators.required],
@@ -38,7 +37,7 @@ export class ConocimientoCardForm {
   });
 
   
-    // efecto que escucha cambios en conocimientoInput
+  // efecto que escucha cambios en conocimientoInput
   private _changeEffect =  effect(() => {
     const conocimiento = this.conocimientoInput();
     if (conocimiento) {
@@ -56,19 +55,48 @@ export class ConocimientoCardForm {
     }
   });
   
+  /* No tengo dudas de que existe una manera más limpia de lograr lo mismo */
 
   submitEvent() {
-    this.buscaService.uploadNewConocimiento(
-      this.conocimientoMapper.mapNewConocimientoFormToDto(
-        this.conocimientoForm
+    if (this.conocimientoInput()) {
+        this.buscaService.updateConocimiento(
+          this.conocimientoMapper.mapConocimientoFormToDto(
+            this.conocimientoForm,
+            this.conocimientoInput()!
+        )
+      ).subscribe({
+        next: (value) => {
+          this.store.dispatch(updatedConocimiento({ updatedConocimiento: value }));
+        },
+        error: (error) => { console.error('Error: ' + error) }
+      });
+    }
+
+    else {
+      this.buscaService.uploadNewConocimiento(
+        this.conocimientoMapper.mapNewConocimientoFormToDto(
+          this.conocimientoForm
       )
     ).subscribe({
       next: (value) => {
         this.store.dispatch(newConocimientoAdded({ newConocimiento: value }));
+        this.isReadOnly.set(true);
+        this.conocimientoForm.reset();
       },
-      error: (error) => {
-        console.error('Error: ' + error);
-      }
+      error: (error) => { console.error('Error: ' + error) }
     });
+    }
+  }
+
+  readOnlyEvent () {
+    this.isReadOnly.update((prev) => !prev);
+  }
+
+  deleteEvent () {
+    if (!this.conocimientoInput()) throw new Error("What happened?");
+    this.buscaService.deleteConocimiento(this.conocimientoInput()!.id!)
+      .subscribe({
+        next: () => this.store.dispatch(deleteSelectedConocimiento({ conocimientoId: this.conocimientoInput()!.id!}))
+      })
   }
 }

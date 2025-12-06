@@ -66,6 +66,11 @@ export const newConocimientoAdded = createAction(
     props<{ newConocimiento: ConocimientoDto }>()
 )
 
+export const updatedConocimiento = createAction(
+    '[User Logged API] Updated user conocimiento',
+    props<{ updatedConocimiento: ConocimientoDto }>()
+)
+
 export const deleteSelectedConocimiento = createAction(
     '[User Logged API] Conocimiento deleted from user',
     props<{ conocimientoId: number }>()

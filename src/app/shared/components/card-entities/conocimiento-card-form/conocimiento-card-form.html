@@ -5,8 +5,8 @@
 
     @if (conocimientoInput()) {
         <section class="card-form-options">
-            <span class="pi pi-pen-to-square" style="font-size: 21px;"></span>
-            <span class="pi pi-trash" style="font-size: 21px;"></span>
+            <span class="pi pi-pen-to-square" style="font-size: 21px;" (click)="readOnlyEvent()"></span>
+            <span class="pi pi-trash" style="font-size: 21px;" (click)="deleteEvent()"></span>
         </section>
     }
 

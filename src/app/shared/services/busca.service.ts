@@ -1,7 +1,8 @@
+import { format } from "date-fns";
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { BuscaDto } from '../objects/interfaces/busca/BuscaDto';
 import { ConocimientoDto } from '../objects/interfaces/busca/ConocimientoDto';
 import { ExperienciaDto } from '../objects/interfaces/busca/ExperienciaDto';
@@ -29,9 +30,45 @@ export class BuscaService {
     return this.http.post<ConocimientoDto>(
       `${this.backendBaseUrl}${this.apiUrl}/nuevoConocimiento`, 
       conocimiento
-    ).pipe(
+    )
+    .pipe(
+        map(response => {
+          response.inicioPeriodoConocimiento = format(new Date(response.inicioPeriodoConocimiento), "dd/MM/yyyy")
+          response.finPeriodoConocimiento = format(new Date(response.finPeriodoConocimiento), "dd/MM/yyyy")
+          return response
+        }), 
         catchError((error: HttpErrorResponse) => {
           console.error('Error uploading new conocimiento')
+          return throwError(() => error)
+        })
+    );
+  }
+
+  updateConocimiento (conocimiento: ConocimientoDto): Observable<ConocimientoDto> {
+    return this.http.put<ConocimientoDto>(
+      `${this.backendBaseUrl}${this.apiUrl}/editarConocimiento`, 
+      conocimiento
+    )
+    .pipe(
+        map(response => {
+            response.inicioPeriodoConocimiento = format(new Date(response.inicioPeriodoConocimiento), "dd/MM/yyyy")
+            response.finPeriodoConocimiento = format(new Date(response.finPeriodoConocimiento), "dd/MM/yyyy")
+            return response
+          }),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error updating conocimiento')
+          return throwError(() => error)
+        })
+    );
+  }
+
+  deleteConocimiento (id: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.backendBaseUrl}${this.apiUrl}/borrarConocimiento/${id}`
+    )
+    .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error updating conocimiento')
           return throwError(() => error)
         })
     );

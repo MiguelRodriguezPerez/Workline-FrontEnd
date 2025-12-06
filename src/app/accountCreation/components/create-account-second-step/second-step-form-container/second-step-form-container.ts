@@ -7,10 +7,11 @@ import { ConocimientoDto } from '../../../../shared/objects/interfaces/busca/Con
 import { selectUserConocimientos, selectUserExperiencias } from '../../../../shared/globalState/login/login.selector';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ExperienciaDto } from '../../../../shared/objects/interfaces/busca/ExperienciaDto';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'second-step-form-container',
-  imports: [ConocimientoCardForm, ExperienciaCardForm, BuscaGridEntity],
+  imports: [ConocimientoCardForm, ExperienciaCardForm, BuscaGridEntity, RouterLink],
   templateUrl: './second-step-form-container.html',
   styleUrl: './second-step-form-container.scss',
 })
