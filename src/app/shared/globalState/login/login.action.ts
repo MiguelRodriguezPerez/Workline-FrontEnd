@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { LoginRequest } from "../../../login/interfaces/LoginRequestFormGroup";
 import { LoggedUserContext } from '../../objects/interfaces/LoggedUserContextInterface';
+import { ConocimientoDto } from "../../objects/interfaces/busca/ConocimientoDto";
 
 /* En ngrx, las acciones son las opciones que tendrás para alterar el contexto desde un componente */
 
@@ -57,3 +58,15 @@ export const newUserCreated = createAction(
     '[User Logged API] New user created',
     props<{ content: LoggedUserContext }>()
 );
+
+/* Acciones relacionadas con la creación de conocimientos */
+
+export const newConocimientoAdded = createAction(
+    '[User Logged API] New conocimiento added to user',
+    props<{ newConocimiento: ConocimientoDto }>()
+)
+
+export const deleteSelectedConocimiento = createAction(
+    '[User Logged API] Conocimiento deleted from user',
+    props<{ conocimientoId: number }>()
+)

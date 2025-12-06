@@ -16,8 +16,8 @@
 
 .double-column-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 35px;
+  grid-template-columns: 1fr 1fr auto;
+  gap:  0px 35px;
   padding: 0px 25px 20px;
 
   @include mixins.change-layout(tablet) {
@@ -34,6 +34,19 @@
   @include mixins.change-layout(tablet) {
     margin: 0px;
   }
+}
+
+.card-form-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 10px;
+
+  grid-column: 1/-1;
+
+  padding-top: 15px;
+  /* Lo necesitas para hacer que parezca que las opciones están integradas en la primera fila de inputs */
+  margin-bottom: -35px;
 }
 
 .double-column-form-section > div {

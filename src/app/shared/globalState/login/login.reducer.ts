@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoggedUserContext } from '../../objects/interfaces/LoggedUserContextInterface';
-import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed, newUserCreated } from "./login.action";
+import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed, newUserCreated, newConocimientoAdded } from './login.action';
 
 /* Esta interface define la plantilla del estado del usuario logueado (No confundir con los datos
 del usuario en si). initialState define como será este estado por defecto y al hacer logout */
@@ -56,4 +56,15 @@ export const loginReducer = createReducer(
         ...initialState
     })),
 
+    /* Gestionar conocimientos y experiencias */
+    on(newConocimientoAdded, (state, { newConocimiento }) =>({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            conocimientos: [
+                ...state.loggedUser!.conocimientos!,
+                newConocimiento
+            ]
+        }
+    }))
 )
