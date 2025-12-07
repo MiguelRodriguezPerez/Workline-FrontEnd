@@ -3,6 +3,13 @@
     [formGroup]="experienciaForm"
     (submit)="submitEvent()">
 
+    @if (experienciaInput()) {
+        <section class="card-form-options">
+            <span class="pi pi-pen-to-square" style="font-size: 21px;" (click)="readOnlyEvent()"></span>
+            <span class="pi pi-trash" style="font-size: 21px;" (click)="deleteEvent()"></span>
+        </section>
+    }
+
     <section class="double-column-form-section">
         <div>
             <label for="puesto">Puesto</label>
@@ -10,6 +17,7 @@
                 pInputText
                 formControlName="puesto"
                 id="puesto"
+                [ngClass]="{'read-only': isReadOnly() }"
             />
             @if(globalFormUtils.isFormControlValid(experienciaForm.get('puesto')!)) {
                 <span class="form-text text-danger">
@@ -18,7 +26,6 @@
             }
         </div>
 
-
         <div>
             <label for="inicioExperiencia">Inicio experiencia</label>
             <input 
@@ -26,6 +33,7 @@
                 id="inicioExperiencia"
                 formControlName="inicioExperiencia"
                 placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only': isReadOnly() }"
             />
             @if(globalFormUtils.isFormControlValid(experienciaForm.get('inicioExperiencia')!)) {
                 <span class="form-text text-danger">
@@ -37,12 +45,13 @@
 
     <section class="double-column-form-section">
 
-         <div>
+        <div>
             <label for="empresa">Empresa</label>
             <input 
                 pInputText
                 formControlName="empresa"
                 id="empresa"
+                [ngClass]="{'read-only': isReadOnly() }"
             />
             @if(globalFormUtils.isFormControlValid(experienciaForm.get('empresa')!)) {
                 <span class="form-text text-danger">
@@ -50,6 +59,7 @@
                 </span>
             }
         </div>
+
         <div>
             <label for="finExperiencia">Fin experiencia</label>
             <input 
@@ -57,6 +67,7 @@
                 id="finExperiencia"
                 formControlName="finExperiencia"
                 placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only': isReadOnly() }"
             />
             @if(globalFormUtils.isFormControlValid(experienciaForm.get('finExperiencia')!)) {
                 <span class="form-text text-danger">
@@ -65,9 +76,11 @@
             }
         </div>
 
-        <div>
-            <p-button class="green-button" label="Guardar" type="submit"/>
-        </div>
+        @if(experienciaInput()) {
+            <div>
+                <p-button class="green-button" label="Guardar" type="submit"/>
+            </div>
+        }
     </section>
 
 </form>

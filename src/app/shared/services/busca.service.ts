@@ -74,15 +74,52 @@ export class BuscaService {
     );
   }
 
-  uploadNewExperiencia(experiencia: ExperienciaDto): Observable<ExperienciaDto> {
+  uploadNewExperiencia (experiencia: ExperienciaDto): Observable<ExperienciaDto> {
     return this.http.post<ExperienciaDto>(
       `${this.backendBaseUrl}${this.apiUrl}/nuevaExperiencia`,
       experiencia
-    ).pipe(
+    )
+    .pipe(
+      map(response => {
+        response.inicioExperiencia = format(new Date(response.inicioExperiencia), "dd/MM/yyyy");
+        response.finExperiencia = format(new Date(response.finExperiencia), "dd/MM/yyyy");
+        return response;
+      }),
       catchError((error: HttpErrorResponse) => {
         console.error('Error uploading new experiencia');
         return throwError(() => error);
       })
     );
   }
+
+  updateExperiencia (experiencia: ExperienciaDto): Observable<ExperienciaDto> {
+    return this.http.put<ExperienciaDto>(
+      `${this.backendBaseUrl}${this.apiUrl}/editarExperiencia`,
+      experiencia
+    )
+    .pipe(
+      map(response => {
+        response.inicioExperiencia = format(new Date(response.inicioExperiencia), "dd/MM/yyyy");
+        response.finExperiencia = format(new Date(response.finExperiencia), "dd/MM/yyyy");
+        return response;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error updating experiencia');
+        return throwError(() => error);
+      })
+    );
+  }
+
+  deleteExperiencia (id: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.backendBaseUrl}${this.apiUrl}/borrarExperiencia/${id}`
+    )
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error deleting experiencia');
+        return throwError(() => error);
+      })
+    );
+  }
+
 }

@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoggedUserContext } from '../../objects/interfaces/LoggedUserContextInterface';
-import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed, newUserCreated, newConocimientoAdded, updatedConocimiento, deleteSelectedConocimiento } from './login.action';
+import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed, newUserCreated, newConocimientoAdded, updatedConocimiento, deleteSelectedConocimiento, newExperienciaAdded, updatedExperiencia, deleteSelectedExperiencia } from './login.action';
 
 /* Esta interface define la plantilla del estado del usuario logueado (No confundir con los datos
 del usuario en si). initialState define como será este estado por defecto y al hacer logout */
@@ -56,7 +56,7 @@ export const loginReducer = createReducer(
         ...initialState
     })),
 
-    /* Gestionar conocimientos y experiencias */
+    /* Gestionar conocimientos */
     on(newConocimientoAdded, (state, { newConocimiento }) =>({
         ...state,
         loggedUser: {
@@ -93,5 +93,44 @@ export const loginReducer = createReducer(
                 )
             ]
         }
+    })),
+
+    /* Gestionar experiencias */
+    on(newExperienciaAdded, (state, { newExperiencia }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!,
+                newExperiencia
+            ]
+        }
+    })),
+
+    on(updatedExperiencia, (state, { updatedExperiencia }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!.map(
+                    exp => exp.id === updatedExperiencia.id
+                        ? { ...updatedExperiencia }
+                        : exp
+                )
+            ]
+        }
+    })),
+
+    on(deleteSelectedExperiencia, (state, { experienciaId }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!.filter(
+                    exp => exp.id !== experienciaId
+                )
+            ]
+        }
     }))
+
 )

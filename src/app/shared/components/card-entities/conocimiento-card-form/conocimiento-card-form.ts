@@ -54,6 +54,18 @@ export class ConocimientoCardForm {
       this.conocimientoForm.reset();
     }
   });
+
+  readOnlyEvent () {
+    this.isReadOnly.update((prev) => !prev);
+  }
+
+  deleteEvent () {
+    if (!this.conocimientoInput()) throw new Error("What happened?");
+    this.buscaService.deleteConocimiento(this.conocimientoInput()!.id!)
+      .subscribe({
+        next: () => this.store.dispatch(deleteSelectedConocimiento({ conocimientoId: this.conocimientoInput()!.id!}))
+      })
+  }
   
   /* No tengo dudas de que existe una manera más limpia de lograr lo mismo */
 
@@ -88,15 +100,4 @@ export class ConocimientoCardForm {
     }
   }
 
-  readOnlyEvent () {
-    this.isReadOnly.update((prev) => !prev);
-  }
-
-  deleteEvent () {
-    if (!this.conocimientoInput()) throw new Error("What happened?");
-    this.buscaService.deleteConocimiento(this.conocimientoInput()!.id!)
-      .subscribe({
-        next: () => this.store.dispatch(deleteSelectedConocimiento({ conocimientoId: this.conocimientoInput()!.id!}))
-      })
-  }
 }
