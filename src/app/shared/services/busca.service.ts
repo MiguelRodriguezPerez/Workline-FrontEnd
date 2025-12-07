@@ -1,11 +1,14 @@
-import { format } from "date-fns";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 import { BuscaDto } from '../objects/interfaces/busca/BuscaDto';
 import { ConocimientoDto } from '../objects/interfaces/busca/ConocimientoDto';
 import { ExperienciaDto } from '../objects/interfaces/busca/ExperienciaDto';
+import { formatDateFields } from '../helpers/formatDateFields';
+
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,11 +35,10 @@ export class BuscaService {
       conocimiento
     )
     .pipe(
-        map(response => {
-          response.inicioPeriodoConocimiento = format(new Date(response.inicioPeriodoConocimiento), "dd/MM/yyyy")
-          response.finPeriodoConocimiento = format(new Date(response.finPeriodoConocimiento), "dd/MM/yyyy")
-          return response
-        }), 
+        map(res => formatDateFields<ConocimientoDto>(res, [
+            'inicioPeriodoConocimiento',
+            'finPeriodoConocimiento'
+          ])), 
         catchError((error: HttpErrorResponse) => {
           console.error('Error uploading new conocimiento')
           return throwError(() => error)
@@ -50,11 +52,10 @@ export class BuscaService {
       conocimiento
     )
     .pipe(
-        map(response => {
-            response.inicioPeriodoConocimiento = format(new Date(response.inicioPeriodoConocimiento), "dd/MM/yyyy")
-            response.finPeriodoConocimiento = format(new Date(response.finPeriodoConocimiento), "dd/MM/yyyy")
-            return response
-          }),
+        map(res => formatDateFields<ConocimientoDto>(res, [
+          'inicioPeriodoConocimiento',
+          'finPeriodoConocimiento'
+        ])),
         catchError((error: HttpErrorResponse) => {
           console.error('Error updating conocimiento')
           return throwError(() => error)
@@ -80,11 +81,10 @@ export class BuscaService {
       experiencia
     )
     .pipe(
-      map(response => {
-        response.inicioExperiencia = format(new Date(response.inicioExperiencia), "dd/MM/yyyy");
-        response.finExperiencia = format(new Date(response.finExperiencia), "dd/MM/yyyy");
-        return response;
-      }),
+      map(res => formatDateFields<ExperienciaDto>(res, [
+          'inicioExperiencia',
+          'finExperiencia'
+        ])),
       catchError((error: HttpErrorResponse) => {
         console.error('Error uploading new experiencia');
         return throwError(() => error);
@@ -98,11 +98,10 @@ export class BuscaService {
       experiencia
     )
     .pipe(
-      map(response => {
-        response.inicioExperiencia = format(new Date(response.inicioExperiencia), "dd/MM/yyyy");
-        response.finExperiencia = format(new Date(response.finExperiencia), "dd/MM/yyyy");
-        return response;
-      }),
+      map(res => formatDateFields<ExperienciaDto>(res, [
+          'inicioExperiencia',
+          'finExperiencia'
+        ])),
       catchError((error: HttpErrorResponse) => {
         console.error('Error updating experiencia');
         return throwError(() => error);

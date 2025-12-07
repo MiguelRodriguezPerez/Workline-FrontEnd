@@ -73,12 +73,12 @@ export class ConocimientoCardForm {
     if (this.conocimientoInput()) {
         this.buscaService.updateConocimiento(
           this.conocimientoMapper.mapConocimientoFormToDto(
-            this.conocimientoForm,
-            this.conocimientoInput()!
+            this.conocimientoForm, this.conocimientoInput()!
         )
       ).subscribe({
         next: (value) => {
           this.store.dispatch(updatedConocimiento({ updatedConocimiento: value }));
+          this.isReadOnly.set(true);
         },
         error: (error) => { console.error('Error: ' + error) }
       });
@@ -86,13 +86,12 @@ export class ConocimientoCardForm {
 
     else {
       this.buscaService.uploadNewConocimiento(
-        this.conocimientoMapper.mapNewConocimientoFormToDto(
+        this.conocimientoMapper.mapConocimientoFormToDto(
           this.conocimientoForm
       )
     ).subscribe({
       next: (value) => {
         this.store.dispatch(newConocimientoAdded({ newConocimiento: value }));
-        this.isReadOnly.set(true);
         this.conocimientoForm.reset();
       },
       error: (error) => { console.error('Error: ' + error) }

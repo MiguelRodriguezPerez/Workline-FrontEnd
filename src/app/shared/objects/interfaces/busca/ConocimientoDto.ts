@@ -6,6 +6,7 @@ export interface ConocimientoDto {
   inicioPeriodoConocimiento: string;
   finPeriodoConocimiento: string;    
 }
+
 export interface ConocimientoForm {
   centroEducativo: FormControl<string>;
   titulo: FormControl<string>;

@@ -8,7 +8,7 @@ import { ExperienciaMapper } from '../../../objects/interfaces/busca/Experiencia
 import { InputText } from 'primeng/inputtext';
 import { Store } from '@ngrx/store';
 import { NgClass } from '@angular/common';
-import { deleteSelectedExperiencia } from '../../../globalState/login/login.action';
+import { deleteSelectedExperiencia, newExperienciaAdded, updatedExperiencia } from '../../../globalState/login/login.action';
 
 
 @Component({
@@ -68,10 +68,37 @@ export class ExperienciaCardForm {
 
   
   submitEvent() {
+  if (this.experienciaInput()) {
+    this.buscaService.updateExperiencia(
+      this.experienciaMapper.mapExperienciaFormToDto(
+        this.experienciaForm, 
+        this.experienciaInput()!
+      )
+    )
+    .subscribe({
+      next: (value) => {
+        this.store.dispatch(updatedExperiencia({ updatedExperiencia: value }));
+        this.isReadOnly.set(true);
+      },
+      error: (error) => {
+        console.error('Error: ' + error);
+      }
+    });
+  } 
+  else {
     this.buscaService.uploadNewExperiencia(
-      this.experienciaMapper.mapNewExperienciaFormToDto(this.experienciaForm)
-    ).subscribe({
-      error: err => console.error('Error: ' + err)
+      this.experienciaMapper.mapExperienciaFormToDto(this.experienciaForm)
+    )
+    .subscribe({
+      next: (value) => {
+        this.store.dispatch(newExperienciaAdded({ newExperiencia: value }));
+        this.experienciaForm.reset();
+      },
+      error: (error) => {
+        console.error('Error: ' + error);
+      }
     });
   }
+}
+
 }

@@ -76,7 +76,7 @@
             }
         </div>
 
-        @if(experienciaInput()) {
+        @if(!isReadOnly()) {
             <div>
                 <p-button class="green-button" label="Guardar" type="submit"/>
             </div>
