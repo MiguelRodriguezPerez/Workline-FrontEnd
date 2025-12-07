@@ -1,0 +1,11 @@
+@if (conocimientos()) {
+    @for (conocimiento of conocimientos(); track conocimiento.id) {
+        <conocimiento-card-form [conocimientoInput]="conocimiento"/>
+    }
+}
+
+@if (experiencias()) {
+    @for (experiencia of experiencias(); track experiencia.id) {
+        <experiencia-card-form [experienciaInput]="experiencia"/>
+    }
+}

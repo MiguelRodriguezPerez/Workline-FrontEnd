@@ -11,7 +11,7 @@ export const routes: Routes = [
     },
     {
         path: 'jobs',
-        loadChildren: () => import('./jobSearch/job.routes').then((m) => m.jobRoutes)
+        loadChildren: () => import('./jobSearch/job-search.routes').then((m) => m.jobSearchRoutes)
     },
     {
         path: 'login',
@@ -23,5 +23,9 @@ export const routes: Routes = [
         canActivate: [employerSectionGuard],
         canActivateChild: [employerSectionGuard],
         loadChildren: () => import('./employerSection/employer-section.routes').then((m) => m.employerSectionRoutes)
+    },
+    {
+        path: 'accountCreation',
+        loadChildren: () => import('./accountCreation/account-creation.routes').then((m) => m.accountCreationRoutes)
     }
 ];

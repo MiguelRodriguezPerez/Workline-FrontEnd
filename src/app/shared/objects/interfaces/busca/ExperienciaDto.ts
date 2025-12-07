@@ -1,7 +1,16 @@
+import { FormControl } from "@angular/forms";
+
 export interface ExperienciaDto {
-  id: number;
+  id: number | null;
   puesto: string;
   empresa: string;
-  inicioExperiencia: Date; // o Date si lo parseas
-  finExperiencia: Date;    // o Date si lo parseas
+  inicioExperiencia: string;
+  finExperiencia: string;    
+}
+
+export interface ExperienciaForm {
+  puesto: FormControl<string>;
+  empresa: FormControl<string>;
+  inicioExperiencia: FormControl<string>;
+  finExperiencia: FormControl<string>;
 }

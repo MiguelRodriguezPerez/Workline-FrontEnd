@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { LoggedUserContext } from '../../objects/interfaces/LoggedContextInterface';
-import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed } from "./login.action";
+import { LoggedUserContext } from '../../objects/interfaces/LoggedUserContextInterface';
+import { failedRequestLogin, requestLogin, succededRequestLogin, updateLoggedUser, requestLogout, checkUserCredentialsFailed, newUserCreated, newConocimientoAdded, updatedConocimiento, deleteSelectedConocimiento, newExperienciaAdded, updatedExperiencia, deleteSelectedExperiencia } from './login.action';
 
 /* Esta interface define la plantilla del estado del usuario logueado (No confundir con los datos
 del usuario en si). initialState define como será este estado por defecto y al hacer logout */
@@ -24,7 +24,7 @@ export const loginReducer = createReducer(
     initialState,
 
     /* WARNING: Probablemente estos tres primeros sean inútiles */
-    on(updateLoggedUser, (state, { content }) => ({
+    on(updateLoggedUser, newUserCreated, (state, { content }) => ({
         ...state,
         loggedUser: {
             ...content
@@ -55,5 +55,82 @@ export const loginReducer = createReducer(
     on(checkUserCredentialsFailed, () => ({
         ...initialState
     })),
+
+    /* Gestionar conocimientos */
+    on(newConocimientoAdded, (state, { newConocimiento }) =>({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            conocimientos: [
+                ...state.loggedUser!.conocimientos!,
+                newConocimiento
+            ]
+        }
+    })),
+
+    on(updatedConocimiento, (state, { updatedConocimiento }) =>({
+        ...state,
+        loggedUser : {
+            ...state.loggedUser!,
+            conocimientos: [
+                ...state.loggedUser!.conocimientos!.map(
+                    con => con.id === updatedConocimiento.id ? 
+                    { ...updatedConocimiento }
+                    :
+                    con
+                )
+            ]
+        }
+    })),
+
+    on(deleteSelectedConocimiento, (state, { conocimientoId }) =>({
+        ...state,
+        loggedUser : {
+            ...state.loggedUser!,
+            conocimientos: [
+                ...state.loggedUser!.conocimientos!.filter(
+                    con => con.id !== conocimientoId
+                )
+            ]
+        }
+    })),
+
+    /* Gestionar experiencias */
+    on(newExperienciaAdded, (state, { newExperiencia }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!,
+                newExperiencia
+            ]
+        }
+    })),
+
+    on(updatedExperiencia, (state, { updatedExperiencia }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!.map(
+                    exp => exp.id === updatedExperiencia.id
+                        ? { ...updatedExperiencia }
+                        : exp
+                )
+            ]
+        }
+    })),
+
+    on(deleteSelectedExperiencia, (state, { experienciaId }) => ({
+        ...state,
+        loggedUser: {
+            ...state.loggedUser!,
+            experiencias: [
+                ...state.loggedUser!.experiencias!.filter(
+                    exp => exp.id !== experienciaId
+                )
+            ]
+        }
+    }))
 
 )

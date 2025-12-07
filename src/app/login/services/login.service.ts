@@ -1,11 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { catchError, lastValueFrom, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
-import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedContextInterface';
-import { LoginRequest, LoginRequestFormGroup } from '../interfaces/LoginRequestFormGroup';
+import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedUserContextInterface';
+import { LoginRequest } from '../interfaces/LoginRequestFormGroup';
 
 @Injectable({
   providedIn: 'root'

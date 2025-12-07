@@ -9,7 +9,7 @@ import { JobSearchFeedLoading } from "../../components/job-search-page/job-searc
 import { OfertaService } from '../../services/oferta.service';
 import { OfertaDtoJobSearch } from '../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { Location } from '@angular/common';
-import { jobRoutes } from '../../job.routes';
+import { jobSearchRoutes } from '../../job-search.routes';
 
 @Component({
   selector: 'job-post-page',

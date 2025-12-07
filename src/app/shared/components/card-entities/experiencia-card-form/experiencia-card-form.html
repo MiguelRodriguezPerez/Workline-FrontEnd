@@ -1,0 +1,86 @@
+<form 
+    class="cloud double-column-form entity-card-form"
+    [formGroup]="experienciaForm"
+    (submit)="submitEvent()">
+
+    @if (experienciaInput()) {
+        <section class="card-form-options">
+            <span class="pi pi-pen-to-square" style="font-size: 21px;" (click)="readOnlyEvent()"></span>
+            <span class="pi pi-trash" style="font-size: 21px;" (click)="deleteEvent()"></span>
+        </section>
+    }
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="puesto">Puesto</label>
+            <input 
+                pInputText
+                formControlName="puesto"
+                id="puesto"
+                [ngClass]="{'read-only': isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('puesto')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('puesto')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <label for="inicioExperiencia">Inicio experiencia</label>
+            <input 
+                pInputText
+                id="inicioExperiencia"
+                formControlName="inicioExperiencia"
+                placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only': isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('inicioExperiencia')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('inicioExperiencia')!) }}
+                </span>
+            }
+        </div>
+    </section>
+
+    <section class="double-column-form-section">
+
+        <div>
+            <label for="empresa">Empresa</label>
+            <input 
+                pInputText
+                formControlName="empresa"
+                id="empresa"
+                [ngClass]="{'read-only': isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('empresa')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('empresa')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <label for="finExperiencia">Fin experiencia</label>
+            <input 
+                pInputText
+                id="finExperiencia"
+                formControlName="finExperiencia"
+                placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only': isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(experienciaForm.get('finExperiencia')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm.get('finExperiencia')!) }}
+                </span>
+            }
+        </div>
+
+        @if(!isReadOnly()) {
+            <div>
+                <p-button class="green-button" label="Guardar" type="submit"/>
+            </div>
+        }
+    </section>
+
+</form>

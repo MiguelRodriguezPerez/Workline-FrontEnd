@@ -1,6 +1,6 @@
 import { Component, effect, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Button } from "primeng/button";
 import { InputTextModule } from 'primeng/inputtext';
@@ -13,8 +13,8 @@ import { LoginRequest, LoginRequestFormGroup } from '../../interfaces/LoginReque
   selector: 'login-form',
   imports: [
     ReactiveFormsModule, InputTextModule,
-
-    Button
+    Button,
+    RouterLink
 ],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',

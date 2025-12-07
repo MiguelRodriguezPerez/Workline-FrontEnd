@@ -1,0 +1,83 @@
+<form 
+    class="cloud double-column-form entity-card-form"
+    [formGroup]="conocimientoForm"
+    (submit)="submitEvent()">
+
+    @if (conocimientoInput()) {
+        <section class="card-form-options">
+            <span class="pi pi-pen-to-square" style="font-size: 21px;" (click)="readOnlyEvent()"></span>
+            <span class="pi pi-trash" style="font-size: 21px;" (click)="deleteEvent()"></span>
+        </section>
+    }
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="centroEducativo">Centro educativo</label>
+            <input 
+                pInputText
+                formControlName="centroEducativo"
+                id="centroEducativo"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('centroEducativo')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('centroEducativo')!) }}
+                </span>
+            }
+        </div>
+
+        <div>
+            <label for="inicioPeriodoConocimiento">Inicio estudios</label>
+            <input 
+                pInputText
+                id="inicioPeriodoConocimiento"
+                formControlName="inicioPeriodoConocimiento"
+                placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('inicioPeriodoConocimiento')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('inicioPeriodoConocimiento')!) }}
+                </span>
+            }
+        </div>
+    </section>
+
+    <section class="double-column-form-section">
+        <div>
+            <label for="titulo">Título</label>
+            <input 
+                pInputText
+                formControlName="titulo"
+                id="titulo"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('titulo')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('titulo')!) }}
+                </span>
+            }
+        </div>
+        <div>
+            <label for="finPeriodoConocimiento">Fin estudios</label>
+            <input 
+                pInputText
+                id="finPeriodoConocimiento"
+                formControlName="finPeriodoConocimiento"
+                placeholder="dd/mm/yyyy"
+                [ngClass]="{'read-only' : isReadOnly() }"
+            />
+            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('finPeriodoConocimiento')!)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('finPeriodoConocimiento')!) }}
+                </span>
+            }
+        </div>
+        @if (!isReadOnly()) {
+            <div>
+                <p-button class="green-button" label="Guardar" type="submit"/>
+            </div>
+        }
+    </section>
+
+</form>
