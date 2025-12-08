@@ -1,5 +1,5 @@
-@use '../../../../general/generalStyles/fonts' as fonts;
-@use '../../../../general/generalStyles/mixins' as mixins;
+@use '../../../../shared/generalStyles/fonts' as fonts;
+@use '../../../../shared/generalStyles/mixins' as mixins;
 
 :host {
   display: flex;
