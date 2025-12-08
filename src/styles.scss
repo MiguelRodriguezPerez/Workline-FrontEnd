@@ -1,14 +1,14 @@
-@use './app/general/generalStyles/mixins' as mixins;
-@use './app/general/generalStyles/variables' as variables;
-@use './app/general/generalStyles/fonts' as fonts;
-@use './app/general/generalStyles/generalRules.scss';
-@use './app/general/generalStyles/forms.scss';
+@use './app/shared/styles/generalStyles/mixins' as mixins;
+@use './app/shared/styles/generalStyles/variables' as variables;
+@use './app/shared/styles/generalStyles/fonts' as fonts;
+@use './app/shared/styles/generalStyles/generalRules.scss';
+@use './app/shared/styles/generalStyles/forms.scss';
 @use "primeicons/primeicons.css";
-@use './app/general/generalStyles/primeng/button/green-button.scss';
-@use './app/general/generalStyles/primeng/button/green-outlined-button.scss';
-@use './app/general/generalStyles/primeng/input/input.scss';
-@use './app/general/generalStyles/primeng/paginator/paginator.scss';
-@use './app/general/generalStyles/primeng/select/select.scss';
+@use './app/shared/styles/primeng/button/green-button.scss';
+@use './app/shared/styles/primeng/button/green-outlined-button.scss';
+@use './app/shared/styles/primeng/input/input.scss';
+@use './app/shared/styles/primeng/paginator/paginator.scss';
+@use './app/shared/styles/primeng/select/select.scss';
 
 
 body {

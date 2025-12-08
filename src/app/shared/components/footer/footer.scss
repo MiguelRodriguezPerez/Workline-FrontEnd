@@ -1,5 +1,5 @@
-@use '../../../general/generalStyles/variables' as wkVar;
-@use '../../../general/generalStyles/mixins' as mixins;
+@use '../../../shared/styles/generalStyles/variables' as wkVar;
+@use '../../../shared/styles/generalStyles/mixins' as mixins;
 
 :host {
   display: block;
