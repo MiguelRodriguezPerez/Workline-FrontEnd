@@ -34,7 +34,10 @@ export class LoginEffects {
       ofType(requestLogout,checkUserCredentialsFailed),
       exhaustMap(() =>
         this.loginService.uploadLogout().pipe(
-          map(() => succededLogoutRequest()),
+          map(() => {
+            this.router.navigate(['/']);
+            return succededLogoutRequest()
+          }),
           catchError(error => of(failedRequestLogout({ content: error }))),
         )
       )
@@ -50,7 +53,6 @@ export class LoginEffects {
           map(isValid =>
             isValid ? checkUserCredentialsSucceded() : checkUserCredentialsFailed()
           ),
-          tap((isValid) => console.log(isValid)),
           catchError(() => of(checkUserCredentialsFailed()))
         )
       )

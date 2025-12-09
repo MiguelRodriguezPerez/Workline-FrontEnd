@@ -3,7 +3,7 @@ import { MyDataPage } from "./pages/my-data-page/my-data-page";
 
 export const mySettingsRoutes: Routes = [
     {
-        path: 'my-data',
+        path: 'myData',
         component: MyDataPage
     }
 ]
