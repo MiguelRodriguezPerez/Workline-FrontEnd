@@ -27,5 +27,9 @@ export const routes: Routes = [
     {
         path: 'accountCreation',
         loadChildren: () => import('./accountCreation/account-creation.routes').then((m) => m.accountCreationRoutes)
+    },
+    {
+        path: 'userSettings',
+        loadChildren: () => import('./userSettings/user-settings.routes').then((m => m.mySettingsRoutes))
     }
 ];

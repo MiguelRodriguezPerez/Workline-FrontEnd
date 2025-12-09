@@ -1,0 +1,18 @@
+<aside>
+    <ul>
+        <li>
+            <a>Mis datos</a>
+        </li>
+        @if(currentUser()?.rol === 'BUSCA') {
+            <li>
+                <a>Mis conocimientos</a>
+            </li>
+            <li>
+                <a>Mis experiencias</a>
+            </li>
+            <li>
+                <a>Mis ofertas</a>
+            </li>
+        }
+    </ul>
+</aside>

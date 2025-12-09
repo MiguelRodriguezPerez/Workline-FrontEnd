@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 20% 75%;
+  gap: 5%;
+}
