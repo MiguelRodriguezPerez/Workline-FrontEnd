@@ -3,6 +3,8 @@
   [(ngModel)]="defaultValue"
   optionLabel="label"
   placeholder="Selecciona una opción"
-  class="settings-select">
-</p-select>
+  class="settings-select"
+  (onChange)="redirectEvent($event)"
+/>
+
 

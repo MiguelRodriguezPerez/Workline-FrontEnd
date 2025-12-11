@@ -11,5 +11,6 @@ main {
 
   @include mixins.change-layout(tablet) {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 }
