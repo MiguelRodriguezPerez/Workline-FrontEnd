@@ -15,7 +15,6 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        canActivate: [authGuard],
         component: LoginPage
     },
     {
@@ -30,6 +29,7 @@ export const routes: Routes = [
     },
     {
         path: 'userSettings',
+        canActivate: [authGuard],
         loadChildren: () => import('./userSettings/user-settings.routes').then((m => m.mySettingsRoutes))
     }
 ];
