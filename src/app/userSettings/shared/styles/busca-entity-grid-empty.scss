@@ -1,0 +1,44 @@
+@use '../../../shared/styles/generalStyles/mixins' as mixins;
+
+section.busca-empty-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: start;
+    grid-auto-rows: min-content;
+    gap: 30px;
+    margin-bottom: 50px;
+
+    > img:first-child {
+        max-width: 400px;
+    }
+
+    @include mixins.change-layout(tablet) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0px;
+
+        > img:first-child {
+            margin: 20px 0px;
+        }
+    }
+
+    @include mixins.change-layout(phone) {
+        > img:first-child {
+            max-width: 300px;
+            margin: 0px;
+        }
+    }
+}
+
+section.busca-empty-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 25%;
+    padding-top: 30px;
+
+    @include mixins.change-layout(tablet) {
+        padding-right: 0%;
+        padding-left: 10%;
+    }
+}

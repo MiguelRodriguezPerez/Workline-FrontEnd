@@ -1,0 +1,34 @@
+/* Botón base */
+p-button.inscribe-button {
+  width: fit-content;
+}
+
+
+p-button.inscribe-button button.p-button {
+  width: 100%;
+  background-color: #3C90E5;
+  border-color: #3C90E5;
+  padding: 5px 15px;
+  border-radius: 8px;
+}
+
+p-button.inscribe-button.inscribed button.p-button {
+  background-color: rgb(240, 7, 7);
+  border-color: rgb(240, 7, 7);
+}
+
+p-button.inscribe-button button.p-button:not(:disabled):hover {
+  background-color: #3C90E5;
+  border-color: #3C90E5;
+
+  & .inscribed {
+    background-color: rgb(240, 7, 7);
+    border-color: rgb(240, 7, 7);
+  }
+}
+
+/* Estilos del texto */
+p-button.inscribe-button button.p-button > span {
+  color: white;
+  font-size: 21px;
+}

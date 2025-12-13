@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { OfertaDtoJobSearch } from '../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { catchError, Observable, tap, throwError } from 'rxjs';
@@ -32,6 +32,26 @@ export class OfertaService {
         catchError(error => {
           console.log('Error fetching oferta by id');
           return throwError(() => new Error(error))
+        })
+      );
+  }
+
+  inscribirUsuarioEnOferta(id: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}${this.base_url}/inscribirBusca/${id}`, null)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error inscribing user into job posting');
+          return throwError(() => error)
+        })
+      )
+  }
+
+  desinscribirUsuarioOferta(id: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}${this.base_url}/desinscribirBusca/${id}`, null)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error desinscribing user from job posting:', error);
+          return throwError(() => error);
         })
       );
   }

@@ -1,10 +1,11 @@
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLoggedUser } from '../../../../shared/globalState/login/login.selector';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'aside-options',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './aside-options.html',
   styleUrl: './aside-options.scss',
 })

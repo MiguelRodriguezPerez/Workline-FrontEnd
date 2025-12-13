@@ -23,8 +23,6 @@ export class BusquedaOfertaService {
 
   /* A lo largo de la aplicación el queryParam numPag hará referencia al número de la página */
 
-  constructor() { }
-
   searchOfertas(requestArg: PaginaJobRequest): Observable<PaginaJobResponse> {
     if (!requestArg) return of();
 

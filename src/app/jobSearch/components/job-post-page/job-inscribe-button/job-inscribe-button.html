@@ -1,0 +1,7 @@
+@if(loggedUser()?.rol !== 'CONTRATA') {
+    <p-button 
+        class="inscribe-button"
+        [label]="isUserInscribed() ? 'Desinscribirse' : 'Inscribirse' "
+        [ngClass]="isUserInscribed()? 'inscribed' : 'not-inscribed' "
+    />
+}
