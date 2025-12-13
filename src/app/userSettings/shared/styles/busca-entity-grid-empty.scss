@@ -2,43 +2,26 @@
 
 section.busca-empty-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
-    align-content: start;
-    grid-auto-rows: min-content;
-    gap: 30px;
-    margin-bottom: 50px;
-    margin-top: 20px;
-
-    > img:first-child {
-        max-width: 400px;
-    }
-
-    @include mixins.change-layout(tablet) {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 0px;
-
-        > img:first-child {
-            margin: 20px 0px;
-        }
-    }
-
-    @include mixins.change-layout(phone) {
-        > img:first-child {
-            max-width: 300px;
-            margin: 0px;
-        }
-    }
-}
-
-section.busca-empty-grid > div {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 10px;
-    padding-top: 30px;
-
-    @include mixins.change-layout(tablet) {
-        padding-right: 0%;
-        padding-left: 10%;
-    }
 }
+
+section.busca-empty-grid > h3 {
+    font-size: 1.3em;
+}
+
+section.busca-empty-grid > p {
+    text-align: center;
+}
+
+section.busca-empty-grid > new-busca-entity-wrapper {
+    justify-self: unset;
+    width: 100%;
+}
+
+section.busca-empty-grid > new-busca-entity-wrapper::ng-deep > p-button {
+    margin: 0 auto;
+    display: block;
+}
+

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NewConocimientoWrapper } from "../new-conocimiento-wrapper/wrapper/new-conocimiento-wrapper";
+import { ConocimientoCardForm } from '../../../../shared/components/card-entities/conocimiento-card-form/conocimiento-card-form';
+import { NewConocimientoWrapper } from "../new-busca-entity-wrapper/new-busca-entity-wrapper";
 
 @Component({
   selector: 'no-knowledge-user',
@@ -7,4 +8,6 @@ import { NewConocimientoWrapper } from "../new-conocimiento-wrapper/wrapper/new-
   templateUrl: './no-knowledge-user.html',
   styleUrl: './no-knowledge-user.scss',
 })
-export class NoKnowledgeUser { }
+export class NoKnowledgeUser { 
+  cardComponent = ConocimientoCardForm;
+}

@@ -1,11 +1,11 @@
 <section>
     <user-title/>
-    <section-title title="Mis conocimientos"/>
+    <section-title title="Mis experiencias"/>
     @if(arrConocimientos() && arrConocimientos().length > 0) {
-        <new-busca-entity-wrapper [formCardComponent]="cardComponent" />
+        <new-busca-entity-wrapper [formCardComponent]="cardComponent"/>
         <busca-grid-entity [entityArr]="arrConocimientos()"/>
     }
     @else {
-        <no-knowledge-user/>
+        <no-experience-user/>
     }
 </section>

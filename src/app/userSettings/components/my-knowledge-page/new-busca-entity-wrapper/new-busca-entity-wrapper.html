@@ -3,5 +3,5 @@
 }
 @else {
     <span (click)="changeEntityCardSignalEvent()">Cancelar</span>
-    <conocimiento-card-form/>
+    <ng-container *ngComponentOutlet="formCardComponent()" ></ng-container>
 }

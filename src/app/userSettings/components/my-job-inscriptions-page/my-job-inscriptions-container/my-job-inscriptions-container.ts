@@ -18,6 +18,6 @@ export class MyJobInscriptionsContainer {
   jobInscriptionsList = toSignal(
     this.buscaService.getBuscaListaOfertas(),
     { initialValue: null }
-  )
+  );
   
 }
