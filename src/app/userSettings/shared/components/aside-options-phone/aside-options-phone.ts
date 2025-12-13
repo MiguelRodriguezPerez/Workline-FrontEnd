@@ -34,7 +34,7 @@ export class AsideOptionsPhone {
       this.menuOptions.push(
         { label: 'Mis conocimientos', value: 'myKnowledge' },
         { label: 'Mis experiencias', value: 'myExperience' },
-        { label: 'Mis ofertas', value: 'myJobPostings' }
+        { label: 'Mis ofertas', value: 'myJobInscriptions' }
     );
 
     const currentSectionRoute = this.currentRoute.url.split('/')[2];

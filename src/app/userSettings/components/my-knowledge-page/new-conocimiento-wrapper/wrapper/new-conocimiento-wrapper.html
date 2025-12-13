@@ -1,0 +1,7 @@
+@if (!isEntityCardOpen()) {
+    <p-button class="green-button" label="Crear conocimiento" (click)="changeEntityCardSignalEvent()"/>
+}
+@else {
+    <span (click)="changeEntityCardSignalEvent()">Cancelar</span>
+    <conocimiento-card-form/>
+}

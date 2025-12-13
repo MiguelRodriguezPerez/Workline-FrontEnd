@@ -21,3 +21,8 @@ span.p-select-label {
     font-size: 19px;
     padding: 5px 10px;
 }
+
+p-select.settings-select .p-component.p-overlay {
+    right: 0px;
+    left: -80px;
+}

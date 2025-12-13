@@ -1,3 +1,5 @@
+@use '../../../../shared/styles/generalStyles/mixins' as mixins;
+
 :host {
   display: flex;
   flex-direction: row;
@@ -6,5 +8,12 @@
 
   :nth-child(2) {
     margin-left: auto;
+  }
+
+  @include mixins.change-layout(phone) {
+    :nth-child(2) {
+      margin-left: 17%;
+    }
+    
   }
 }

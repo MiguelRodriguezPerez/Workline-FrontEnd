@@ -2,11 +2,11 @@
     <aside>
         <ul>
             <li>
-                <a>Mis datos</a>
+                <a routerLink="/userSettings/myData">Mis datos</a>
             </li>
             @if(currentUser()?.rol === 'BUSCA') {
                 <li>
-                    <a>Mis conocimientos</a>
+                    <a routerLink="/userSettings/myKnowledge">Mis conocimientos</a>
                 </li>
                 <li>
                     <a>Mis experiencias</a>
