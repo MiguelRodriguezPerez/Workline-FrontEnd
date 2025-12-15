@@ -1,0 +1,62 @@
+@use '../../../../../shared/styles/generalStyles/mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+
+main#delete-account-freeze-screen {
+  background-color: rgba(51, 51, 51, 0.7);
+  /* Color #333 con 30% de transparencia */
+  height: 0vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  /*Si pones right 0 se abrirá y cerrará desde la derecha,
+  si pones left 0 se abrirá y cerrará desde la izquierda*/
+  overflow: hidden;
+  padding: 0px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-content: center;
+}
+
+section.delete-account-freeze-screen-cartel {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+
+  > p {
+    margin-bottom: 35px;
+  }
+
+  @include mixins.change-layout(phone) {
+    margin: 0 50px;
+
+    > p {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+section.delete-account-freeze-screen-cartel > div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: right;
+
+  > span:first-child {
+    margin: auto 0;
+    margin-right: auto;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+
+  @include mixins.change-layout(phone) {
+    flex-direction: column;
+  }
+}
