@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { InputText } from "primeng/inputtext";
 import { Button } from "primeng/button";
 import { FormBuilder, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { UserSettingsService } from '../../../services/user-settings.service';
+import { Router } from '@angular/router';
+import { VerifiedPasswordContextService } from '../../../context/verified-password-context.service';
 
 @Component({
   selector: 'change-password-first-step-container',
@@ -14,8 +16,29 @@ export class ChangePasswordFirstStepContainer {
   
   private fb = inject(FormBuilder);
   private userSettingsService = inject(UserSettingsService);
+  private router = inject(Router);
+  isPasswordWrong = signal<true | null>(null);
+  private verifiedPasswordContext = inject(VerifiedPasswordContextService);
 
   firstPasswordStepForm = this.fb.group({
-    verifyPassword: ['', [], this.userSettingsService.verifyCurrentPassword()]
+    verifyPassword: ['', [],[]]
   });
+
+  submitEvent () {
+    const passwordValue: string = this.firstPasswordStepForm.get('verifyPassword')!.value!;
+
+    console.log(passwordValue);
+    
+
+    this.userSettingsService.verifyCurrentPassword(passwordValue).subscribe({
+      next: (response) => {
+        if (response) {
+          this.verifiedPasswordContext.changePasswordVerified(response);
+          this.router.navigate(['/userSettings/changePasswordSecondStep']);
+        }
+        else this.isPasswordWrong.set(true);
+      }
+    })
+
+  }
 }

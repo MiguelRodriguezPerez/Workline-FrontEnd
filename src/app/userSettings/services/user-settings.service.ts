@@ -51,24 +51,34 @@ export class UserSettingsService {
     );
   }
 
-  verifyCurrentPassword(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<{ isPasswordCorrect: boolean } | null> => {
-      if (!control.value) return of({ isPasswordCorrect: false });
-
-      return this.http.post<boolean>(`{this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, control.value)
+  verifyCurrentPassword(password: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, password)
         .pipe(
-          /* No soy capaz de explicar porque esta condición booleana funciona correctamente */
-          map(resp => resp ? { isPasswordCorrect: resp } : null ),
-          catchError( (error: HttpErrorResponse) => {
+           catchError( (error: HttpErrorResponse) => {
             console.error('Error verifying password');
             return throwError(() => error);
-
           })
         )
-
-    }
-
   }
+
+  // verifyCurrentPassword(): AsyncValidatorFn {
+  //   return (control: AbstractControl): Observable<{ isPasswordCorrect: boolean } | null> => {
+  //     if (!control.value) return of({ isPasswordCorrect: false });
+
+  //     return this.http.post<boolean>(`{this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, control.value)
+  //       .pipe(
+  //         /* No soy capaz de explicar porque esta condición booleana funciona correctamente */
+  //         map(resp => resp ? { isPasswordCorrect: resp } : null ),
+  //         catchError( (error: HttpErrorResponse) => {
+  //           console.error('Error verifying password');
+  //           return throwError(() => error);
+
+  //         })
+  //       )
+
+  //   }
+
+  // }
 
 
 }
