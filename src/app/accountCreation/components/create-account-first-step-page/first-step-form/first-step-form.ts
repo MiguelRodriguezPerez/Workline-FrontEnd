@@ -55,12 +55,11 @@ export class FirstStepForm {
     ).subscribe({
       next: (response) => {
         this.store.dispatch(
-          newUserCreated({
-            content: response
-          })
+          newUserCreated({ content: response })
         );
 
         if (response.rol === Rol.BUSCA) this.router.navigate(['/accountCreation/secondStep']);
+        else this.router.navigate(['/']);
       },
       error: (err) => {
         console.error('Error en la creación del usuario:', err);

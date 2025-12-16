@@ -1,11 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, exhaustMap, map, Observable, of, tap, throwError } from 'rxjs';
 import { UsuarioSettingsDto } from '../interfaces/UsuarioSettingsDto';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LoggedUserContext } from '../../shared/objects/interfaces/LoggedUserContextInterface';
 import { Store } from '@ngrx/store';
 import { updateLoggedUser } from '../../shared/globalState/login/login.action';
+import { AbstractControl, AsyncValidator, AsyncValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,26 @@ export class UserSettingsService {
         return throwError(() => error);
       })
     );
-}
+  }
+
+  verifyCurrentPassword(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ isPasswordCorrect: boolean } | null> => {
+      if (!control.value) return of({ isPasswordCorrect: false });
+
+      return this.http.post<boolean>(`{this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, control.value)
+        .pipe(
+          /* No soy capaz de explicar porque esta condición booleana funciona correctamente */
+          map(resp => resp ? { isPasswordCorrect: resp } : null ),
+          catchError( (error: HttpErrorResponse) => {
+            console.error('Error verifying password');
+            return throwError(() => error);
+
+          })
+        )
+
+    }
+
+  }
 
 
 }
