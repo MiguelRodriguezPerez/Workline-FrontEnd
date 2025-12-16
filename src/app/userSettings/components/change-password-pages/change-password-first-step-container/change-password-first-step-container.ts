@@ -3,12 +3,12 @@ import { InputText } from "primeng/inputtext";
 import { Button } from "primeng/button";
 import { FormBuilder, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { UserSettingsService } from '../../../services/user-settings.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { VerifiedPasswordContextService } from '../../../context/verified-password-context.service';
 
 @Component({
   selector: 'change-password-first-step-container',
-  imports: [InputText, Button, ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [InputText, Button, ɵInternalFormsSharedModule, ReactiveFormsModule, RouterModule],
   templateUrl: './change-password-first-step-container.html',
   styleUrl: './change-password-first-step-container.scss',
 })
@@ -17,7 +17,7 @@ export class ChangePasswordFirstStepContainer {
   private fb = inject(FormBuilder);
   private userSettingsService = inject(UserSettingsService);
   private router = inject(Router);
-  isPasswordWrong = signal<true | null>(null);
+  isPasswordWrong = signal<boolean>(false);
   private verifiedPasswordContext = inject(VerifiedPasswordContextService);
 
   firstPasswordStepForm = this.fb.group({
@@ -26,9 +26,6 @@ export class ChangePasswordFirstStepContainer {
 
   submitEvent () {
     const passwordValue: string = this.firstPasswordStepForm.get('verifyPassword')!.value!;
-
-    console.log(passwordValue);
-    
 
     this.userSettingsService.verifyCurrentPassword(passwordValue).subscribe({
       next: (response) => {

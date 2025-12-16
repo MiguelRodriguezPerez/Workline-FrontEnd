@@ -4,7 +4,8 @@ import { MyJobInscriptionsPage } from "./pages/my-job-inscriptions-page/my-job-i
 import { MyKnowledgePage } from "./pages/my-knowledge-page/my-knowledge-page";
 import { MyExperiencePage } from "./pages/my-experience-page/my-experience-page";
 import { ChangePasswordFirstStepPage } from './pages/change-password/change-password-first-step-page/change-password-first-step-page';
-import { ChangePasswordSecondStepPage } from "./pages/change-password-second-step-page/change-password-second-step-page";
+import { verifiedPasswordGuard } from "./guards/verified-password.guard";
+import { ChangePasswordSecondStepPage } from "./pages/change-password/change-password-second-step-page/change-password-second-step-page";
 
 export const mySettingsRoutes: Routes = [
     {
@@ -29,6 +30,7 @@ export const mySettingsRoutes: Routes = [
     },
     {
         path: 'changePasswordSecondStep',
+        canActivate: [verifiedPasswordGuard],
         component: ChangePasswordSecondStepPage
     }
 ]

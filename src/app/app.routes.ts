@@ -20,7 +20,6 @@ export const routes: Routes = [
     {
         path: 'employerSection',
         canActivate: [employerSectionGuard],
-        canActivateChild: [employerSectionGuard],
         loadChildren: () => import('./employerSection/employer-section.routes').then((m) => m.employerSectionRoutes)
     },
     {

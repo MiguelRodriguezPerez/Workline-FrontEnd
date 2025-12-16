@@ -36,8 +36,8 @@ export class GlobalFormUtils {
     }
 
     private static getRegexTextError (errorRegex: string): string | null {
-        console.warn('Sospechoso de fallar')
-        console.warn('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).*$/' === this.passwordRegex.toString());
+        console.log(errorRegex === this.passwordRegex.toString());
+        
 
         switch (true) {
             case errorRegex === this.passwordRegex.toString():

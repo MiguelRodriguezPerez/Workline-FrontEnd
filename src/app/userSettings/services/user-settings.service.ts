@@ -61,24 +61,14 @@ export class UserSettingsService {
         )
   }
 
-  // verifyCurrentPassword(): AsyncValidatorFn {
-  //   return (control: AbstractControl): Observable<{ isPasswordCorrect: boolean } | null> => {
-  //     if (!control.value) return of({ isPasswordCorrect: false });
-
-  //     return this.http.post<boolean>(`{this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, control.value)
-  //       .pipe(
-  //         /* No soy capaz de explicar porque esta condición booleana funciona correctamente */
-  //         map(resp => resp ? { isPasswordCorrect: resp } : null ),
-  //         catchError( (error: HttpErrorResponse) => {
-  //           console.error('Error verifying password');
-  //           return throwError(() => error);
-
-  //         })
-  //       )
-
-  //   }
-
-  // }
-
+  changePassword(newPassword: string): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}${this.userSettingsUrl}/cambiarPassword`,newPassword)
+    .pipe(
+        catchError( (error: HttpErrorResponse) => {
+        console.error('Error changing password');
+        return throwError(() => error);
+      })
+    );
+  }
 
 }
