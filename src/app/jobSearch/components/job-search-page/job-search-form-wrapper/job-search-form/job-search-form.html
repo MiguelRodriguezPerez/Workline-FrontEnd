@@ -1,35 +1,70 @@
-<form class="job-search-form cloud" id="job-search-form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
-    <div>
-        <span class="job-search-remove-filters" (click)="resetForm()">Reiniciar formulario</span>
-        @if(closeMenu()) {
-            <img src="/images/jobSearch/cerrar.png" alt="cerrar.png" (click)="closeMenu()?.()" />
-        }
-    </div>
+<form
+  class="job-search-form cloud"
+  id="job-search-form"
+  [formGroup]="searchForm"
+  (ngSubmit)="submitForm()"
+>
+  <div>
+    <span class="job-search-remove-filters" (click)="resetForm()">
+      Reiniciar formulario
+    </span>
+    @if (closeMenu()) {
+      <img
+        src="/images/jobSearch/cerrar.png"
+        alt="cerrar.png"
+        (click)="closeMenu()?.()"
+      />
+    }
+  </div>
 
-    <label for="puesto">Puesto</label>
-    <input type="text" pInputText name="puesto" formControlName="puesto" />
+  <label for="puesto">Puesto</label>
+  <input
+    id="puesto"
+    type="text"
+    pInputText
+    name="puesto"
+    formControlName="puesto"
+  />
 
-    <label for="tipoContrato">Tipo Contrato</label>
-    <p-select
-        [options]="tiposContratoKeys"
-        placeholder="Elige una opción"
-        formControlName="tipoContrato"
-        name="tipoContrato"
-    />
+  <label for="tipoContrato">Tipo Contrato</label>
+  <p-select
+    id="tipoContrato"
+    [options]="tiposContratoKeys"
+    placeholder="Elige una opción"
+    formControlName="tipoContrato"
+    name="tipoContrato"
+  />
 
-    <label for="ciudad">Ciudad</label>
-    <input type="text" pInputText name="ciudad" formControlName="ciudad" />
+  <label for="ciudad">Ciudad</label>
+  <input
+    id="ciudad"
+    type="text"
+    pInputText
+    name="ciudad"
+    formControlName="ciudad"
+  />
 
-    <label for="salarioAnualMinimo">Salario mínimo</label>
-    <input type="number" pInputText name="salarioAnualMinimo" formControlName="salarioAnualMinimo" />
+  <label for="salarioAnualMinimo">Salario mínimo</label>
+  <input
+    id="salarioAnualMinimo"
+    type="number"
+    pInputText
+    name="salarioAnualMinimo"
+    formControlName="salarioAnualMinimo"
+  />
 
-    <label for="modalidadTrabajo">Modalidad</label>
-    <p-select
-        [options]="tiposModalidadesKeys"
-        placeholder="Elige una opción"
-        formControlName="modalidadTrabajo"
-        name="modalidadTrabajo"
-    />
+  <label for="modalidadTrabajo">Modalidad</label>
+  <p-select
+    id="modalidadTrabajo"
+    [options]="tiposModalidadesKeys"
+    placeholder="Elige una opción"
+    formControlName="modalidadTrabajo"
+    name="modalidadTrabajo"
+  />
 
-    <p-button label="Buscar ofertas" class="green-button w-100" type="submit" />
+  <p-button
+    label="Buscar ofertas"
+    class="green-button w-100"
+    type="submit"
+  />
 </form>

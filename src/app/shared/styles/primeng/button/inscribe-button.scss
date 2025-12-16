@@ -20,11 +20,11 @@ p-button.inscribe-button.inscribed button.p-button {
 p-button.inscribe-button button.p-button:not(:disabled):hover {
   background-color: #3C90E5;
   border-color: #3C90E5;
+}
 
-  & .inscribed {
-    background-color: rgb(240, 7, 7);
-    border-color: rgb(240, 7, 7);
-  }
+p-button.inscribe-button.inscribed  button.p-button:not(:disabled):hover {
+  background-color: rgb(240, 7, 7);
+  border-color: rgb(240, 7, 7);
 }
 
 /* Estilos del texto */

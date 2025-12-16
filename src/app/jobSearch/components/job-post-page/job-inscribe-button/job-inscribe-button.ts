@@ -32,7 +32,7 @@ export class JobInscribeButton {
     })
   });
 
-  clickEvent() {
+  inscribeUserEvent() {
     if (this.isUserInscribed()) {
       this.ofertaService.desinscribirUsuarioOferta(this.jobPostId()!).subscribe({
         next: () => this.isUserInscribed.set(false)

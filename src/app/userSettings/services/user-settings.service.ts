@@ -41,4 +41,14 @@ export class UserSettingsService {
     );
   }
 
+  deleteLoggedUser(): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}${this.userSettingsUrl}/borrarCuentaUsuarioLogueado`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error deleting logged user account');
+        return throwError(() => error);
+      })
+    );
+}
+
+
 }

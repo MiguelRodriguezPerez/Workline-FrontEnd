@@ -3,5 +3,6 @@
         class="inscribe-button"
         [label]="isUserInscribed() ? 'Desinscribirse' : 'Inscribirse' "
         [ngClass]="isUserInscribed()? 'inscribed' : 'not-inscribed' "
+        (onClick)="inscribeUserEvent()"
     />
 }

@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectLoggedUser } from '../../../shared/globalState/login/login.selector';
-import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
-import { AsideOptions } from "../../shared/components/aside-options/aside-options";
-import { MyKnowledgeContainer } from "../../components/my-knowledge-page/my-knowledge-container/my-knowledge-container";
 import { Footer } from "../../../shared/components/footer/footer";
+import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
+import { selectLoggedUser } from '../../../shared/globalState/login/login.selector';
+import { MyExperienceContainer } from "../../components/my-experience-page/my-experience-container/my-experience-container";
+import { AsideOptions } from "../../shared/components/aside-options/aside-options";
 
 @Component({
   selector: 'my-experience-page',
-  imports: [NavbarWrapper, AsideOptions, MyKnowledgeContainer, Footer],
+  imports: [NavbarWrapper, AsideOptions, Footer, MyExperienceContainer],
   templateUrl: './my-experience-page.html',
   styleUrl: './my-experience-page.scss',
 })

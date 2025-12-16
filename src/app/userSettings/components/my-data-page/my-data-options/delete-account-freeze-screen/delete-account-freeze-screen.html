@@ -3,7 +3,10 @@
         <p>¿Estás seguro de que quieres eliminar tu cuenta?</p>
         <div>
             <span (click)="closeFreezeScreenEvent()">Cancelar</span>
-            <p-button class="delete-button" label="Si, quiero borrar mi cuenta"/>
+            <p-button 
+                class="delete-button" 
+                label="Si, quiero borrar mi cuenta"
+                (onClick)="deleteAccountClickEvent()"/>
         </div>
     </section>
 </main>

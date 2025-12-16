@@ -11,6 +11,6 @@ export class DeleteAccountButton {
   
   openFreezeScreenEvent () {
     document.getElementById('delete-account-freeze-screen')!.style.height = '100%';
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden';
   }
 }
