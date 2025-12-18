@@ -22,6 +22,8 @@ export class JobInscribeButton {
   isUserInscribed = signal<null | boolean>(null);
 
   anotherInputEffect = effect(() => {
+    if (this.loggedUser()?.rol !== 'BUSCA') return;
+
     const id = this.jobPostId();
     this.buscaService.isUserInscribedInJobPosting(id).subscribe({
       next: (response) => this.isUserInscribed.set(response)
