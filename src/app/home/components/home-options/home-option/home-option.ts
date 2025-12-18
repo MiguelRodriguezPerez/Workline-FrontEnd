@@ -13,6 +13,5 @@ export class HomeOption {
   title = input.required<string>();
   text = input.required<string>();
   imageSrc = input.required<string>();
-  color = input.required<string>();
 
 }

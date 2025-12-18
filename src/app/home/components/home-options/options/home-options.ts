@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HomeOption } from "./home-option/home-option";
 import { RouterLink } from "@angular/router";
+import { HomeOption } from '../home-option/home-option';
 
 @Component({
   selector: 'home-options',

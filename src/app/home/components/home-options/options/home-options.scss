@@ -1,8 +1,12 @@
-@use '../../../shared/styles/generalStyles/mixins'  as myMixins;
+@use '../../../../shared/styles/generalStyles/mixins'  as myMixins;
 
 :host {
   display: block;
-  margin: 40px 0px;
+  margin: 50px 0px;
+
+  @include myMixins.change-layout('tablet') {
+    margin: 40px 0px;
+  }
 }
 
 section.home-options {

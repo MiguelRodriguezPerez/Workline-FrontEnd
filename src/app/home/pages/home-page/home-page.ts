@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Footer } from "../../../shared/components/footer/footer";
 import { NavbarWrapper } from "../../../shared/components/navbar/navbar-wrapper/navbar-wrapper";
-
-import { HomeOptions } from "../../components/home-options/home-options";
 import { HomeCartel } from "../../components/home-cartel/cartel/home-cartel";
+import { HomeOptions } from '../../components/home-options/options/home-options';
 
 @Component({
   selector: 'app-home-page',
