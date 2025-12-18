@@ -15,6 +15,8 @@ import { localStorageMetaReducer } from './shared/globalState/localStorage.metar
 import { LoginEffects } from './shared/globalState/login/login.effect';
 import { loginReducer } from './shared/globalState/login/login.reducer';
 import { sharedInterceptor } from './shared/interceptors/shared.interceptor';
+import { inscribeJobPostingInterceptor } from './jobSearch/interceptors/inscribe-job-posting.interceptor';
+import { employerSectionInterceptor } from './employerSection/interceptors/employer-section.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +24,12 @@ export const appConfig: ApplicationConfig = {
         provideBrowserGlobalErrorListeners(),
         provideZonelessChangeDetection(),
         provideRouter(routes),
-        provideHttpClient(withFetch(), withInterceptors([sharedInterceptor])),
+        provideHttpClient(withFetch(), 
+            withInterceptors([
+                sharedInterceptor, 
+                inscribeJobPostingInterceptor,
+                employerSectionInterceptor
+            ])),
         providePrimeNG({
             theme: {
                 preset: Aura
