@@ -1,0 +1,27 @@
+@use '../../../shared/styles/generalStyles/mixins' as mixins;
+
+section.busca-empty-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+}
+
+section.busca-empty-grid > h3 {
+    font-size: 1.3em;
+}
+
+section.busca-empty-grid > p {
+    text-align: center;
+}
+
+section.busca-empty-grid > new-busca-entity-wrapper {
+    justify-self: unset;
+    width: 100%;
+}
+
+section.busca-empty-grid > new-busca-entity-wrapper::ng-deep > p-button {
+    margin: 0 auto;
+    display: block;
+}
+

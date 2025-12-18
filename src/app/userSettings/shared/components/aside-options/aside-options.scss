@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+aside {
+  border-right: solid 1px gray;
+  padding-bottom: 50px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 5px;
+}
+
+li {
+  border-bottom: solid 1px green;
+  // border-radius: 8px;
+  margin-right: 15px;
+}
+
+a {
+  font-size: 0.8em;
+  display: inline-block; /* Mejor que block para hover animado */
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+a:hover {
+  transform: translateY(-5px);
+  color: green;
+}
+

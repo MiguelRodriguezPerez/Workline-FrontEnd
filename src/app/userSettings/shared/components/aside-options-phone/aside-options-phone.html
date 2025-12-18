@@ -1,0 +1,10 @@
+<p-select 
+  [options]="menuOptions" 
+  [(ngModel)]="defaultValue"
+  optionLabel="label"
+  placeholder="Selecciona una opción"
+  class="settings-select"
+  (onChange)="redirectEvent($event)"
+/>
+
+

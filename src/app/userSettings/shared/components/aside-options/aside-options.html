@@ -1,0 +1,20 @@
+@if (windowWidth() > 1400) {
+    <aside>
+        <ul>
+            <li>
+                <a routerLink="/userSettings/myData">Mis datos</a>
+            </li>
+            @if(currentUser()?.rol === 'BUSCA') {
+                <li>
+                    <a routerLink="/userSettings/myKnowledge">Mis conocimientos</a>
+                </li>
+                <li>
+                    <a routerLink="/userSettings/myExperience">Mis experiencias</a>
+                </li>
+                <li>
+                    <a routerLink="/userSettings/myJobInscriptions">Mis ofertas</a>
+                </li>
+            }
+        </ul>
+    </aside>
+}

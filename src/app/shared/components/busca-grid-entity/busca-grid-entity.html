@@ -9,3 +9,9 @@
         <experiencia-card-form [experienciaInput]="experiencia"/>
     }
 }
+
+@if (ofertas()) {
+    @for (oferta of ofertas(); track oferta.id) {
+        <job-search-card [oferta]="oferta"/>
+    }
+}

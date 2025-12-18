@@ -1,0 +1,12 @@
+@use '../../../shared/styles/generalStyles/mixins' as mixins;
+
+main {
+  display: grid;
+  grid-template-columns: 20% 75%;
+  gap: 5%;
+
+  @include mixins.change-layout(tablet) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

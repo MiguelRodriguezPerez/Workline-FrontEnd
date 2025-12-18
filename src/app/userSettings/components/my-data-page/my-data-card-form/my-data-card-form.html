@@ -1,0 +1,88 @@
+<section class="double-column-form-options">
+  <span id="spanReadOnly" (click)="editEvent()">
+    {{ isReadOnly() ? 'Editar perfil' : 'Cancelar' }}
+  </span>
+</section>
+
+<form [formGroup]="userSettingsForm" (ngSubmit)="submitEvent()"
+  class="double-column-form entity-card-form cloud">
+
+  <section class="double-column-form-section">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input
+        pInputText
+        id="nombre"
+        type="text"
+        formControlName="nombre"
+        [readonly]="isReadOnly()"
+        [ngClass]="{'read-only': isReadOnly()}"
+      />
+      @if(globalFormUtils.isFormControlValid(userSettingsForm.get('nombre')!)) {
+        <span class="form-text text-danger">
+          {{ globalFormUtils.getFieldErrorText(userSettingsForm.get('nombre')!) }}
+        </span>
+      }
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input
+        pInputText
+        id="email"
+        type="email"
+        formControlName="email"
+        [readonly]="isReadOnly()"
+        [ngClass]="{'read-only': isReadOnly()}"
+      />
+      @if(globalFormUtils.isFormControlValid(userSettingsForm.get('email')!)) {
+        <span class="form-text text-danger">
+          {{ globalFormUtils.getFieldErrorText(userSettingsForm.get('email')!) }}
+        </span>
+      }
+    </div>
+  </section>
+  <section class="double-column-form-section">
+    <div>
+      <label for="telefono">Teléfono</label>
+      <input
+        pInputText
+        id="telefono"
+        type="text"
+        formControlName="telefono"
+        [readonly]="isReadOnly()"
+        [ngClass]="{'read-only': isReadOnly()}"
+      />
+      @if(globalFormUtils.isFormControlValid(userSettingsForm.get('telefono')!)) {
+        <span class="form-text text-danger">
+          {{ globalFormUtils.getFieldErrorText(userSettingsForm.get('telefono')!) }}
+        </span>
+      }
+    </div>
+    <div>
+      <label for="ciudad">Ciudad</label>
+      <input
+        pInputText
+        id="ciudad"
+        type="text"
+        formControlName="ciudad"
+        [readonly]="isReadOnly()"
+        [ngClass]="{'read-only': isReadOnly()}"
+      />
+      @if(globalFormUtils.isFormControlValid(userSettingsForm.get('ciudad')!)) {
+        <span class="form-text text-danger">
+          {{ globalFormUtils.getFieldErrorText(userSettingsForm.get('ciudad')!) }}
+        </span>
+      }
+    </div>
+    <div>
+      @if(!isReadOnly()) {
+        <p-button
+          class="green-button"
+          label="Guardar Cambios"
+          type="submit"
+        />
+      }
+    </div>
+  </section>
+
+</form>

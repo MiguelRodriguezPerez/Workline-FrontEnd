@@ -18,13 +18,13 @@ export class NewAccountService {
   // TODO: Entender
 
   isUsernameRepeated() : AsyncValidatorFn {
-    console.log('ccccc');
     return (control: AbstractControl): Observable<{usernameAlreadyTaken: boolean} | null> => {
       if (!control.value) {
         return of(null);
       }
 
-      return this.http.get<boolean>(`${this.backendBaseUrl}${this.apiUrl}/esNombreRepetido/${control.value}`).pipe(
+    return this.http.get<boolean>(`${this.backendBaseUrl}${this.apiUrl}/esNombreRepetido/${control.value}`)
+      .pipe(
         debounceTime(500),
         map((exists) => (exists ? { usernameAlreadyTaken: exists } : null)),
         catchError(() => of(null))

@@ -15,17 +15,20 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        canActivate: [authGuard],
         component: LoginPage
     },
     {
         path: 'employerSection',
         canActivate: [employerSectionGuard],
-        canActivateChild: [employerSectionGuard],
         loadChildren: () => import('./employerSection/employer-section.routes').then((m) => m.employerSectionRoutes)
     },
     {
         path: 'accountCreation',
         loadChildren: () => import('./accountCreation/account-creation.routes').then((m) => m.accountCreationRoutes)
+    },
+    {
+        path: 'userSettings',
+        canActivate: [authGuard],
+        loadChildren: () => import('./userSettings/user-settings.routes').then((m => m.mySettingsRoutes))
     }
 ];

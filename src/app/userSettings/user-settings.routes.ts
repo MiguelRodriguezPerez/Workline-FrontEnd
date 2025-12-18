@@ -1,0 +1,36 @@
+import { Routes } from "@angular/router";
+import { MyDataPage } from "./pages/my-data-page/my-data-page";
+import { MyJobInscriptionsPage } from "./pages/my-job-inscriptions-page/my-job-inscriptions-page";
+import { MyKnowledgePage } from "./pages/my-knowledge-page/my-knowledge-page";
+import { MyExperiencePage } from "./pages/my-experience-page/my-experience-page";
+import { ChangePasswordFirstStepPage } from './pages/change-password/change-password-first-step-page/change-password-first-step-page';
+import { verifiedPasswordGuard } from "./guards/verified-password.guard";
+import { ChangePasswordSecondStepPage } from "./pages/change-password/change-password-second-step-page/change-password-second-step-page";
+
+export const mySettingsRoutes: Routes = [
+    {
+        path: 'myData',
+        component: MyDataPage
+    },
+    {
+        path: 'myJobInscriptions',
+        component: MyJobInscriptionsPage
+    },
+    {
+        path: 'myKnowledge',
+        component: MyKnowledgePage
+    },
+    {
+        path: 'myExperience',
+        component: MyExperiencePage
+    },
+    {
+        path: 'changePasswordFirstStep',
+        component: ChangePasswordFirstStepPage
+    },
+    {
+        path: 'changePasswordSecondStep',
+        canActivate: [verifiedPasswordGuard],
+        component: ChangePasswordSecondStepPage
+    }
+]

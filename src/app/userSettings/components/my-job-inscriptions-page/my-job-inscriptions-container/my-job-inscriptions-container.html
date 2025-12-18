@@ -1,0 +1,12 @@
+<user-title/>
+@if (jobInscriptionsList()) {
+
+    <section-title title="Mis ofertas"/>
+    @if(jobInscriptionsList()!.length > 0) {
+        <busca-grid-entity [entityArr]="jobInscriptionsList()!"/>
+    }
+    @else {
+        <no-jobs-inscribed/>
+    }
+}
+

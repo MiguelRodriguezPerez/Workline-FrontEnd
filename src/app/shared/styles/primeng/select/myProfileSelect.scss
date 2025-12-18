@@ -1,0 +1,28 @@
+p-select.p-component.p-inputwrapper.p-select.settings-select{
+    background-color: transparent;
+}
+
+
+.settings-select .p-select-list-container {
+  background-color: #F5F5F5 !important;
+  border: 0px;
+}
+
+.settings-select .p-select-overlay {
+    border: 0px;
+    border-radius: 8px;
+}
+
+p-select.settings-select li.p-ripple.p-select-option {
+    background-color: #F5F5F5 !important;
+}
+
+span.p-select-label {
+    font-size: 19px;
+    padding: 5px 10px;
+}
+
+p-select.settings-select .p-component.p-overlay {
+    right: 0px;
+    left: -80px;
+}
