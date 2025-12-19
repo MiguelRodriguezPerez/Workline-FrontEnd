@@ -35,9 +35,14 @@
                 placeholder="dd/mm/yyyy"
                 [ngClass]="{'read-only' : isReadOnly() }"
             />
-            @if(globalFormUtils.isFormControlValid(conocimientoForm.get('inicioPeriodoConocimiento')!)) {
+            @if (globalFormUtils.isFormControlValid(conocimientoForm.get('inicioPeriodoConocimiento')!)) {
                 <span class="form-text text-danger">
                     {{ globalFormUtils.getFieldErrorText(conocimientoForm.get('inicioPeriodoConocimiento')!) }}
+                </span>
+            }
+            @else if (globalFormUtils.isFormControlValid(conocimientoForm)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(conocimientoForm) }}
                 </span>
             }
         </div>

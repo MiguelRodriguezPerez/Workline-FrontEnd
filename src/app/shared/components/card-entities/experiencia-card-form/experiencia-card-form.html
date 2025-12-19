@@ -40,6 +40,11 @@
                     {{ globalFormUtils.getFieldErrorText(experienciaForm.get('inicioExperiencia')!) }}
                 </span>
             }
+            @else if(globalFormUtils.isFormControlValid(experienciaForm)) {
+                <span class="form-text text-danger">
+                    {{ globalFormUtils.getFieldErrorText(experienciaForm) }}
+                </span>
+            }
         </div>
     </section>
 

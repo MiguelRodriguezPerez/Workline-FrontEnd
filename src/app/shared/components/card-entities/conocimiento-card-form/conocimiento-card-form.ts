@@ -34,6 +34,9 @@ export class ConocimientoCardForm {
     titulo: ['', Validators.required],
     inicioPeriodoConocimiento: ['', [Validators.required, Validators.pattern(this.globalFormUtils.dateRegex)]],
     finPeriodoConocimiento: ['', [Validators.required, Validators.pattern(this.globalFormUtils.dateRegex)]]
+  },
+  {
+    validators: this.globalFormUtils.compareDatesOrder
   });
 
   
@@ -70,6 +73,8 @@ export class ConocimientoCardForm {
   /* No tengo dudas de que existe una manera más limpia de lograr lo mismo */
 
   submitEvent() {
+    if (!this.conocimientoForm.valid) return;
+
     if (this.conocimientoInput()) {
         this.buscaService.updateConocimiento(
           this.conocimientoMapper.mapConocimientoFormToDto(

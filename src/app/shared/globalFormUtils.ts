@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export class GlobalFormUtils {
 
@@ -25,6 +25,8 @@ export class GlobalFormUtils {
                     return `Minímo de ${ errors['minlength'].requiredLength } carácteres.`;
                 case 'maxlength':
                     return `Máximo de ${ errors['maxlength'].requiredLength } carácteres`;
+                case 'ordenFechasIncorrecto':
+                    return 'La fecha de inicio es posterior a la del final';
                 case 'pattern':
                     /* Los errores basados en regex llevan su propio switch */
                     return this.getRegexTextError(errors['pattern'].requiredPattern);
@@ -36,9 +38,6 @@ export class GlobalFormUtils {
     }
 
     private static getRegexTextError (errorRegex: string): string | null {
-        console.log(errorRegex === this.passwordRegex.toString());
-        
-
         switch (true) {
             case errorRegex === this.passwordRegex.toString():
                 return 'La contraseña debe tener mayúsculas, minúsculas, números y carácteres especiales';
@@ -64,11 +63,25 @@ export class GlobalFormUtils {
 
     /* Este método se ejecuta después de haber comprobado que existen errores en el formControl y 
     devuelve el texto que mostrará el <span> del error */
-    static getFieldErrorText (formControl: AbstractControl): string | null {
-        console.log('aaaaaaaa');
-        
+    static getFieldErrorText (formControl: AbstractControl): string | null {  
         if (!formControl) return null;
         return this.getTextError(formControl.errors ?? {});
     }
-    
+
+
+    static compareDatesOrder: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+        const inicio = control.get('inicioExperiencia')?.value || control.get('inicioPeriodoConocimiento')?.value;
+        const fin = control.get('finExperiencia')?.value || control.get('finPeriodoConocimiento')?.value;
+
+        // Ya gestionará el error de requerido otro validador
+        if (!inicio || !fin) return null; 
+        
+        return this.parseDate(fin) >= this.parseDate(inicio) ? 
+            null : { ordenFechasIncorrecto: true } 
+    }
+
+    private static parseDate(date: string): Date {
+        const [day, month, year] = date.split('/');
+        return new Date(+year, +month - 1, +day);
+    }
 }
