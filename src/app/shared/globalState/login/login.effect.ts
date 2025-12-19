@@ -31,14 +31,29 @@ export class LoginEffects {
 
   logoutEffect = createEffect(() =>
     this.actions$.pipe(
-      ofType(requestLogout,checkUserCredentialsFailed),
+      ofType(requestLogout),
       exhaustMap(() =>
         this.loginService.uploadLogout().pipe(
           map(() => {
+            // Este navigate lo carga el diablo
             this.router.navigate(['/']);
             return succededLogoutRequest()
           }),
           catchError(error => of(failedRequestLogout({ content: error }))),
+        )
+      )
+    )
+  );
+
+  logoutOnInvalidCredentialsEffect = createEffect(() =>
+    this.actions$.pipe(
+      ofType(checkUserCredentialsFailed),
+      exhaustMap(() =>
+        this.loginService.uploadLogout().pipe(
+          map(() => succededLogoutRequest()),
+          catchError(error =>
+            of(failedRequestLogout({ content: error }))
+          )
         )
       )
     )
