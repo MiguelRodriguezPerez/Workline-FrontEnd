@@ -37,5 +37,7 @@ ul.wk-footer-list {
   flex-direction: column;
   gap: 0px;
 
-  color: wkVar.$white-font;
+  a {
+    color: wkVar.$white-font;
+  }
 }

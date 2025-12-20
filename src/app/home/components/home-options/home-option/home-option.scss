@@ -14,13 +14,13 @@
   margin-right: 5%;
   cursor: pointer;
 
-  &.home-option-green {
-    background-color: green;
-  }
-
   @include mixins.change-layout('phone') {
     grid-template-columns: 1fr;
   }
+}
+
+:host.home-option-green > .home-option {
+  background-color: green;
 }
 
 

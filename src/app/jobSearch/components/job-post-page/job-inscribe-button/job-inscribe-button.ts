@@ -16,19 +16,17 @@ export class JobInscribeButton {
 
   // Por defecto obtendrá 0
   jobPostId = input.required<number>();
-  private store = inject(Store);
-  loggedUser = this.store.selectSignal(selectLoggedUser);
+  loggedUser = inject(Store).selectSignal(selectLoggedUser);
   private ofertaService = inject(OfertaService);
   private buscaService = inject(BuscaService);
   isUserInscribed = signal<null | boolean>(null);
 
   anotherInputEffect = effect(() => {
+    if (this.loggedUser()?.rol !== 'BUSCA') return;
+
     const id = this.jobPostId();
     this.buscaService.isUserInscribedInJobPosting(id).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.isUserInscribed.set(response)
-      }
+      next: (response) => this.isUserInscribed.set(response)
     })
   });
 

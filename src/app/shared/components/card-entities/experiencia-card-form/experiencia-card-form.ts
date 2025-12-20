@@ -34,7 +34,11 @@ export class ExperienciaCardForm {
     empresa: ['', Validators.required],
     inicioExperiencia: ['', [Validators.required, Validators.pattern(this.globalFormUtils.dateRegex)]],
     finExperiencia: ['', [Validators.required, Validators.pattern(this.globalFormUtils.dateRegex)]]
-  });
+  },
+  {
+    validators: this.globalFormUtils.compareDatesOrder
+  }
+  );
 
   private _changeEffect = effect(() => {
     const experiencia = this.experienciaInput();
@@ -68,37 +72,39 @@ export class ExperienciaCardForm {
 
   
   submitEvent() {
-  if (this.experienciaInput()) {
-    this.buscaService.updateExperiencia(
-      this.experienciaMapper.mapExperienciaFormToDto(
-        this.experienciaForm, 
-        this.experienciaInput()!
+    if (!this.experienciaForm.valid) return;
+
+    if (this.experienciaInput()) {
+      this.buscaService.updateExperiencia(
+        this.experienciaMapper.mapExperienciaFormToDto(
+          this.experienciaForm, 
+          this.experienciaInput()!
+        )
       )
-    )
-    .subscribe({
-      next: (value) => {
-        this.store.dispatch(updatedExperiencia({ updatedExperiencia: value }));
-        this.isReadOnly.set(true);
-      },
-      error: (error) => {
-        console.error('Error: ' + error);
-      }
-    });
-  } 
-  else {
-    this.buscaService.uploadNewExperiencia(
-      this.experienciaMapper.mapExperienciaFormToDto(this.experienciaForm)
-    )
-    .subscribe({
-      next: (value) => {
-        this.store.dispatch(newExperienciaAdded({ newExperiencia: value }));
-        this.experienciaForm.reset();
-      },
-      error: (error) => {
-        console.error('Error: ' + error);
-      }
-    });
+      .subscribe({
+        next: (value) => {
+          this.store.dispatch(updatedExperiencia({ updatedExperiencia: value }));
+          this.isReadOnly.set(true);
+        },
+        error: (error) => {
+          console.error('Error: ' + error);
+        }
+      });
+    } 
+    else {
+      this.buscaService.uploadNewExperiencia(
+        this.experienciaMapper.mapExperienciaFormToDto(this.experienciaForm)
+      )
+      .subscribe({
+        next: (value) => {
+          this.store.dispatch(newExperienciaAdded({ newExperiencia: value }));
+          this.experienciaForm.reset();
+        },
+        error: (error) => {
+          console.error('Error: ' + error);
+        }
+      });
+    }
   }
-}
 
 }

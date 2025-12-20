@@ -14,7 +14,7 @@ export class App implements OnInit {
   loginService = inject(LoginService);
   store = inject(Store);
 
-  protected readonly title = signal('Workline-FrontEnd-Angular');
+  protected readonly title = signal('Workline');
 
   ngOnInit(): void {
     this.store.dispatch(checkUserCredentials())

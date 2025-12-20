@@ -15,21 +15,13 @@ form#login-form {
 form#login-form > div {
   /* Tuviste que fijar un ancho fijo para cada div porque el span del error era mas ancho
   que los input y redimensionaba todos sus hermanos (Los input y botones) */
-  width: 300px;
-
+  width: 320px;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 15px;
   justify-content: center;
   align-content: center;
   align-items: center;
-
-
-  &.div-mensaje-error {
-    gap: 0px !important;
-    margin-top: 5px;
-    margin-bottom: -10px;
-  }
 
   input {
     font-size: 20px;
@@ -39,5 +31,11 @@ form#login-form > div {
     width: 250px;
   }
 }
+
+span.mensaje-error {
+    font-size: 21px;
+    color: red;
+}
+
 
 
