@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
-import { commonHeaders } from '../../shared/objects/commonHeaders';
+import { environment } from '../../../environments/environment';
 import { BusquedaOferta } from '../objects/interfaces/BusquedaOferta';
 import { PaginaJobResponse } from '../objects/interfaces/PaginaJobResponse';
 import { PaginaJobRequest } from '../objects/interfaces/PaginaJobRequest';
@@ -53,7 +52,7 @@ export class BusquedaOfertaService {
   browseEmptyQueryParams(): void {
     this.router.navigate([], {
       relativeTo: this.currentRoute,
-      queryParams: {numPag: 0}
+      queryParams: { numPag: 0 }
     })
   };
 
