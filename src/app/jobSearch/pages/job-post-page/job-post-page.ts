@@ -10,10 +10,11 @@ import { OfertaService } from '../../services/oferta.service';
 import { OfertaDtoJobSearch } from '../../../shared/objects/interfaces/oferta/OfertaDtoJobSearch';
 import { Location } from '@angular/common';
 import { jobSearchRoutes } from '../../job-search.routes';
+import { GoBackLink } from "../../../shared/components/go-back-link/go-back-link";
 
 @Component({
   selector: 'job-post-page',
-  imports: [NavbarWrapper, Footer, JobPostHeader, JobSearchFeedLoading, JobPostBody],
+  imports: [NavbarWrapper, Footer, JobPostHeader, JobSearchFeedLoading, JobPostBody, GoBackLink],
   templateUrl: './job-post-page.html',
   styleUrl: './job-post-page.scss',
 })
@@ -35,19 +36,5 @@ export class JobPostPage {
     }
   });
 
-  goBackEvent(oferta: OfertaDtoJobSearch) {
-    // Si el historial tiene length mayor de 0 y se hizo en esta página, hay navegación previa
-    if (history.length && document.referrer.includes('/jobs')) {
-      this.location.back();
-    }
-    else {
-      this.router.navigate(['/jobs'], {
-        queryParams: {
-          'ciudad': oferta.ciudad,
-          'salarioAnual': oferta.salarioAnual
-        }
-      })
-    }
-  }
 
 }

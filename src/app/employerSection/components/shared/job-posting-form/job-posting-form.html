@@ -1,6 +1,6 @@
 <form [formGroup]="jobPostingForm" (ngSubmit)="submitForm()">
     <section class="job-posting-form-options">
-        <a (click)="goBackEvent()">Volver atrás</a>
+        <go-back-link [uniqueRoute]="true" [optionalRoute]="'/employerSection/myJobPostings'"/>
         @if(this.jobPostInput()) {
             <span id="spanReadOnly" (click)="editFormEvent()">
                 {{ isReadOnly() ? 'Editar oferta' : 'Cancelar' }}

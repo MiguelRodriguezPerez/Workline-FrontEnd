@@ -14,11 +14,12 @@ import { ContrataService } from '../../../service/contrata.service';
 import { FormUtilsJobPosting } from '../../../utils/formUtilsJobPost';
 import { tiposContratoOptions, tiposModalidadesOptions } from './form-enums';
 import { patchFormFromJobPost } from './patchFormFromJobPost';
+import { GoBackLink } from "../../../../shared/components/go-back-link/go-back-link";
 
 
 @Component({
   selector: 'job-posting-form',
-  imports: [ReactiveFormsModule, InputText, Select, Button, NgClass],
+  imports: [ReactiveFormsModule, InputText, Select, Button, NgClass, GoBackLink],
   templateUrl: './job-posting-form.html',
   styleUrl: './job-posting-form.scss',
 })

@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { BuscaService } from '../../../shared/services/busca.service';
 import { BuscaDto } from '../../../shared/objects/interfaces/busca/BuscaDto';
 import { CandidateEntityGrid } from "../../components/candidate-detail-page/candidate-entity-grid/candidate-entity-grid";
+import { GoBackLink } from "../../../shared/components/go-back-link/go-back-link";
 
 
 @Component({
   selector: 'candidate-detail-page',
-  imports: [NavbarWrapper, Footer, CandidateInfoCard, CandidateEntityGrid],
+  imports: [NavbarWrapper, Footer, CandidateInfoCard, CandidateEntityGrid, GoBackLink],
   templateUrl: './candidate-detail-page.html',
   styleUrl: './candidate-detail-page.scss',
 })
