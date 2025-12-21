@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { catchError, exhaustMap, map, Observable, of, tap, throwError } from 'rxjs';
 import { UsuarioSettingsDto } from '../interfaces/UsuarioSettingsDto';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -18,7 +18,7 @@ export class UserSettingsService {
   private http = inject(HttpClient);
   private store = inject(Store);
 
-  getCurrentUser (): Observable<UsuarioSettingsDto> {
+  getCurrentUser(): Observable<UsuarioSettingsDto> {
     return this.http.get<UsuarioSettingsDto>(`${this.baseUrl}${this.userSettingsUrl}/getUserData`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
@@ -28,18 +28,18 @@ export class UserSettingsService {
       )
   };
 
-  updateUserData (usuarioDto: UsuarioSettingsDto): Observable<LoggedUserContext> {
+  updateUserData(usuarioDto: UsuarioSettingsDto): Observable<LoggedUserContext> {
     return this.http.put<LoggedUserContext>(`${this.baseUrl}${this.userSettingsUrl}/updateUserData`,
       usuarioDto,
       { withCredentials: true } // necesario si tu backend devuelve cookies
     )
-    .pipe(
-      tap(response => this.store.dispatch(updateLoggedUser({ content: response }))),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error updating user data', error);
-        return throwError(() => error);
-      })
-    );
+      .pipe(
+        tap(response => this.store.dispatch(updateLoggedUser({ content: response }))),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error updating user data', error);
+          return throwError(() => error);
+        })
+      );
   }
 
   deleteLoggedUser(): Observable<void> {
@@ -53,22 +53,22 @@ export class UserSettingsService {
 
   verifyCurrentPassword(password: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.baseUrl}${this.userSettingsUrl}/confirmarPassword`, password)
-        .pipe(
-           catchError( (error: HttpErrorResponse) => {
-            console.error('Error verifying password');
-            return throwError(() => error);
-          })
-        )
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error verifying password');
+          return throwError(() => error);
+        })
+      )
   }
 
   changePassword(newPassword: string): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}${this.userSettingsUrl}/cambiarPassword`,newPassword)
-    .pipe(
-        catchError( (error: HttpErrorResponse) => {
-        console.error('Error changing password');
-        return throwError(() => error);
-      })
-    );
+    return this.http.put<void>(`${this.baseUrl}${this.userSettingsUrl}/cambiarPassword`, newPassword)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error changing password');
+          return throwError(() => error);
+        })
+      );
   }
 
 }
