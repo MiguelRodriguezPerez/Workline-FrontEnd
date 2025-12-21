@@ -1,7 +1,10 @@
-<button class="job-search-form-tablet green-button" (click)="phoneFormEvent()">
-    <span class="pi pi-search"></span>
-    <span>Más filtros</span>
-</button>
+<p-button
+  type="button"
+  class="job-search-form-tablet green-button"
+  icon="pi pi-search"
+  label="Más filtros"
+  (onClick)="phoneFormEvent()"
+/>
 <main id="tablet-form-container">
     <job-search-form [closeMenu]="phoneFormEvent"/>
 </main>

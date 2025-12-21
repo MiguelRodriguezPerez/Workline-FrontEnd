@@ -8,6 +8,7 @@ import { TipoContrato } from '../../../../objects/enums/TipoContrato';
 import { BusquedaOfertaFormGroup } from '../../../../objects/interfaces/BusquedaOferta';
 import { BusquedaOfertaMapper } from '../../../../objects/mappers/BusquedaOfertaMapper';
 import { BusquedaOfertaService } from '../../../../services/busquedaOferta.service';
+import { tiposContratoTitleCase, tiposModalidadesTitleCase } from '../../../../../shared/objects/enums/JobPostEnumsTitleCase';
 
 
 
@@ -18,7 +19,7 @@ import { BusquedaOfertaService } from '../../../../services/busquedaOferta.servi
     SelectModule,
     InputText,
     Button
-],
+  ],
   templateUrl: './job-search-form.html',
   styleUrl: './job-search-form.scss',
 })
@@ -27,8 +28,8 @@ export class JobSearchForm {
   /* Si este callback existe, significa que este componente tiene como padre job-search-form-tablet  */
   closeMenu = input<() => void>();
 
-  tiposContratoKeys = Object.keys(TipoContrato);
-  tiposModalidadesKeys = Object.keys(ModalidadTrabajo);
+  tiposContrato = tiposContratoTitleCase;
+  tiposModalidad = tiposModalidadesTitleCase;
   busquedaOfertaMapper = BusquedaOfertaMapper;
   ofertaService = inject(BusquedaOfertaService);
 

@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { JobSearchForm } from "../job-search-form/job-search-form";
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'job-search-form-tablet',
-  imports: [JobSearchForm],
+  imports: [JobSearchForm, Button],
   templateUrl: './job-search-form-tablet.html',
   styleUrl: './job-search-form-tablet.scss',
 })

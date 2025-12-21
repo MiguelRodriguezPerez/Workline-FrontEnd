@@ -12,7 +12,7 @@ import { GoBackLink } from "../../../shared/components/go-back-link/go-back-link
 
 @Component({
   selector: 'candidate-detail-page',
-  imports: [NavbarWrapper, Footer, CandidateInfoCard, CandidateEntityGrid, GoBackLink],
+  imports: [NavbarWrapper, Footer, CandidateInfoCard, CandidateEntityGrid],
   templateUrl: './candidate-detail-page.html',
   styleUrl: './candidate-detail-page.scss',
 })

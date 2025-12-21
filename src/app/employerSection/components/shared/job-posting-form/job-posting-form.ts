@@ -12,9 +12,9 @@ import { OfertaFormGroup as OfertaEmployerFormGroup } from '../../../../shared/o
 import { OfertaMapper } from '../../../../shared/objects/interfaces/oferta/OfertaMapper';
 import { ContrataService } from '../../../service/contrata.service';
 import { FormUtilsJobPosting } from '../../../utils/formUtilsJobPost';
-import { tiposContratoOptions, tiposModalidadesOptions } from './form-enums';
 import { patchFormFromJobPost } from './patchFormFromJobPost';
 import { GoBackLink } from "../../../../shared/components/go-back-link/go-back-link";
+import { tiposContratoTitleCase, tiposModalidadesTitleCase } from '../../../../shared/objects/enums/JobPostEnumsTitleCase';
 
 
 @Component({
@@ -32,8 +32,8 @@ export class JobPostingForm {
   formUtils = FormUtilsJobPosting;
   router = inject(Router);
   jobPostInput = input<OfertaDtoEmployer>();
-  tiposModalidadesOptions = tiposModalidadesOptions;
-  tiposContratoOptions = tiposContratoOptions;
+  tiposContrato = tiposContratoTitleCase;
+  tiposModalidad = tiposModalidadesTitleCase;
 
   isReadOnly = signal<boolean>(false);
 
@@ -52,7 +52,7 @@ export class JobPostingForm {
     const jobPost = this.jobPostInput();
     if (jobPost) {
       this.isReadOnly.set(true);
-      patchFormFromJobPost(jobPost,this.jobPostingForm);
+      patchFormFromJobPost(jobPost, this.jobPostingForm);
     }
   });
 
@@ -62,17 +62,17 @@ export class JobPostingForm {
     if (!this.jobPostingForm.valid) return;
 
     if (this.jobPostInput()) {
-        this.contrataService.updateOferta(
-          this.ofertaMapper.mapOfertaFormGroupToOferta(this.jobPostingForm,this.jobPostInput()!)
-        )
+      this.contrataService.updateOferta(
+        this.ofertaMapper.mapOfertaFormGroupToOferta(this.jobPostingForm, this.jobPostInput()!)
+      )
         .subscribe({
           next: () => this.router.navigate(['employerSection', 'myJobPostings'])
         })
     }
     else {
-        this.contrataService.uploadNewOferta (
-          this.ofertaMapper.mapNewOfertaFormGroupToOferta(this.jobPostingForm)
-        )
+      this.contrataService.uploadNewOferta(
+        this.ofertaMapper.mapNewOfertaFormGroupToOferta(this.jobPostingForm)
+      )
         .subscribe({
           next: () => this.router.navigate(['employerSection', 'myJobPostings'])
         })
@@ -88,8 +88,8 @@ export class JobPostingForm {
     if (this.isReadOnly()) {
       patchFormFromJobPost(this.jobPostInput()!, this.jobPostingForm);
       this.isReadOnly.set(false);
-    } 
-    else 
+    }
+    else
       this.isReadOnly.set(true);
   }
 
