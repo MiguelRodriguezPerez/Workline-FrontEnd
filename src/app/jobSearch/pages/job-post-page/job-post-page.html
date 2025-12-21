@@ -4,7 +4,7 @@
         <job-search-feed-loading/>
     }
     @else {
-        <span (click)="goBackEvent(jobIdRequest.value()!)">Volver atrás</span>
+        <go-back-link [optionalRoute]="'/jobs'"/>
         <job-post-header [jobPost]="jobIdRequest.value()!"/>
         <job-post-body [jobPost]="jobIdRequest.value()!"/>
     }

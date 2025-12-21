@@ -24,10 +24,15 @@ form#job-search-form > div:first-child {
   gap: 15px;
   margin-bottom: 10px;
 
-  span:first-child {
+  span {
     cursor: pointer;
     font-size: 0.75em;
-    margin-right: auto;
+    margin-left: auto;
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
   }
 }
 

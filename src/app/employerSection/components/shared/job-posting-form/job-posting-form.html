@@ -1,6 +1,6 @@
 <form [formGroup]="jobPostingForm" (ngSubmit)="submitForm()">
     <section class="job-posting-form-options">
-        <a (click)="goBackEvent()">Volver atrás</a>
+        <go-back-link [uniqueRoute]="true" [optionalRoute]="'/employerSection/myJobPostings'"/>
         @if(this.jobPostInput()) {
             <span id="spanReadOnly" (click)="editFormEvent()">
                 {{ isReadOnly() ? 'Editar oferta' : 'Cancelar' }}
@@ -75,7 +75,8 @@
         <div>
             <label for="modalidad">Modalidad</label>
             <p-select 
-                [options]="tiposModalidadesOptions"
+                
+                [options]="tiposModalidad"
                 placeholder="Elige una opción"
                 formControlName="modalidadTrabajo"
                 name="modalidadTrabajo"
@@ -91,7 +92,7 @@
 
             <label for="tipoContrato">Tipo de Contrato</label>
             <p-select 
-                [options]="tiposContratoOptions"
+                [options]="tiposContrato"
                 placeholder="Elige una opción"
                 formControlName="tipoContrato"
                 name="tipoContrato"

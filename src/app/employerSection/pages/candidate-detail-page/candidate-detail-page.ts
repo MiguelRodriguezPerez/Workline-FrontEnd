@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BuscaService } from '../../../shared/services/busca.service';
 import { BuscaDto } from '../../../shared/objects/interfaces/busca/BuscaDto';
 import { CandidateEntityGrid } from "../../components/candidate-detail-page/candidate-entity-grid/candidate-entity-grid";
+import { GoBackLink } from "../../../shared/components/go-back-link/go-back-link";
 
 
 @Component({

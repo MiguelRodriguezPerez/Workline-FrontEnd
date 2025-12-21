@@ -56,7 +56,7 @@ export function isOfertaDtoJobSearch(obj: any): obj is OfertaDtoJobSearch {
         'fechaPublicacion' in obj &&
         'tipoContrato' in obj &&
         'modalidadTrabajo' in obj &&
-        'contrata' in obj 
+        'contrata' in obj
     );
 
     return hasRequiredProperties;
