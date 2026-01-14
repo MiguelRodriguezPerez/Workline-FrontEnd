@@ -1,6 +1,9 @@
 @if(user() === null) {
     <div class="login-container" routerLink="/login">
-        <span>Iniciar Sesión</span>
+        @if(windowWidth() > 700) {
+            <span>Iniciar Sesión</span>
+        }
+
         <span class="pi pi-user"></span>
     </div>
 }
