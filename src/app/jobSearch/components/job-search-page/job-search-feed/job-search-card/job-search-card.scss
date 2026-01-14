@@ -60,3 +60,9 @@ div.oferta-card > header,footer,section {
     
   }
 }
+
+@include mixins.change-layout(phone) { 
+  div.oferta-card > footer > div {
+    flex-direction: column;
+  }
+}
