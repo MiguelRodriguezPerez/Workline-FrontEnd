@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { Store } from '@ngrx/store';
 import { requestLogout } from '../../../globalState/login/login.action';
@@ -23,6 +23,7 @@ export class NavLogin {
 
   user$ = this.store.select(selectUser); */
 
+  windowWidth = signal<number>(0);
   router = inject(Router);
   store = inject(Store);
   user = this.store.selectSignal(selectLoggedUser);
@@ -31,5 +32,10 @@ export class NavLogin {
 
   onClickLogout() {
     this.store.dispatch(requestLogout());
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.windowWidth.set(window.innerWidth);
   }
 }
